@@ -5,6 +5,8 @@ const SLOPE_STOP = 400
 var velocity = Vector2()
 var move_speed = 500
 
+signal dimension_swap
+
 #saltos
 var gravity_fall = 6200
 var gravity_jump = 4800

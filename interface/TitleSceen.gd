@@ -6,7 +6,7 @@ func _ready():
 	$CreditsText.hide()
 
 func _on_NewGameButton_pressed():
-	Transition.fade_out("res://interface/TestScene.tscn")
+	Transition.fade_out("res://levels/Level_1.tscn")
 
 func _on_OptionsButton_pressed():
 	$VBoxContainer.hide()

@@ -27,7 +27,8 @@ func _get_input():
 		if !Input.is_action_pressed("confirm"):
 			if parent.velocity.y < 0:
 				parent.velocity.y /= 2
-	
+	if Input.is_action_just_pressed("cancel"):
+		parent.emit_signal("dimension_swap")	
 
 func _state_logic(delta):
 	if Input.is_action_just_pressed("select"):

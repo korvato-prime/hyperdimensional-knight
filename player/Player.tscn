@@ -11,14 +11,13 @@ extents = Vector2( 30, 31 )
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "jump"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "run"
 
-[sub_resource type="Animation" id=3]
-resource_name = "damaged"
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("visuals:visible")
@@ -77,9 +76,9 @@ script = ExtResource( 4 )
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 5 )
+anims/jump = SubResource( 3 )
+anims/run = SubResource( 4 )
 
 [node name="anim_damage" type="AnimationPlayer" parent="."]
-anims/damaged = SubResource( 3 )
+anims/damaged = SubResource( 5 )
 
