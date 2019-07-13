@@ -16,3 +16,8 @@ func _on_dimension_swap():
 		$AlterDimension.set_collision_layer_bit(1,0)
 		$solids.show()
 		$solids.set_collision_layer_bit(1,1)
+
+func _on_HazardArea_body_entered(body):
+	if body is Player:
+		Globals.player_current_life -=1
+	pass # Replace with function body.

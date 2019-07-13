@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 var UP = Vector2(0, -1)
 const SLOPE_STOP = 400
