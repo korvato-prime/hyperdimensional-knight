@@ -5,6 +5,7 @@
 [ext_resource path="res://levels/tiles/dangerous.png" type="Texture" id=3]
 [ext_resource path="res://levels/UI.gd" type="Script" id=4]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -47,9 +48,6 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 31.3388, 31.9549 )
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 1 )
@@ -116,7 +114,6 @@ margin_right = 1108.0
 margin_bottom = 135.0
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 918.892, 624.64 )
 collision_mask = 2
 
@@ -131,20 +128,10 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="Hazard" type="Node2D" parent="."]
-
-[node name="HazardArea" type="Area2D" parent="Hazard"]
-position = Vector2( 730.871, 880.655 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Hazard/HazardArea"]
-self_modulate = Color( 0.498039, 0.27451, 0.6, 1 )
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.933333, 0.0823529, 0.0823529, 0.458824 )
+position = Vector2( 718.728, 757.086 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard/HazardArea"]
-position = Vector2( -0.012146, -0.105652 )
-shape = SubResource( 5 )
+[node name="Hazard" parent="Sprite" instance=ExtResource( 6 )]
 
-[connection signal="body_entered" from="Hazard/HazardArea" to="." method="_on_HazardArea_body_entered"]
