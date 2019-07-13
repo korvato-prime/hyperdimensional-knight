@@ -1,5 +1,7 @@
 extends "res://multiuse_resources/StateMachine.gd"
 
+var reverted = false
+
 func _ready():
 	add_state("idle")
 	add_state("run")
@@ -29,6 +31,23 @@ func _get_input():
 				parent.velocity.y /= 2
 	if Input.is_action_just_pressed("cancel"):
 		parent.emit_signal("dimension_swap")	
+	if Input.is_action_just_pressed("head"):
+		if !reverted:
+			parent.gravity_fall = -6200
+			parent.gravity_jump = -4800
+			parent.jump_velocity = 1625
+			parent.velocity_fall_max = -2000
+			parent.UP = Vector2(0,1)
+			parent.rotation_degrees = 180
+			reverted = true
+		else:
+			parent.gravity_fall = 6200
+			parent.gravity_jump = 4800
+			parent.jump_velocity = -1625
+			parent.velocity_fall_max = 2000
+			parent.UP = Vector2(0,-1)
+			parent.rotation_degrees = 0
+			reverted = false
 
 func _state_logic(delta):
 	if Input.is_action_just_pressed("select"):

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const UP = Vector2(0, -1)
+var UP = Vector2(0, -1)
 const SLOPE_STOP = 400
 var velocity = Vector2()
 var move_speed = 500
