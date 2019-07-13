@@ -13,8 +13,11 @@ func _get_input():
 	
 	parent._horizontal_move()
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("cancel"):
 		parent.attacking()
+		
+	if Input.is_action_just_pressed("switch"):
+		parent.change_dimension()
 	
 	if Input.is_action_just_pressed("confirm"):
 		if Input.is_action_pressed("down"):
@@ -93,7 +96,6 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.get_node("anim_player").play("idle")
 		states.run:
-			print(12)
 			parent.get_node("anim_player").play("run2")
 		states.jump:
 			parent.get_node("anim_player").play("jump")
@@ -113,3 +115,7 @@ func _on_health_system_health_changed():
 	var h_s = get_parent().get_node("health_system")
 	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	var h_s = get_parent().get_node("health_system")
+	h_s.take_damage(1000)

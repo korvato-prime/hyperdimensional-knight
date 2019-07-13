@@ -15,11 +15,18 @@ const COYOTE_TIME = 4
 const PRE_JUMP_PRESSED = 4
 var coyote_time_timer = 0
 var pre_jump_timer = 0
-var DROP_THRU_BIT = 10
+var DROP_THRU_BIT = 0
 
 # action
 var action_coldown_time = 20
 var action_coldown_timer = 0
+var actual_dimension = 0
+
+# attack
+var punch_coldown_time = 20
+var gun_coldown_time = 20
+var attack_coldown_timer = 2
+var weapon = "punch"
 
 onready var raycasts_down = $raycasts_down
 
@@ -31,6 +38,8 @@ func _ready():
 		raycast.add_exception(self)
 	
 	$health_system._set_health_variables(3, 0)
+	
+	change_dimension()
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -46,6 +55,9 @@ func _every_step():
 	if action_coldown_timer > 0:
 		action_coldown_timer -= 1
 	
+	if attack_coldown_timer > 0:
+		attack_coldown_timer -= 1
+	
 	if pre_jump_timer > 0:
 		pre_jump_timer -= 1
 	
@@ -55,16 +67,38 @@ func _every_step():
 	is_grounded = _check_is_grounded()
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
+	
+	### temporal
+	get_node("CanvasLayer/weapon").text = "weapon: " + weapon
+	get_node("CanvasLayer/dimention").text = "dimention: " + str(actual_dimension)
 
 func attacking():
-	
+	if attack_coldown_timer == 0:
+		match (weapon):
+			"punch":
+				print("punching")
+				print("trust me dude ;)")
+				attack_coldown_timer = punch_coldown_time
+			"gun":
+				print("shooting")
+				print("trust me dude ;)")
+				attack_coldown_timer = gun_coldown_time
+	pass
+
+func change_dimension():
 	if action_coldown_timer == 0:
-		# intert 
-		# dimensional
-		# mechanic
-		# here
-		action_coldown_time = action_coldown_timer
-		pass
+		if actual_dimension == 1:
+			actual_dimension = 2
+			get_node("visuals").modulate = Color(0,1,0)
+		else:
+			actual_dimension = 1
+			get_node("visuals").modulate = Color(1,0,0)
+		
+		set_collision_layer_bit(actual_dimension, true)
+		set_collision_layer_bit(3 - actual_dimension, false)
+		set_collision_mask_bit(actual_dimension, true)
+		set_collision_mask_bit(3 - actual_dimension, false)
+		action_coldown_timer = action_coldown_time
 
 
 func _horizontal_move():

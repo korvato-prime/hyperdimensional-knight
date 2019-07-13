@@ -46,7 +46,6 @@ text = "Master"
 margin_top = 18.0
 margin_right = 84.0
 margin_bottom = 34.0
-ticks_on_borders = false
 script = ExtResource( 4 )
 
 [node name="FullscreenLabel" type="Label" parent="OptionsContainer"]
