@@ -18,7 +18,7 @@ func _get_input():
 	if Input.is_action_just_pressed("attack"):
 		parent.attacking()
 	
-	if Input.is_action_just_pressed("confirm"):
+	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("down"):
 			parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
 		else:
@@ -26,12 +26,12 @@ func _get_input():
 	
 	if states.jump == state:
 		#frenar el salto si suelto jump_button
-		if !Input.is_action_pressed("confirm"):
+		if !Input.is_action_pressed("jump"):
 			if parent.velocity.y < 0:
 				parent.velocity.y /= 2
-	if Input.is_action_just_pressed("cancel"):
+	if Input.is_action_just_pressed("swap"):
 		parent.emit_signal("dimension_swap")	
-	if Input.is_action_just_pressed("head"):
+	if Input.is_action_just_pressed("skill"):
 		if !reverted:
 			parent.gravity_fall = -6200
 			parent.gravity_jump = -4800
@@ -48,7 +48,11 @@ func _get_input():
 			parent.UP = Vector2(0,-1)
 			parent.rotation_degrees = 0
 			reverted = false
-
+	if Input.is_action_just_pressed("shoot"):
+		parent.emit_signal("shooted")
+	if Input.is_action_just_pressed("punch"):
+		parent.emit_signal("punched")
+		
 func _state_logic(delta):
 	if Input.is_action_just_pressed("select"):
 		if get_tree().paused:
