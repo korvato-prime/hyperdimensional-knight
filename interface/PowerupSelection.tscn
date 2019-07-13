@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/Retro.tres" type="Theme" id=1]
+[ext_resource path="res://Control.gd" type="Script" id=2]
+[ext_resource path="res://levels/tiles/dangerous.png" type="Texture" id=3]
+
+[node name="PowerupSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.15845
+margin_bottom = -2.15845
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.458824, 0.0941176, 0.160784, 1 )
+
+[node name="NamePanel" type="Panel" parent="."]
+margin_left = 521.0
+margin_top = 76.0
+margin_right = 1397.0
+margin_bottom = 150.0
+
+[node name="NameLabel" type="Label" parent="NamePanel"]
+margin_left = 25.2205
+margin_top = 8.50383
+margin_right = 235.22
+margin_bottom = 22.5038
+rect_scale = Vector2( 4, 4 )
+text = "This is the name of the powerup."
+align = 1
+
+[node name="PowerupContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -501.419
+margin_top = 286.123
+margin_right = -241.419
+margin_bottom = 360.123
+rect_scale = Vector2( 4, 4 )
+
+[node name="Powerup01Button" type="Button" parent="PowerupContainer"]
+margin_right = 84.0
+margin_bottom = 74.0
+icon = ExtResource( 3 )
+
+[node name="Powerup02Button" type="Button" parent="PowerupContainer"]
+margin_left = 88.0
+margin_right = 172.0
+margin_bottom = 74.0
+icon = ExtResource( 3 )
+
+[node name="Powerup03Button" type="Button" parent="PowerupContainer"]
+margin_left = 176.0
+margin_right = 260.0
+margin_bottom = 74.0
+icon = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+editor/display_folded = true
+margin_left = 267.735
+margin_top = 765.456
+margin_right = 1659.74
+margin_bottom = 998.456
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+margin_left = 247.838
+margin_top = 39.1494
+margin_right = 485.838
+margin_bottom = 74.1494
+rect_scale = Vector2( 4, 4 )
+text = "Current selected powerup does this.
+"
+
+[connection signal="focus_entered" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_focus_entered"]
+[connection signal="pressed" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_pressed"]
+[connection signal="focus_entered" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_focus_entered"]
+[connection signal="pressed" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_pressed"]
+[connection signal="focus_entered" from="PowerupContainer/Powerup03Button" to="." method="_on_Powerup03Button_focus_entered"]
+[connection signal="pressed" from="PowerupContainer/Powerup03Button" to="." method="_on_Powerup03Button_pressed"]
