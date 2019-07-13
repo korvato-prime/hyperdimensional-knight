@@ -8,8 +8,6 @@ var move_speed = 500
 
 signal dimension_swap
 signal hit
-signal shooted
-signal punched
 
 #saltos
 var gravity_fall = 6200
@@ -24,19 +22,20 @@ var pre_jump_timer = 0
 var DROP_THRU_BIT = 10
 
 # action
-var action_coldown_time = 20
-var action_coldown_timer = 0
+var punch_coldown_time = 20
+var gun_coldown_time = 20
+var punch_coldown_timer = 0
+var gun_coldown_timer = 0
 
 onready var raycasts_down = $raycasts_down
 
 var is_grounded
 
 func _ready():
-	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
 	
-	$health_system._set_health_variables(3, 0)
+	$health_system._set_health_variables(4)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -49,8 +48,11 @@ func _apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _every_step():
-	if action_coldown_timer > 0:
-		action_coldown_timer -= 1
+	if punch_coldown_timer > 0:
+		punch_coldown_timer -= 1
+	
+	if gun_coldown_timer > 0:
+		gun_coldown_timer -= 1
 	
 	if pre_jump_timer > 0:
 		pre_jump_timer -= 1
@@ -62,15 +64,17 @@ func _every_step():
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
 
-func attacking():
-	
-	if action_coldown_timer == 0:
-		# intert 
-		# dimensional
-		# mechanic
-		# here
-		action_coldown_time = action_coldown_timer
-		pass
+func punching():
+	if punch_coldown_timer == 0:
+		print("punching")
+		print("trust me dude ;)")
+		punch_coldown_time = punch_coldown_timer
+
+func shooting():
+	if gun_coldown_timer == 0:
+		print("shooting")
+		print("trust me dude ;)")
+		gun_coldown_time = gun_coldown_timer
 
 
 func _horizontal_move():
@@ -102,10 +106,6 @@ func jump():
 	coyote_time_timer = 0
 	pre_jump_timer = 0
 	velocity.y = jump_velocity
-
-func _on_health_system_health_changed():
-	$anim_damage.play("damaged")
-	# change health visuals
 
 func vulnerability(boole):
 	if boole:

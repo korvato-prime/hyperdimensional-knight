@@ -1,5 +1,7 @@
 extends "res://multiuse_resources/StateMachine.gd"
 
+onready var h_s = get_parent().get_node("health_system")
+
 var reverted = false
 
 func _ready():
@@ -15,10 +17,13 @@ func _get_input():
 	
 	parent._horizontal_move()
 	
-	if Input.is_action_just_pressed("attack"):
-		parent.attacking()
+	if Input.is_action_just_pressed("punch"):
+		parent.punching()
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("shoot"):
+		parent.shooting()
+	
+	if Input.is_action_just_pressed("confirm"):
 		if Input.is_action_pressed("down"):
 			parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
 		else:
@@ -26,12 +31,12 @@ func _get_input():
 	
 	if states.jump == state:
 		#frenar el salto si suelto jump_button
-		if !Input.is_action_pressed("jump"):
+		if !Input.is_action_pressed("confirm"):
 			if parent.velocity.y < 0:
 				parent.velocity.y /= 2
-	if Input.is_action_just_pressed("swap"):
+	if Input.is_action_just_pressed("cancel"):
 		parent.emit_signal("dimension_swap")	
-	if Input.is_action_just_pressed("skill"):
+	if Input.is_action_just_pressed("head"):
 		if !reverted:
 			parent.gravity_fall = -6200
 			parent.gravity_jump = -4800
@@ -48,11 +53,7 @@ func _get_input():
 			parent.UP = Vector2(0,-1)
 			parent.rotation_degrees = 0
 			reverted = false
-	if Input.is_action_just_pressed("shoot"):
-		parent.emit_signal("shooted")
-	if Input.is_action_just_pressed("punch"):
-		parent.emit_signal("punched")
-		
+
 func _state_logic(delta):
 	if Input.is_action_just_pressed("select"):
 		if get_tree().paused:
@@ -117,7 +118,6 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.get_node("anim_player").play("idle")
 		states.run:
-			print(12)
 			parent.get_node("anim_player").play("run2")
 		states.jump:
 			parent.get_node("anim_player").play("jump")
@@ -126,6 +126,7 @@ func _enter_state(new_state, old_state):
 		states.hitted:
 			parent.get_node("anim_player").play("jump")
 			parent.jump()
+			parent.velocity.y /= 2
 			parent.emit_signal("hit")
 			
 
@@ -136,6 +137,9 @@ func _on_health_system_died():
 	get_tree().reload_current_scene()
 	
 func _on_health_system_health_changed():
-	var h_s = get_parent().get_node("health_system")
 	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)
+	get_parent().get_node("anim_damage").play("damaged")
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	h_s.take_damage(100)
