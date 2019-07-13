@@ -122,6 +122,8 @@ func _enter_state(new_state, old_state):
 		states.hitted:
 			parent.get_node("anim_player").play("jump")
 			parent.jump()
+			parent.emit_signal("hit")
+			
 
 func _exit_state(old_state, new_state):
 	pass

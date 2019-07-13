@@ -6,6 +6,7 @@ var velocity = Vector2()
 var move_speed = 500
 
 signal dimension_swap
+signal hit
 
 #saltos
 var gravity_fall = 6200
