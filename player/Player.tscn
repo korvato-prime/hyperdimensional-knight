@@ -101,13 +101,9 @@ anims/run = SubResource( 4 )
 
 [node name="anim_damage" type="AnimationPlayer" parent="."]
 anims/damaged = SubResource( 5 )
-<<<<<<< HEAD
-=======
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 rect = Rect2( -50, -50, 100, 100 )
-
 [connection signal="died" from="health_system" to="state_machine" method="_on_health_system_died"]
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="state_machine" method="_on_VisibilityNotifier2D_viewport_exited"]
->>>>>>> af65236dfa1ea1c3be9d897d33226081a8c25476
