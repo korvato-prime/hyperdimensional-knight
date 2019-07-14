@@ -3,13 +3,14 @@
 [ext_resource path="res://enemies/flyer/Flyer.gd" type="Script" id=1]
 [ext_resource path="res://enemies/flyer/Flyer_SM.gd" type="Script" id=2]
 [ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 25, 25 )
 
 [node name="Flyer" type="KinematicBody2D" groups=[
 "flyer",
+"enemy",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
@@ -25,14 +26,12 @@ script = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
 
-[node name="health_system" type="Node" parent="."]
-script = ExtResource( 4 )
-
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 
-[node name="anim_damage" type="AnimationPlayer" parent="."]
+[node name="health_system" parent="." instance=ExtResource( 4 )]
+
+[connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

@@ -40,6 +40,7 @@ func _ready():
 	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
+	
 	health_system._set_health_variables(3, 0)
 
 func _every_step(delta):
@@ -110,16 +111,6 @@ func is_on_ledge():
 		is_on_ledge = false
 
 	return is_on_ledge
-
-func _on_health_system_health_changed():
-	$anim_damage.play("damaged")
-	# change health visuals
-
-func vulnerability(boole):
-	if boole:
-		$health_system.set_state($health_system.states.vulnerable)
-	else:
-		$health_system.set_state($health_system.states.invulnerable)
 
 func enable_raycast(direction):
 	if (direction == 1):

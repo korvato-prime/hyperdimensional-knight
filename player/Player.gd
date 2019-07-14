@@ -29,10 +29,14 @@ var punch_coldown_timer = 0
 var punch_damage = 1
 var can_punch = true
 
+var bullet_obj = load("res://player/bullets/bullet_player.tscn")
+enum bullet_type { SINGLE, DOUBLE, TRIPLE }
+var current_bullet = bullet_type.SINGLE
 var gun_coldown_time = 20
 var gun_coldown_timer = 0
 var gun_damage = 1
 var can_shoot = true
+var bullet_speed = 500
 
 onready var raycasts_down = $raycasts_down
 
@@ -42,7 +46,7 @@ func _ready():
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
 	
-	$health_system._set_health_variables(4)
+	$health_system._set_health_variables(4,40)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -83,6 +87,13 @@ func shooting():
 		gun_coldown_time = gun_coldown_timer
 		emit_signal("bullet_reduce")
 		
+		var player_direction = get_node("visuals").scale.x
+		var bullet = bullet_obj.instance()
+		bullet.position = self.position + Vector2(player_direction*15,0)
+		self.get_parent().add_child(bullet)
+		bullet.velocity = Vector2(player_direction,0) * bullet_speed 
+		bullet.damage = gun_damage
+		
 		# evitate punch collider error
 		get_node("visuals/punch_hitbox/collision").disabled = true
 
@@ -117,19 +128,12 @@ func jump():
 	pre_jump_timer = 0
 	velocity.y = jump_velocity
 
-func vulnerability(boole):
-	if boole:
-		$health_system.set_state($health_system.states.vulnerable)
-	else:
-		$health_system.set_state($health_system.states.invulnerable)
-
 func _on_punch_hitbox_body_entered(body):
 	apply_punch_damage(body)
 func _on_punch_hitbox_area_entered(area):
 	apply_punch_damage(area)
 func apply_punch_damage(enemy):
 	if enemy.is_in_group("enemy"):
-		print(enemy.name)
 		enemy.get_node("health_system").take_damage(punch_damage)
 
 func _on_StaminaBar_value_changed(value):

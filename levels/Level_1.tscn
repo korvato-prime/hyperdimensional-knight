@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://levels/tiles/tiles.png" type="Texture" id=2]
 [ext_resource path="res://levels/tiles/dangerous.png" type="Texture" id=3]
 [ext_resource path="res://levels/UI.gd" type="Script" id=4]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://enemies/walker/Walker.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=7]
-[ext_resource path="res://enemies/gunner/Gunner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/walker/Walker.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/gunner/Gunner.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -141,16 +142,18 @@ drag_margin_bottom = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.933333, 0.0823529, 0.0823529, 0.458824 )
-position = Vector2( 718.728, 757.086 )
+position = Vector2( 96.8722, 671.074 )
 texture = ExtResource( 3 )
 
-[node name="Walker" parent="." instance=ExtResource( 6 )]
+[node name="Hazard" parent="Sprite" instance=ExtResource( 6 )]
+
+[node name="Walker" parent="." instance=ExtResource( 7 )]
 position = Vector2( 961.445, 279.823 )
 
-[node name="Jumper" parent="." instance=ExtResource( 7 )]
+[node name="Jumper" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1523.07, 967.959 )
 
-[node name="Thrower" parent="." instance=ExtResource( 8 )]
+[node name="Thrower" parent="." instance=ExtResource( 9 )]
 position = Vector2( 481.078, 863.464 )
 
 [connection signal="can_punch_again" from="UI" to="player" method="_on_UI_can_punch_again"]

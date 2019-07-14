@@ -143,9 +143,7 @@ func _on_health_system_died():
 
 # What to do if the player recieved no mortal damage
 func _on_health_system_health_changed():
-	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)
-	get_parent().get_node("anim_damage").play("damaged")
 
 # kill the player if it is outside the viewport
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
