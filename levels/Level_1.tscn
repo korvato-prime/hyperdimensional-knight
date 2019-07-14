@@ -122,11 +122,11 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="Thrower" parent="." instance=ExtResource( 6 )]
-position = Vector2( 572.005, 479.732 )
-
-[node name="Thrower2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1154.39, 795.326 )
-
-[node name="Thrower3" parent="." instance=ExtResource( 6 )]
+[node name="Gunner3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 480.906, 857.144 )
+
+[node name="Gunner4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1148.71, 801.493 )
+
+[node name="Gunner5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 597.507, 483.489 )

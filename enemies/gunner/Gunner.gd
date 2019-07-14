@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-var player_is_in_scope = false
+var player_object = null
 
 var bullet_obj = load("res://enemies/gunner/objects/Bullet/Bullet.tscn")
 
 signal hit
 
 # action
-var action_coldown_time = 50
-var action_coldown_timer = 50
+var action_coldown_time = 100
+var action_coldown_timer = 0
 
 onready var health_system = $health_system
 
@@ -19,7 +19,7 @@ func _ready():
 	health_system._set_health_variables(3, 0)
 
 func _every_step():
-	if action_coldown_timer < 0 && player_is_in_scope:
+	if action_coldown_timer < 0 && player_object != null:
 		attack()
 		action_coldown_timer = action_coldown_time
 	else:
@@ -28,10 +28,12 @@ func _every_step():
 
 func attack():
 	
-	var bullet_instance = bullet_obj.instance()
-	bullet_instance.position = self.position
-	self.get_parent().add_child(bullet_instance)
-	
+	var bullet = bullet_obj.instance()
+	bullet.position = self.position
+#	bullet.rotation = (player_object.global_position - self.global_position).angle()
+	self.get_parent().add_child(bullet)
+	var direction = (player_object.global_position - self.global_position).normalized()
+	bullet.velocity = direction * bullet.speed
 	pass
 
 func _on_health_system_health_changed():
@@ -46,12 +48,12 @@ func vulnerability(boole):
 
 func _on_scope_body_entered(body):
 	if (body.is_in_group("player")):
-		player_is_in_scope = true
+		player_object = body
 		print("entered")
 	pass # Replace with function body.
 
 func _on_scope_body_exited(body):
 	if (body.is_in_group("player")):
-		player_is_in_scope = false
+		player_object = null
 		print("exited")
 	pass # Replace with function body.
