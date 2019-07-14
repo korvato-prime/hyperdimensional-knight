@@ -18,10 +18,12 @@ func _get_input():
 	parent._horizontal_move()
 	
 	if Input.is_action_just_pressed("punch"):
-		parent.punching()
+		if parent.can_punch:
+			parent.punching()
 	
 	if Input.is_action_just_pressed("shoot"):
-		parent.shooting()
+		if parent.can_shoot:
+			parent.shooting()
 	
 	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("down"):

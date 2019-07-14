@@ -100,6 +100,7 @@ margin_right = 1074.48
 margin_bottom = 719.851
 rect_scale = Vector2( 4, 4 )
 text = "This game was made by a lot of cool guys and some excellent tools."
+
 [connection signal="toggled" from="OptionsContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]

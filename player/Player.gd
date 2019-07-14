@@ -8,6 +8,8 @@ var move_speed = 500
 
 signal dimension_swap
 signal hit
+signal stamina_reduce
+signal bullet_reduce
 
 #saltos
 var gravity_fall = 6200
@@ -25,10 +27,12 @@ var DROP_THRU_BIT = 10
 var punch_coldown_time = 20
 var punch_coldown_timer = 0
 var punch_damage = 1
+var can_punch = true
 
 var gun_coldown_time = 20
 var gun_coldown_timer = 0
 var gun_damage = 1
+var can_shoot = true
 
 onready var raycasts_down = $raycasts_down
 
@@ -71,11 +75,13 @@ func punching():
 	if punch_coldown_timer == 0:
 		get_node("anim_attack").play("punch")
 		punch_coldown_time = punch_coldown_timer
+		emit_signal("stamina_reduce")
 
 func shooting():
 	if gun_coldown_timer == 0:
 		get_node("anim_attack").play("shoot")
 		gun_coldown_time = gun_coldown_timer
+		emit_signal("bullet_reduce")
 		
 		# evitate punch collider error
 		get_node("visuals/punch_hitbox/collision").disabled = true
@@ -125,3 +131,12 @@ func apply_punch_damage(enemy):
 	if enemy.is_in_group("enemy"):
 		print(enemy.name)
 		enemy.get_node("health_system").take_damage(punch_damage)
+
+func _on_StaminaBar_value_changed(value):
+	if value == 0:
+		can_punch = false
+	pass # Replace with function body.
+
+func _on_UI_can_punch_again():
+	can_punch = true
+	pass # Replace with function body.
