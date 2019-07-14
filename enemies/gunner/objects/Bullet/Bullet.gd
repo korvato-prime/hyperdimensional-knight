@@ -6,5 +6,4 @@ var velocity
 
 func _process(delta):
 	position += velocity * delta
-	print(position)
 	pass
