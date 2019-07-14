@@ -23,7 +23,7 @@ func _get_input():
 	if Input.is_action_just_pressed("shoot"):
 		parent.shooting()
 	
-	if Input.is_action_just_pressed("confirm"):
+	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("down"):
 			parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
 		else:
@@ -31,11 +31,13 @@ func _get_input():
 	
 	if states.jump == state:
 		#frenar el salto si suelto jump_button
-		if !Input.is_action_pressed("confirm"):
+		if !Input.is_action_pressed("jump"):
 			if parent.velocity.y < 0:
 				parent.velocity.y /= 2
-	if Input.is_action_just_pressed("cancel"):
-		parent.emit_signal("dimension_swap")	
+		
+	if Input.is_action_just_pressed("swap"):
+		parent.emit_signal("dimension_swap")
+		
 	if Input.is_action_just_pressed("head"):
 		if !reverted:
 			parent.gravity_fall = -6200
@@ -133,13 +135,16 @@ func _enter_state(new_state, old_state):
 func _exit_state(old_state, new_state):
 	pass
 
+# What to do if the player is dead
 func _on_health_system_died():
 	get_tree().reload_current_scene()
-	
+
+# What to do if the player recieved no mortal damage
 func _on_health_system_health_changed():
 	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)
 	get_parent().get_node("anim_damage").play("damaged")
 
+# kill the player if it is outside the viewport
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	h_s.take_damage(100)

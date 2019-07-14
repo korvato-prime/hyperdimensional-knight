@@ -23,9 +23,12 @@ var DROP_THRU_BIT = 10
 
 # action
 var punch_coldown_time = 20
-var gun_coldown_time = 20
 var punch_coldown_timer = 0
+var punch_damage = 1
+
+var gun_coldown_time = 20
 var gun_coldown_timer = 0
+var gun_damage = 1
 
 onready var raycasts_down = $raycasts_down
 
@@ -66,15 +69,16 @@ func _every_step():
 
 func punching():
 	if punch_coldown_timer == 0:
-		print("punching")
-		print("trust me dude ;)")
+		get_node("anim_attack").play("punch")
 		punch_coldown_time = punch_coldown_timer
 
 func shooting():
 	if gun_coldown_timer == 0:
-		print("shooting")
-		print("trust me dude ;)")
+		get_node("anim_attack").play("shoot")
 		gun_coldown_time = gun_coldown_timer
+		
+		# evitate punch collider error
+		get_node("visuals/punch_hitbox/collision").disabled = true
 
 
 func _horizontal_move():
@@ -112,3 +116,12 @@ func vulnerability(boole):
 		$health_system.set_state($health_system.states.vulnerable)
 	else:
 		$health_system.set_state($health_system.states.invulnerable)
+
+func _on_punch_hitbox_body_entered(body):
+	apply_punch_damage(body)
+func _on_punch_hitbox_area_entered(area):
+	apply_punch_damage(area)
+func apply_punch_damage(enemy):
+	if enemy.is_in_group("enemy"):
+		print(enemy.name)
+		enemy.get_node("health_system").take_damage(punch_damage)

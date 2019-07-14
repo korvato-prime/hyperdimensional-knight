@@ -1,23 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Player_SM.gd" type="Script" id=2]
 [ext_resource path="res://player/player.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 31 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
-
 [sub_resource type="Animation" id=3]
-resource_name = "jump"
 
 [sub_resource type="Animation" id=4]
-resource_name = "run"
 
 [sub_resource type="Animation" id=5]
+
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("visuals:visible")
 tracks/0/interp = 1
@@ -48,6 +49,62 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "punch"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/punch_hitbox/collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/punch_hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -20, 0 ), Vector2( 60, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/punch_hitbox/fist_temporal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.6, 0.6 ), Vector2( 0.4, 0.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/punch_hitbox/fist_temporal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shoot"
+
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -65,10 +122,21 @@ script = ExtResource( 2 )
 [node name="main_sprite" type="Sprite" parent="visuals"]
 texture = ExtResource( 3 )
 
+[node name="punch_hitbox" type="Area2D" parent="visuals"]
+
+[node name="collision" type="CollisionShape2D" parent="visuals/punch_hitbox"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="fist_temporal" type="Sprite" parent="visuals/punch_hitbox"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
 [node name="collition" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
 editor/display_folded = true
@@ -92,18 +160,26 @@ cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="health_system" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 2 )
-anims/jump = SubResource( 3 )
-anims/run = SubResource( 4 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
 
 [node name="anim_damage" type="AnimationPlayer" parent="."]
-anims/damaged = SubResource( 5 )
+anims/damaged = SubResource( 6 )
+
+[node name="anim_attack" type="AnimationPlayer" parent="."]
+anims/punch = SubResource( 7 )
+anims/shoot = SubResource( 8 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
 rect = Rect2( -50, -50, 100, 100 )
+
+[connection signal="area_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_area_entered"]
+[connection signal="body_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_body_entered"]
 [connection signal="died" from="health_system" to="state_machine" method="_on_health_system_died"]
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="state_machine" method="_on_VisibilityNotifier2D_viewport_exited"]
