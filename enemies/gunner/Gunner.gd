@@ -105,11 +105,11 @@ func vulnerability(boole):
 func _on_scope_body_entered(body):
 	if (body.is_in_group("player")):
 		player_object = body
-		print("entered")
+		#print("entered")
 	pass # Replace with function body.
 
 func _on_scope_body_exited(body):
 	if (body.is_in_group("player")):
 		player_object = null
-		print("exited")
+		#print("exited")
 	pass # Replace with function body.

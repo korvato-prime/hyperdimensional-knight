@@ -41,7 +41,9 @@ func _ready():
 	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
-	health_system._set_health_variables(3, 0)
+	
+	# enemy health
+	health_system._set_health_variables(1)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -79,7 +81,7 @@ func attacking():
 		pass
 
 func _horizontal_move():
-	prints("isgrounded", is_grounded)
+	#prints("isgrounded", is_grounded)
 	if (is_on_wall() && is_grounded):
 		direction *= -1
 		enable_raycast(direction)

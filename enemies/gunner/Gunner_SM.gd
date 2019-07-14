@@ -46,8 +46,9 @@ func _enter_state(new_state, old_state):
 func _exit_state(old_state, new_state):
 	pass
 
+# the enemy died
 func _on_health_system_died():
-	get_tree().reload_current_scene()
+	parent.queue_free()
 	
 func _on_health_system_health_changed():
 	var h_s = get_parent().get_node("health_system")

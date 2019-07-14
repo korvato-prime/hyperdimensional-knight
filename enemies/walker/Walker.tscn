@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://enemies/walker/Walker.gd" type="Script" id=1]
 [ext_resource path="res://enemies/walker/Walker_SM.gd" type="Script" id=2]
 [ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
 [ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 20, 25 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "dead"
@@ -21,13 +22,11 @@ resource_name = "idle"
 resource_name = "walk"
 
 [node name="Walker" type="KinematicBody2D" groups=[
+"enemy",
 "walker",
 ]]
 collision_mask = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -38,19 +37,19 @@ script = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
 
 [node name="raycast_left" type="RayCast2D" parent="raycasts_down"]
-position = Vector2( -30, 32 )
+position = Vector2( -20, 32 )
 enabled = true
 cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="raycast_right" type="RayCast2D" parent="raycasts_down"]
-position = Vector2( 30, 32 )
+position = Vector2( 20, 32 )
 enabled = true
 cast_to = Vector2( 0, 2 )
 collision_mask = 3
@@ -65,3 +64,12 @@ anims/idle = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="anim_damage" type="AnimationPlayer" parent="."]
+
+[node name="Hazard" parent="." groups=[
+"hurtbox",
+] instance=ExtResource( 5 )]
+position = Vector2( 0, 5 )
+scale = Vector2( 1.1, 1.2 )
+
+[connection signal="died" from="health_system" to="state_machine" method="_on_health_system_died"]
+[connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]
