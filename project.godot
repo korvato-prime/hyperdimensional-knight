@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="WildEleven"
-run/main_scene="res://interface/TitleSceen.tscn"
+run/main_scene="res://levels/Level_1.tscn"
 config/icon="res://icon.png"
 
 [autoload]

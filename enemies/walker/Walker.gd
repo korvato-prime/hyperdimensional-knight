@@ -3,7 +3,8 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const SLOPE_STOP = 400
 var velocity = Vector2()
-var move_speed = 500
+var move_speed = 100
+var direction
 
 signal dimension_swap
 signal hit
@@ -25,15 +26,17 @@ var action_coldown_time = 20
 var action_coldown_timer = 0
 
 onready var raycasts_down = $raycasts_down
+onready var health_system = $health_system
 
 var is_grounded
 
 func _ready():
+	direction = get_random_direction()
+	enable_raycast(direction)
 	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
-	
-	$health_system._set_health_variables(3, 0)
+	health_system._set_health_variables(3, 0)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -52,9 +55,6 @@ func _every_step():
 	if pre_jump_timer > 0:
 		pre_jump_timer -= 1
 	
-	if !Input.is_action_pressed("ui_down"):
-		set_collision_mask_bit(DROP_THRU_BIT, true)
-	
 	is_grounded = _check_is_grounded()
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
@@ -69,14 +69,17 @@ func attacking():
 		action_coldown_time = action_coldown_timer
 		pass
 
-
 func _horizontal_move():
-	var move_direction
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	velocity.x = lerp(velocity.x, move_direction * move_speed, get_h_weight())
-
-	if move_direction != 0:
-		$visuals.scale.x = move_direction
+	
+	if (is_on_ledge() || is_on_wall()):
+		direction *= -1
+		enable_raycast(direction)
+		
+	velocity.x = move_speed * direction
+	velocity = move_and_slide(velocity, UP)
+	
+	if direction != 0:
+		$visuals.scale.x = direction
 
 func get_h_weight():
 	return 0.6 if is_grounded else 0.3
@@ -92,6 +95,22 @@ func _check_is_grounded():
 			coyote_time_timer -= 1
 	return false
 
+func is_on_ledge():
+	
+	var is_on_ledge = true
+	if (is_grounded):
+		if ($raycasts_down/raycast_right.enabled):
+			if ($raycasts_down/raycast_right.is_colliding()):
+				is_on_ledge = false
+
+		if ($raycasts_down/raycast_left.enabled):
+			if ($raycasts_down/raycast_left.is_colliding()):
+				is_on_ledge = false
+	else:
+		is_on_ledge = false
+
+	return is_on_ledge
+		
 func can_jump():
 	return (coyote_time_timer > 0 and pre_jump_timer > 0)
 
@@ -109,3 +128,17 @@ func vulnerability(boole):
 		$health_system.set_state($health_system.states.vulnerable)
 	else:
 		$health_system.set_state($health_system.states.invulnerable)
+
+func get_random_direction():
+	randomize()
+	if (randi() % 2) == 1:
+		return 1 # right
+	return -1 # left
+
+func enable_raycast(direction):
+	if (direction == 1):
+		$raycasts_down/raycast_right.enabled = true
+		$raycasts_down/raycast_left.enabled = false
+	else:
+		$raycasts_down/raycast_right.enabled = false
+		$raycasts_down/raycast_left.enabled = true

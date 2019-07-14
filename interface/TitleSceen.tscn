@@ -46,7 +46,6 @@ text = "Master"
 margin_top = 18.0
 margin_right = 84.0
 margin_bottom = 34.0
-ticks_on_borders = false
 script = ExtResource( 4 )
 
 [node name="FullscreenLabel" type="Label" parent="OptionsContainer"]
@@ -61,6 +60,7 @@ margin_right = 84.0
 margin_bottom = 98.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 577.533
 margin_top = 446.917
 margin_right = 858.533
@@ -100,7 +100,6 @@ margin_right = 1074.48
 margin_bottom = 719.851
 rect_scale = Vector2( 4, 4 )
 text = "This game was made by a lot of cool guys and some excellent tools."
-
 [connection signal="toggled" from="OptionsContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
