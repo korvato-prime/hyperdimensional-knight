@@ -12,42 +12,7 @@ func _ready():
 	call_deferred("set_state", states.idle)
 
 func _get_input():
-	
 	parent._horizontal_move()
-	
-	if Input.is_action_just_pressed("attack"):
-		parent.attacking()
-	
-	if Input.is_action_just_pressed("confirm"):
-		if Input.is_action_pressed("down"):
-			parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
-		else:
-			parent.pre_jump_timer = parent.PRE_JUMP_PRESSED
-	
-	if states.jump == state:
-		#frenar el salto si suelto jump_button
-		if !Input.is_action_pressed("confirm"):
-			if parent.velocity.y < 0:
-				parent.velocity.y /= 2
-	if Input.is_action_just_pressed("cancel"):
-		parent.emit_signal("dimension_swap")	
-	if Input.is_action_just_pressed("head"):
-		if !reverted:
-			parent.gravity_fall = -6200
-			parent.gravity_jump = -4800
-			parent.jump_velocity = 1625
-			parent.velocity_fall_max = -2000
-			parent.UP = Vector2(0,1)
-			parent.rotation_degrees = 180
-			reverted = true
-		else:
-			parent.gravity_fall = 6200
-			parent.gravity_jump = 4800
-			parent.jump_velocity = -1625
-			parent.velocity_fall_max = 2000
-			parent.UP = Vector2(0,-1)
-			parent.rotation_degrees = 0
-			reverted = false
 
 func _state_logic(delta):
 	if Input.is_action_just_pressed("select"):
