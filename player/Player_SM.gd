@@ -1,5 +1,7 @@
 extends "res://multiuse_resources/StateMachine.gd"
 
+onready var h_s = get_parent().get_node("health_system")
+
 var reverted = false
 
 func _ready():
@@ -15,8 +17,11 @@ func _get_input():
 	
 	parent._horizontal_move()
 	
-	if Input.is_action_just_pressed("attack"):
-		parent.attacking()
+	if Input.is_action_just_pressed("punch"):
+		parent.punching()
+	
+	if Input.is_action_just_pressed("shoot"):
+		parent.shooting()
 	
 	if Input.is_action_just_pressed("confirm"):
 		if Input.is_action_pressed("down"):
@@ -113,7 +118,6 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.get_node("anim_player").play("idle")
 		states.run:
-			print(12)
 			parent.get_node("anim_player").play("run2")
 		states.jump:
 			parent.get_node("anim_player").play("jump")
@@ -122,6 +126,7 @@ func _enter_state(new_state, old_state):
 		states.hitted:
 			parent.get_node("anim_player").play("jump")
 			parent.jump()
+			parent.velocity.y /= 2
 			parent.emit_signal("hit")
 			
 
@@ -132,6 +137,9 @@ func _on_health_system_died():
 	get_tree().reload_current_scene()
 	
 func _on_health_system_health_changed():
-	var h_s = get_parent().get_node("health_system")
 	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)
+	get_parent().get_node("anim_damage").play("damaged")
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	h_s.take_damage(100)
