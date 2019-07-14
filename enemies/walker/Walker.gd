@@ -1,10 +1,10 @@
 extends KinematicBody2D
-class_name Player
 
 const UP = Vector2(0, -1)
 const SLOPE_STOP = 400
 var velocity = Vector2()
-var move_speed = 500
+var move_speed = 100
+var direction
 
 signal dimension_swap
 signal hit
@@ -22,20 +22,21 @@ var pre_jump_timer = 0
 var DROP_THRU_BIT = 10
 
 # action
-var punch_coldown_time = 20
-var gun_coldown_time = 20
-var punch_coldown_timer = 0
-var gun_coldown_timer = 0
+var action_coldown_time = 20
+var action_coldown_timer = 0
 
 onready var raycasts_down = $raycasts_down
+onready var health_system = $health_system
 
 var is_grounded
 
 func _ready():
+	direction = get_random_direction()
+	enable_raycast(direction)
+	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
-	
-	$health_system._set_health_variables(4)
+	health_system._set_health_variables(3, 0)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
@@ -48,42 +49,37 @@ func _apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _every_step():
-	if punch_coldown_timer > 0:
-		punch_coldown_timer -= 1
-	
-	if gun_coldown_timer > 0:
-		gun_coldown_timer -= 1
+	if action_coldown_timer > 0:
+		action_coldown_timer -= 1
 	
 	if pre_jump_timer > 0:
 		pre_jump_timer -= 1
-	
-	if !Input.is_action_pressed("ui_down"):
-		set_collision_mask_bit(DROP_THRU_BIT, true)
 	
 	is_grounded = _check_is_grounded()
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
 
-func punching():
-	if punch_coldown_timer == 0:
-		print("punching")
-		print("trust me dude ;)")
-		punch_coldown_time = punch_coldown_timer
-
-func shooting():
-	if gun_coldown_timer == 0:
-		print("shooting")
-		print("trust me dude ;)")
-		gun_coldown_time = gun_coldown_timer
-
+func attacking():
+	
+	if action_coldown_timer == 0:
+		# intert 
+		# dimensional
+		# mechanic
+		# here
+		action_coldown_time = action_coldown_timer
+		pass
 
 func _horizontal_move():
-	var move_direction
-	move_direction = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	velocity.x = lerp(velocity.x, move_direction * move_speed, get_h_weight())
-
-	if move_direction != 0:
-		$visuals.scale.x = move_direction
+	
+	if (is_on_ledge() || is_on_wall()):
+		direction *= -1
+		enable_raycast(direction)
+		
+	velocity.x = move_speed * direction
+	velocity = move_and_slide(velocity, UP)
+	
+	if direction != 0:
+		$visuals.scale.x = direction
 
 func get_h_weight():
 	return 0.6 if is_grounded else 0.3
@@ -99,6 +95,22 @@ func _check_is_grounded():
 			coyote_time_timer -= 1
 	return false
 
+func is_on_ledge():
+	
+	var is_on_ledge = true
+	if (is_grounded):
+		if ($raycasts_down/raycast_right.enabled):
+			if ($raycasts_down/raycast_right.is_colliding()):
+				is_on_ledge = false
+
+		if ($raycasts_down/raycast_left.enabled):
+			if ($raycasts_down/raycast_left.is_colliding()):
+				is_on_ledge = false
+	else:
+		is_on_ledge = false
+
+	return is_on_ledge
+		
 func can_jump():
 	return (coyote_time_timer > 0 and pre_jump_timer > 0)
 
@@ -107,8 +119,26 @@ func jump():
 	pre_jump_timer = 0
 	velocity.y = jump_velocity
 
+func _on_health_system_health_changed():
+	$anim_damage.play("damaged")
+	# change health visuals
+
 func vulnerability(boole):
 	if boole:
 		$health_system.set_state($health_system.states.vulnerable)
 	else:
 		$health_system.set_state($health_system.states.invulnerable)
+
+func get_random_direction():
+	randomize()
+	if (randi() % 2) == 1:
+		return 1 # right
+	return -1 # left
+
+func enable_raycast(direction):
+	if (direction == 1):
+		$raycasts_down/raycast_right.enabled = true
+		$raycasts_down/raycast_left.enabled = false
+	else:
+		$raycasts_down/raycast_right.enabled = false
+		$raycasts_down/raycast_left.enabled = true

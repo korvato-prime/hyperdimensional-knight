@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/flyer/Flyer.gd" type="Script" id=1]
+[ext_resource path="res://enemies/flyer/Flyer_SM.gd" type="Script" id=2]
+[ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
+[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Flyer" type="KinematicBody2D" groups=[
+"flyer",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="state_machine" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="visuals" type="Node2D" parent="."]
+
+[node name="main_sprite" type="Sprite" parent="visuals"]
+texture = ExtResource( 3 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="raycasts_down" type="Node2D" parent="."]
+
+[node name="health_system" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="anim_enemy" type="AnimationPlayer" parent="."]
+
+[node name="anim_damage" type="AnimationPlayer" parent="."]
