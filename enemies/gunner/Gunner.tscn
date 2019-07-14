@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://enemies/gunner/Gunner.gd" type="Script" id=1]
 [ext_resource path="res://enemies/gunner/Gunner_SM.gd" type="Script" id=2]
 [ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 25, 25 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -15,6 +16,7 @@ resource_name = "idle"
 radius = 550.0
 
 [node name="Thrower" type="KinematicBody2D" groups=[
+"enemy",
 "thrower",
 ]]
 collision_mask = 2
@@ -36,23 +38,26 @@ editor/display_folded = true
 texture = ExtResource( 3 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
 
-[node name="health_system" type="Node" parent="."]
-script = ExtResource( 4 )
-
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
 
-[node name="anim_damage" type="AnimationPlayer" parent="."]
-
 [node name="scope" type="Area2D" parent="."]
-editor/display_folded = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scope"]
 shape = SubResource( 3 )
 
+[node name="Hazard" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 5 )
+scale = Vector2( 1.1, 1.2 )
+
+[node name="health_system" parent="." instance=ExtResource( 5 )]
+
 [connection signal="body_entered" from="scope" to="." method="_on_scope_body_entered"]
 [connection signal="body_exited" from="scope" to="." method="_on_scope_body_exited"]
+[connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

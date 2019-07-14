@@ -45,11 +45,6 @@ func _enter_state(new_state, old_state):
 
 func _exit_state(old_state, new_state):
 	pass
-
-func _on_health_system_died():
-	get_tree().reload_current_scene()
 	
 func _on_health_system_health_changed():
-	var h_s = get_parent().get_node("health_system")
-	h_s.set_state(h_s.states.invulnerable)
 	set_state(states.hitted)

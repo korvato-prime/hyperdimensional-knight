@@ -3,8 +3,8 @@
 [ext_resource path="res://enemies/jumper/Jumper.gd" type="Script" id=1]
 [ext_resource path="res://enemies/jumper/Jumper_SM.gd" type="Script" id=2]
 [ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/HealthSystem.gd" type="Script" id=4]
-[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 25 )
@@ -45,16 +45,12 @@ enabled = true
 cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
-[node name="health_system" type="Node" parent="."]
-script = ExtResource( 4 )
-
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 
-[node name="anim_damage" type="AnimationPlayer" parent="."]
-
-[node name="Hazard" parent="." instance=ExtResource( 5 )]
+[node name="Hazard" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 5 )
 scale = Vector2( 1.1, 1.2 )
 
-[connection signal="died" from="health_system" to="state_machine" method="_on_health_system_died"]
+[node name="health_system" parent="." instance=ExtResource( 5 )]
+
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

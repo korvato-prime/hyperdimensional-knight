@@ -27,12 +27,3 @@ func fly():
 	if (theta > 360): theta = 0
 	pass
 
-func _on_health_system_health_changed():
-	$anim_damage.play("damaged")
-	# change health visuals
-
-func vulnerability(boole):
-	if boole:
-		$health_system.set_state($health_system.states.vulnerable)
-	else:
-		$health_system.set_state($health_system.states.invulnerable)
