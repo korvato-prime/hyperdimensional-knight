@@ -1,7 +1,11 @@
 extends Node2D
 
 func _ready():
-	$AlterDimension.hide()
+	#$AlterDimension.hide()
+	$AlterDimension.show()
+	$solids.modulate.a = 0.15
+	_on_dimension_swap()
+	
 	$AlterDimension.set_collision_layer_bit(1,0)
 	$player.connect("dimension_swap", self, "_on_dimension_swap")
 
