@@ -38,5 +38,4 @@ func _on_StaminaRecharge_timeout():
 func recharge_stamina():
 	if $StaminaBar.value < 100:
 		$StaminaBar.value += 10
-		$StaminaRecharge.start()
-		
+		$StaminaRecharge.start()		

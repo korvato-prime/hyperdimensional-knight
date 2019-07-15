@@ -164,3 +164,7 @@ func _on_StaminaBar_value_changed(value):
 func _on_UI_can_punch_again():
 	can_punch = true
 	pass # Replace with function body.
+
+func _on_BulletChargeBar_value_changed(value):
+		if value == 0:
+			can_shoot = false
