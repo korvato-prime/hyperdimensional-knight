@@ -1,5 +1,8 @@
 extends Node2D
 
+var score = 0
+var highscore = Globals.highscore
+
 func _ready():
 	#$AlterDimension.hide()
 	$AlterDimension.show()
@@ -23,6 +26,8 @@ func _on_dimension_swap():
 		
 		$solids.set_collision_layer_bit(1,0)
 		$AlterDimension.set_collision_layer_bit(1,1)
+		
+		Globals.in_alter_dimension = false
 	else:
 		#$AlterDimension.hide()
 		#$solids.show()
@@ -35,3 +40,17 @@ func _on_dimension_swap():
 		
 		$AlterDimension.set_collision_layer_bit(1,0)
 		$solids.set_collision_layer_bit(1,1)
+		
+		Globals.in_alter_dimension = true
+	
+	for points in get_tree().get_nodes_in_group("points"):
+		if ($player.position - points.position).length() < 40:
+			actualize_score(points.points)
+			Globals.screen_shake(0.2,15, 8 * points.points)
+			points.touched()
+	
+func actualize_score(points):
+	score += points
+	get_node("UI/Score").text = str(score)
+
+
