@@ -12,10 +12,12 @@ signal stamina_reduce
 signal bullet_reduce
 
 #saltos
-var gravity_fall = 6200
-var gravity_jump = 4800
+var gravity_fall = 6200				##############
+var gravity_jump = 4800				##############
 var gravity = gravity_fall
-var jump_velocity = -1625
+var jump_velocity = -1625			##############
+var second_jump = 0					##############
+var can_second_jump = 0
 var velocity_fall_max = 2000
 const COYOTE_TIME = 4
 const PRE_JUMP_PRESSED = 4
@@ -24,19 +26,19 @@ var pre_jump_timer = 0
 var DROP_THRU_BIT = 10
 
 # action
-var punch_coldown_time = 20
+var punch_coldown_time = 20			##############
 var punch_coldown_timer = 0
-var punch_damage = 1
+var punch_damage = 1				##############
 var can_punch = true
 
 var bullet_obj = load("res://player/bullets/bullet_player.tscn")
-enum bullet_type { SINGLE, DOUBLE, TRIPLE }
-var current_bullet = bullet_type.SINGLE
-var gun_coldown_time = 20
+var bullets_per_shoot = 1			##############
+var gun_coldown_time = 10			##############
 var gun_coldown_timer = 0
-var gun_damage = 1
+var gun_damage = 1					##############
 var can_shoot = true
-var bullet_speed = 500
+var bullet_speed = 850				##############
+var bullet_trajectory_randomness = 0.02 # percent
 
 onready var raycasts_down = $raycasts_down
 
@@ -80,20 +82,33 @@ func punching():
 		get_node("anim_attack").play("punch")
 		punch_coldown_time = punch_coldown_timer
 		emit_signal("stamina_reduce")
+		move_and_slide_with_snap(Vector2(500 * get_node("visuals").scale.x, 0), UP)
 
 func shooting():
 	if gun_coldown_timer == 0:
 		get_node("anim_attack").play("shoot")
-		gun_coldown_time = gun_coldown_timer
+		gun_coldown_timer = gun_coldown_time
 		emit_signal("bullet_reduce")
+		Globals.screen_shake(0.1, 15, 8 * punch_damage, 1)
 		
-		var player_direction = get_node("visuals").scale.x
-		var bullet = bullet_obj.instance()
-		bullet.position = self.position + Vector2(player_direction*15,0)
-		self.get_parent().add_child(bullet)
-		bullet.velocity = Vector2(player_direction,0) * bullet_speed 
-		bullet.damage = gun_damage
+		var player_direction = Vector2(get_node("visuals").scale.x, 0)
+		for i in range(bullets_per_shoot):
+			var bullet = bullet_obj.instance()
+			# some noise to the position if various bullets are shooted simultaniusly
+			var noise = Vector2()
+			if bullets_per_shoot > 1:
+				noise.y = rand_range(-10,-10)
+			bullet.position = position + noise
+			bullet.position.x += 15 * player_direction.x
+			
+			get_parent().add_child(bullet)
+			# add some noise to the bullet´s trajectory
+			var noise_2 = Vector2(rand_range(-bullet_trajectory_randomness,bullet_trajectory_randomness), rand_range(-bullet_trajectory_randomness,bullet_trajectory_randomness))
+			player_direction = (player_direction + bullets_per_shoot * noise_2).normalized()
+			bullet.velocity = player_direction* bullet_speed 
+			bullet.damage = gun_damage
 		
+		move_and_slide_with_snap(-400 * player_direction, UP)
 		# evitate punch collider error
 		get_node("visuals/punch_hitbox/collision").disabled = true
 
@@ -114,6 +129,7 @@ func _check_is_grounded():
 		if raycast.is_colliding():
 			### en suelo
 			coyote_time_timer = COYOTE_TIME
+			can_second_jump = second_jump
 			return true
 	### en aire
 	if coyote_time_timer > 0:
@@ -121,11 +137,14 @@ func _check_is_grounded():
 	return false
 
 func can_jump():
-	return (coyote_time_timer > 0 and pre_jump_timer > 0)
+	return ( (coyote_time_timer > 0 and pre_jump_timer > 0) or (can_second_jump > 0 and Input.is_action_just_pressed("jump")))
 
 func jump():
-	coyote_time_timer = 0
-	pre_jump_timer = 0
+	if coyote_time_timer > 0 and pre_jump_timer > 0:
+		coyote_time_timer = 0
+		pre_jump_timer = 0
+	else:
+		can_second_jump -= 1 
 	velocity.y = jump_velocity
 
 func _on_punch_hitbox_body_entered(body):
@@ -135,7 +154,8 @@ func _on_punch_hitbox_area_entered(area):
 func apply_punch_damage(enemy):
 	if enemy.is_in_group("enemy"):
 		enemy.get_node("health_system").take_damage(punch_damage)
-
+		Globals.screen_shake(0.2, 15, 16 * punch_damage, 1)
+		
 func _on_StaminaBar_value_changed(value):
 	if value == 0:
 		can_punch = false

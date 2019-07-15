@@ -21,7 +21,7 @@ func _get_input():
 		if parent.can_punch:
 			parent.punching()
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		if parent.can_shoot:
 			parent.shooting()
 	
