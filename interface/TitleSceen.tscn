@@ -106,10 +106,10 @@ text = "knight"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
 editor/display_folded = true
-margin_left = 661.41
-margin_top = 597.651
-margin_right = 705.41
-margin_bottom = 631.651
+margin_left = 597.792
+margin_top = 711.255
+margin_right = 681.792
+margin_bottom = 809.255
 rect_scale = Vector2( 2, 2 )
 
 [node name="MasterLabel" type="Label" parent="OptionsContainer"]
@@ -135,12 +135,10 @@ margin_right = 84.0
 margin_bottom = 98.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = 577.533
-margin_top = 446.917
-margin_right = 858.533
-margin_bottom = 470.917
+margin_left = 532.092
+margin_top = 576.425
+margin_right = 813.092
+margin_bottom = 600.425
 rect_scale = Vector2( 3, 3 )
 alignment = 1
 
@@ -170,10 +168,10 @@ text = "Exit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CreditsText" type="RichTextLabel" parent="."]
-margin_left = 953.481
-margin_top = 625.851
-margin_right = 1074.48
-margin_bottom = 719.851
+margin_left = 962.569
+margin_top = 687.197
+margin_right = 1083.57
+margin_bottom = 781.197
 rect_scale = Vector2( 4, 4 )
 text = "This game was made by a lot of cool guys and some excellent tools."
 

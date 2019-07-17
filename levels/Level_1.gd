@@ -11,7 +11,15 @@ func _ready():
 	
 	$AlterDimension.set_collision_layer_bit(1,0)
 	$player.connect("dimension_swap", self, "_on_dimension_swap")
-
+	
+	$CrystalLayer/PB01/TextureRect.visible = false
+	$CrystalLayer/PB02/TextureRect.visible = false
+	$CrystalLayer/PB03/TextureRect.visible = false
+	$CrystalLayer/PB04/TextureRect.visible = false
+	$CrystalLayer/PB05/TextureRect.visible = false
+	$CrystalLayer/PB06/TextureRect.visible = false
+	$CrystalLayer/PB07/TextureRect.visible = false
+	
 func _on_dimension_swap():
 	#if $solids.visible:
 	if Globals.in_alter_dimension == true:
