@@ -406,6 +406,14 @@ position = Vector2( 1760, 544 )
 [node name="Spawner" parent="." instance=ExtResource( 13 )]
 position = Vector2( 781.768, 254.919 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [connection signal="can_punch_again" from="UI" to="player" method="_on_UI_can_punch_again"]
 [connection signal="value_changed" from="UI/StaminaBar" to="UI" method="_on_StaminaBar_value_changed"]
 [connection signal="value_changed" from="UI/StaminaBar" to="player" method="_on_StaminaBar_value_changed"]
