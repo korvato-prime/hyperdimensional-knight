@@ -1,9 +1,9 @@
 extends Control
 
 func _ready():
-	$VBoxContainer/NewGameButton.grab_focus()	
 	$OptionsContainer.hide()
 	$CreditsText.hide()
+	get_node("anim").play("start")
 
 func _on_NewGameButton_pressed():
 	Transition.fade_out("res://levels/Level_1.tscn")
@@ -32,3 +32,6 @@ func _on_CreditsButton_pressed():
 
 func _on_ExitButton_pressed():
 	get_tree().quit()
+
+func _on_anim_animation_finished(anim_name):
+	$VBoxContainer/NewGameButton.grab_focus()

@@ -59,11 +59,7 @@ func _get_input():
 			reverted = false
 
 func _state_logic(delta):
-	if Input.is_action_just_pressed("select"):
-		if get_tree().paused:
-			get_tree().set_pause(false)
-		else:
-			get_tree().set_pause(true)
+	if states.dead == state:
 		return
 	
 	if not get_tree().paused:
@@ -139,7 +135,8 @@ func _exit_state(old_state, new_state):
 
 # What to do if the player is dead
 func _on_health_system_died():
-	get_tree().reload_current_scene()
+	set_state(states.dead)
+	parent.get_parent().game_over()
 
 # What to do if the player recieved no mortal damage
 func _on_health_system_health_changed():

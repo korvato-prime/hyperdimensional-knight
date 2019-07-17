@@ -4,7 +4,10 @@ var score = 0
 var highscore = Globals.highscore
 
 func _ready():
+	randomize()
+	Globals.in_alter_dimension = false
 	_on_dimension_swap()
+	print(Globals.in_alter_dimension)
 	
 	$AlterDimension.set_collision_layer_bit(1,0)
 	$player.connect("dimension_swap", self, "_on_dimension_swap")
@@ -40,4 +43,5 @@ func actualize_score(points):
 	score += points
 	get_node("UI/Score").text = str(score)
 
-
+func game_over():
+	get_node("UI/GameOver/AnimGameOver").play("game_over")

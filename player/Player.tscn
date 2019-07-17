@@ -86,10 +86,12 @@ script = ExtResource( 2 )
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="main_sprite" type="Sprite" parent="visuals"]
-position = Vector2( -1.70642, -61.4304 )
+position = Vector2( 0, -16.5 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="punch_hitbox" type="Area2D" parent="visuals"]
+editor/display_folded = true
 
 [node name="collision" type="CollisionShape2D" parent="visuals/punch_hitbox"]
 shape = SubResource( 1 )
@@ -101,7 +103,6 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 

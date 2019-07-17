@@ -13,7 +13,7 @@ signal hit
 var gravity_fall = 6200
 var gravity_jump = 4800
 var gravity = gravity_fall
-var jump_velocity = -1625
+var jump_velocity = -400
 var velocity_fall_max = 2000
 const COYOTE_TIME = 4
 const PRE_JUMP_PRESSED = 4
@@ -21,9 +21,7 @@ var coyote_time_timer = 0
 var pre_jump_timer = 0
 var DROP_THRU_BIT = 10
 
-# action
-var action_coldown_time = 20
-var action_coldown_timer = 0
+var can_fall = false
 
 onready var raycasts_down = $raycasts_down
 onready var health_system = $health_system
@@ -36,6 +34,12 @@ func _ready():
 	
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
+	
+	if rand_range(0,1) > 0.6:
+		can_fall = true
+		get_node("visuals").modulate = Color(0,255,0)
+	else:
+		get_node("visuals").modulate = Color(255,0,0)
 	
 	# enemy health
 	health_system._set_health_variables(1, 0)
@@ -51,31 +55,24 @@ func _apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _every_step():
-	if action_coldown_timer > 0:
-		action_coldown_timer -= 1
-	
-	if pre_jump_timer > 0:
-		pre_jump_timer -= 1
-	
 	is_grounded = _check_is_grounded()
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
-
-func attacking():
 	
-	if action_coldown_timer == 0:
-		# intert 
-		# dimensional
-		# mechanic
-		# here
-		action_coldown_time = action_coldown_timer
-		pass
+	if $raycasts_down/raycast_center.is_colliding():
+		if ($raycasts_down/raycast_center.get_collider().is_in_group("enemy") or $raycasts_down/raycast_center.get_collider().is_in_group("player")):
+			jump()
 
 func _horizontal_move():
 	
-	if (is_on_ledge() || is_on_wall()):
-		direction *= -1
-		enable_raycast(direction)
+	if can_fall:
+		if is_on_wall():
+			direction *= -1
+			enable_raycast(direction)
+	else:
+		if (is_on_ledge() || is_on_wall()):
+			direction *= -1
+			enable_raycast(direction)
 		
 	velocity.x = move_speed * direction
 	velocity = move_and_slide(velocity, UP)

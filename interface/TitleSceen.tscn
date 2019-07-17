@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://themes/Retro.tres" type="Theme" id=1]
 [ext_resource path="res://interface/TitleSceen.gd" type="Script" id=2]
@@ -7,7 +7,72 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
+outline_size = 4
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleLabel2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.1, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 420, -200 ), Vector2( 420, 260 ), Vector2( 420, 210 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleLabel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 170, 970 ), Vector2( 170, 20 ), Vector2( 170, 70 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleLabel2:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.819608, 0.729412, 0.14902, 1 ), Color( 0.819608, 0.729412, 0.14902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.819608, 0.729412, 0.14902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.819608, 0.729412, 0.14902, 1 ), Color( 1, 1, 1, 1 ), Color( 0.819608, 0.729412, 0.14902, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TitleLabel:custom_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.341176, 0.0980392, 0.941176, 1 ), Color( 0.341176, 0.0980392, 0.941176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.341176, 0.0980392, 0.941176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.341176, 0.0980392, 0.941176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.341176, 0.0980392, 0.941176, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="TitleSceen" type="Control"]
 anchor_right = 1.0
@@ -21,13 +86,23 @@ margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="TitleLabel" type="Label" parent="."]
-margin_left = 377.701
-margin_top = 143.672
-margin_right = 1590.7
-margin_bottom = 311.672
+margin_left = 170.0
+margin_top = 970.0
+margin_right = 1786.0
+margin_bottom = 1138.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.341176, 0.0980392, 0.941176, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.968627, 0.968627, 1 )
+text = "hyperdimensional"
+
+[node name="TitleLabel2" type="Label" parent="."]
+margin_left = 420.0
+margin_top = -200.0
+margin_right = 1036.0
+margin_bottom = -31.9992
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.819608, 0.729412, 0.14902, 1 )
-text = "Title Pending"
+text = "knight"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
 editor/display_folded = true
@@ -61,6 +136,7 @@ margin_bottom = 98.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 editor/display_folded = true
+visible = false
 margin_left = 577.533
 margin_top = 446.917
 margin_right = 858.533
@@ -101,8 +177,12 @@ margin_bottom = 719.851
 rect_scale = Vector2( 4, 4 )
 text = "This game was made by a lot of cool guys and some excellent tools."
 
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 2 )
+
 [connection signal="toggled" from="OptionsContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
