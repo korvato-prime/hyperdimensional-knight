@@ -9,8 +9,8 @@
 extents = Vector2( 25, 25 )
 
 [node name="Flyer" type="KinematicBody2D" groups=[
-"flyer",
 "enemy",
+"flyer",
 ]]
 script = ExtResource( 1 )
 __meta__ = {

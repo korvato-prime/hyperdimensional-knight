@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://levels/tiles/permanent_tiles.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=10]
 [ext_resource path="res://enemies/gunner/Gunner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/Points.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -402,9 +403,12 @@ position = Vector2( 1792, 247.823 )
 [node name="Points2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1760, 544 )
 
+[node name="Spawner" parent="." instance=ExtResource( 13 )]
+position = Vector2( 781.768, 254.919 )
+
 [connection signal="can_punch_again" from="UI" to="player" method="_on_UI_can_punch_again"]
-[connection signal="value_changed" from="UI/StaminaBar" to="player" method="_on_StaminaBar_value_changed"]
 [connection signal="value_changed" from="UI/StaminaBar" to="UI" method="_on_StaminaBar_value_changed"]
+[connection signal="value_changed" from="UI/StaminaBar" to="player" method="_on_StaminaBar_value_changed"]
 [connection signal="value_changed" from="UI/BulletChargeBar" to="player" method="_on_BulletChargeBar_value_changed"]
 [connection signal="timeout" from="UI/StaminaRecharge" to="UI" method="_on_StaminaRecharge_timeout"]
 [connection signal="timeout" from="UI/StaminaCooldown" to="UI" method="_on_StaminaCooldown_timeout"]

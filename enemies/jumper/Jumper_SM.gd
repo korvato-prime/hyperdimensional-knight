@@ -76,16 +76,19 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			parent.get_node("anim_enemy").play("idle")
+			#parent.get_node("anim_enemy").play("idle")
+			pass
 		states.run:
-			#print(12)
-			parent.get_node("anim_enemy").play("run2")
+			#parent.get_node("anim_enemy").play("run2")
+			pass
 		states.jump:
-			parent.get_node("anim_enemy").play("jump")
+			#parent.get_node("anim_enemy").play("jump")
+			pass
 		states.fall:
-			parent.get_node("anim_enemy").play("fall")
+			#parent.get_node("anim_enemy").play("fall")
+			pass
 		states.hitted:
-			parent.get_node("anim_enemy").play("jump")
+			#parent.get_node("anim_enemy").play("jump")
 			parent.jump()
 			parent.emit_signal("hit")
 			
