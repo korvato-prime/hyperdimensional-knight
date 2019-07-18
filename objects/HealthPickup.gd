@@ -11,5 +11,5 @@ func touched():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player.get_node("health_system").health < player.get_node("health_system").health_max:
 		player.get_node("health_system").health += 1
-		Globals.screen_shake(0.2, 15, 16)
-		queue_free()
+	Globals.screen_shake(0.2, 15, 16)
+	queue_free()

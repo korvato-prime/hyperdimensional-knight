@@ -41,7 +41,10 @@ func _on_dimension_swap():
 		get_node("upgrade_area/Collision").position.y = 92
 	
 		for item in get_tree().get_nodes_in_group("items"):
-			if ($player.position - item.position).length() < 40:
+			var dist = 60
+			if item.is_in_group("point"):
+				dist = 40
+			if ($player.position - item.position).length() < dist:
 				item.touched()
 				
 			item.set_modulate(Color(1,1,1))

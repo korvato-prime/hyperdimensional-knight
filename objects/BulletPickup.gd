@@ -5,7 +5,11 @@ func _ready():
 
 func _on_BulletPickup_body_entered(body):
 	if body.is_in_group("player") and Globals.in_alter_dimension == true:
-		if body.ammo < body.ammo_max:
-			body.get_node("health_system").ammo += 1
-			Globals.screen_shake(0.2, 15, 16)
-			queue_free()
+		touched()
+
+func touched():
+	var player = get_tree().get_nodes_in_group("player")[0]
+	if player.ammo < player.ammo_max:
+		player.ammo += 1
+	Globals.screen_shake(0.2, 15, 16)
+	queue_free()
