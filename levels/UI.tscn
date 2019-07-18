@@ -1,0 +1,238 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://levels/UI.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Notable-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://interface/GameOverMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/bar_back.png" type="Texture" id=4]
+[ext_resource path="res://textures/bar_green.png" type="Texture" id=5]
+[ext_resource path="res://textures/bar_outline.png" type="Texture" id=6]
+[ext_resource path="res://textures/bar_red.png" type="Texture" id=7]
+[ext_resource path="res://textures/bar_cian.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 132
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+
+[sub_resource type="Animation" id=3]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("post_upgrade:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "3", "2", "1", "0" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("post_upgrade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("post_upgrade:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("post_upgrade:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.3, 1.4, 1.5, 1.8, 1.9, 2, 2.3, 2.4, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 842.5, 332 ), Vector2( 842.5, 332 ), Vector2( 842.5, 300 ), Vector2( 842.5, 364 ), Vector2( 842.5, 332 ), Vector2( 842.5, 300 ), Vector2( 842.5, 364 ), Vector2( 842.5, 332 ), Vector2( 842.5, 300 ), Vector2( 842.5, 364 ), Vector2( 842.5, 332 ), Vector2( 720, 119.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("post_upgrade:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.5, 2.5 ), Vector2( 2.5, 2.5 ), Vector2( 5, 5 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "upgrade_menu_end"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 55
+outline_size = 1
+outline_color = Color( 0.0352941, 0.313726, 0.0313726, 1 )
+font_data = ExtResource( 2 )
+
+[node name="UI" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+margin_left = 809.0
+margin_top = 96.1361
+margin_right = 1108.0
+margin_bottom = 110.136
+
+[node name="Score" type="Label" parent="."]
+margin_left = 460.0
+margin_top = 80.0
+margin_right = 1460.0
+margin_bottom = 252.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+
+[node name="anim_UI" type="AnimationPlayer" parent="."]
+anims/game_over = SubResource( 2 )
+anims/post_upgrade = SubResource( 3 )
+
+[node name="GameOver" parent="." instance=ExtResource( 3 )]
+
+[node name="post_upgrade" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 720.0
+margin_top = 119.5
+margin_right = 822.0
+margin_bottom = 291.501
+rect_scale = Vector2( 5, 5 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+
+[node name="HP" type="Control" parent="."]
+editor/display_folded = true
+margin_left = 728.0
+margin_top = 24.636
+margin_right = 768.0
+margin_bottom = 64.636
+rect_scale = Vector2( 1.5, 1.2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="back" type="TextureRect" parent="HP"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="HP_bar" type="TextureRect" parent="HP"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="outline" type="TextureRect" parent="HP"]
+margin_left = -15.3334
+margin_top = -19.5833
+margin_right = 319.667
+margin_bottom = 75.4167
+texture = ExtResource( 6 )
+expand = true
+
+[node name="HP_text" type="Label" parent="HP"]
+margin_top = -14.0
+margin_right = 307.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 4 )
+text = "4"
+align = 1
+
+[node name="Stamina" type="Control" parent="."]
+editor/display_folded = true
+margin_left = 368.0
+margin_top = 17.436
+margin_right = 408.0
+margin_bottom = 57.436
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="back" type="TextureRect" parent="Stamina"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Sta_bar" type="TextureRect" parent="Stamina"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="outline" type="TextureRect" parent="Stamina"]
+margin_left = -16.0
+margin_top = -14.1361
+margin_right = 319.0
+margin_bottom = 80.8639
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Ammo" type="Control" parent="."]
+editor/display_folded = true
+margin_left = 1248.0
+margin_top = 16.0
+margin_right = 1288.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="back" type="TextureRect" parent="Ammo"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Ammo_bar" type="TextureRect" parent="Ammo"]
+margin_right = 307.0
+margin_bottom = 60.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="outline" type="TextureRect" parent="Ammo"]
+margin_left = -16.0
+margin_top = -14.1361
+margin_right = 319.0
+margin_bottom = 80.8639
+texture = ExtResource( 6 )
+expand = true
+

@@ -17,13 +17,11 @@ func _get_input():
 	
 	parent._horizontal_move()
 	
-	if Input.is_action_just_pressed("punch"):
-		if parent.can_punch:
+	if Input.is_action_just_pressed("punch") and parent.stamina >= 30:
 			parent.punching()
 	
-	if Input.is_action_pressed("shoot"):
-		if parent.can_shoot:
-			parent.shooting()
+	if Input.is_action_pressed("shoot") and parent.ammo > 0:
+		parent.shooting()
 	
 	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("down"):

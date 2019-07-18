@@ -26,9 +26,12 @@ var pre_jump_timer = 0
 var DROP_THRU_BIT = 10
 
 # action
+var stamina = 100
+var stamina_max = 100
+var stamina_recovery = 0.1
 var punch_coldown_time = 20			##############
 var punch_coldown_timer = 0
-var punch_damage = 1				##############
+var punch_damage = 2				##############
 var can_punch = true
 
 var bullet_obj = load("res://player/bullets/bullet_player.tscn")
@@ -39,6 +42,8 @@ var gun_damage = 1					##############
 var can_shoot = true
 var bullet_speed = 850				##############
 var bullet_trajectory_randomness = 0.02 # percent
+var ammo = 5
+var ammo_max = 10
 
 onready var raycasts_down = $raycasts_down
 
@@ -63,7 +68,10 @@ func _apply_gravity(delta):
 func _every_step():
 	if punch_coldown_timer > 0:
 		punch_coldown_timer -= 1
-	
+
+	if stamina < stamina_max:
+		stamina += stamina_recovery
+
 	if gun_coldown_timer > 0:
 		gun_coldown_timer -= 1
 	
@@ -79,6 +87,7 @@ func _every_step():
 
 func punching():
 	if punch_coldown_timer == 0:
+		stamina -= 30
 		get_node("anim_attack").play("punch")
 		punch_coldown_time = punch_coldown_timer
 		emit_signal("stamina_reduce")
@@ -86,6 +95,7 @@ func punching():
 
 func shooting():
 	if gun_coldown_timer == 0:
+		ammo -= 1
 		get_node("anim_attack").play("shoot")
 		gun_coldown_timer = gun_coldown_time
 		emit_signal("bullet_reduce")
@@ -155,16 +165,3 @@ func apply_punch_damage(enemy):
 	if enemy.is_in_group("enemy"):
 		enemy.get_node("health_system").take_damage(punch_damage)
 		Globals.screen_shake(0.2, 15, 16 * punch_damage, 1)
-		
-func _on_StaminaBar_value_changed(value):
-	if value == 0:
-		can_punch = false
-	pass # Replace with function body.
-
-func _on_UI_can_punch_again():
-	can_punch = true
-	pass # Replace with function body.
-
-func _on_BulletChargeBar_value_changed(value):
-		if value == 0:
-			can_shoot = false

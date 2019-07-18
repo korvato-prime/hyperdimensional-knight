@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="Spawner" type="Position2D"]
-position = Vector2( 140.404, 114.675 )
+position = Vector2( 124.912, 100.375 )
 script = ExtResource( 1 )
 spawnScene = ExtResource( 2 )
 minWaitTime = 5.0
