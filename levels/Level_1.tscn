@@ -1,34 +1,35 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://levels/tiles/permanent_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://levels/tiles/Level_1_1.tres" type="TileSet" id=3]
-[ext_resource path="res://levels/tiles/image1.png" type="Texture" id=4]
-[ext_resource path="res://music/Shenanijam_sketch_1_.wav" type="AudioStream" id=5]
-[ext_resource path="res://levels/UI.gd" type="Script" id=6]
-[ext_resource path="res://fonts/Notable-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://levels/GameOverMenu.tscn" type="PackedScene" id=8]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://multiuse_resources/ScreenShake.tscn" type="PackedScene" id=10]
-[ext_resource path="res://enemies/walker/Walker.tscn" type="PackedScene" id=11]
-[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=12]
-[ext_resource path="res://enemies/gunner/Gunner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://objects/Points.tscn" type="PackedScene" id=14]
-[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://textures/IMG_8118.PNG" type="Texture" id=16]
-[ext_resource path="res://textures/IMG_8119.PNG" type="Texture" id=17]
-[ext_resource path="res://textures/IMG_8120.PNG" type="Texture" id=18]
-[ext_resource path="res://textures/IMG_8121.PNG" type="Texture" id=19]
-[ext_resource path="res://textures/IMG_8122.PNG" type="Texture" id=20]
-[ext_resource path="res://textures/IMG_8123.PNG" type="Texture" id=21]
-[ext_resource path="res://textures/IMG_8124.PNG" type="Texture" id=22]
-[ext_resource path="res://textures/7CE80AAD-8337-46A8-A0F2-F56F06F128F8.png" type="Texture" id=23]
-[ext_resource path="res://textures/02438A0C-89BB-4BB0-958C-730109014D5A.png" type="Texture" id=24]
-[ext_resource path="res://textures/08DD75C8-2CA5-48DC-8D07-0E62845EE8DA.png" type="Texture" id=25]
-[ext_resource path="res://textures/618B67C8-1EDD-452E-B352-23FD88D49082.png" type="Texture" id=26]
-[ext_resource path="res://textures/D5C6DC7F-BDD7-4817-830E-2BE1026CC7B2.png" type="Texture" id=27]
-[ext_resource path="res://textures/D967872A-59F4-4A33-A877-A3E3B0E9CE55.png" type="Texture" id=28]
-[ext_resource path="res://textures/FC201D00-9824-4B1A-8D7E-F963B641897F.png" type="Texture" id=29]
+[ext_resource path="res://textures/IMG_8124.PNG" type="Texture" id=4]
+[ext_resource path="res://levels/tiles/image1.png" type="Texture" id=5]
+[ext_resource path="res://music/Shenanijam_sketch_1_.wav" type="AudioStream" id=6]
+[ext_resource path="res://levels/UI.gd" type="Script" id=7]
+[ext_resource path="res://fonts/Notable-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://levels/GameOverMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://multiuse_resources/ScreenShake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/walker/Walker.tscn" type="PackedScene" id=12]
+[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=13]
+[ext_resource path="res://enemies/gunner/Gunner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/Points.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://enemies/flyerwalker/Flyerwalker.tscn" type="PackedScene" id=17]
+[ext_resource path="res://textures/IMG_8118.PNG" type="Texture" id=18]
+[ext_resource path="res://textures/IMG_8119.PNG" type="Texture" id=19]
+[ext_resource path="res://textures/IMG_8120.PNG" type="Texture" id=20]
+[ext_resource path="res://textures/IMG_8121.PNG" type="Texture" id=21]
+[ext_resource path="res://textures/IMG_8122.PNG" type="Texture" id=22]
+[ext_resource path="res://textures/IMG_8123.PNG" type="Texture" id=23]
+[ext_resource path="res://textures/7CE80AAD-8337-46A8-A0F2-F56F06F128F8.png" type="Texture" id=24]
+[ext_resource path="res://textures/02438A0C-89BB-4BB0-958C-730109014D5A.png" type="Texture" id=25]
+[ext_resource path="res://textures/08DD75C8-2CA5-48DC-8D07-0E62845EE8DA.png" type="Texture" id=26]
+[ext_resource path="res://textures/618B67C8-1EDD-452E-B352-23FD88D49082.png" type="Texture" id=27]
+[ext_resource path="res://textures/D5C6DC7F-BDD7-4817-830E-2BE1026CC7B2.png" type="Texture" id=28]
+[ext_resource path="res://textures/D967872A-59F4-4A33-A877-A3E3B0E9CE55.png" type="Texture" id=29]
+[ext_resource path="res://textures/FC201D00-9824-4B1A-8D7E-F963B641897F.png" type="Texture" id=30]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -80,7 +81,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [sub_resource type="TileSet" id=17]
 0/name = "image1.png 0"
-0/texture = ExtResource( 4 )
+0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 128, 0, 256, 256 )
@@ -195,7 +196,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 } ]
 0/z_index = 0
 1/name = "image1.png 1"
-1/texture = ExtResource( 4 )
+1/texture = ExtResource( 5 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 64, 64 )
@@ -205,7 +206,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "image1.png 2"
-2/texture = ExtResource( 4 )
+2/texture = ExtResource( 5 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 64, 0, 64, 64 )
@@ -215,7 +216,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 2/shapes = [  ]
 2/z_index = 0
 3/name = "image1.png 3"
-3/texture = ExtResource( 4 )
+3/texture = ExtResource( 5 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 64, 64, 64, 64 )
@@ -225,7 +226,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 3/shapes = [  ]
 3/z_index = 0
 4/name = "image1.png 4"
-4/texture = ExtResource( 4 )
+4/texture = ExtResource( 5 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 64, 64, 64 )
@@ -235,7 +236,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 4/shapes = [  ]
 4/z_index = 0
 5/name = "image1.png 5"
-5/texture = ExtResource( 4 )
+5/texture = ExtResource( 5 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 64, 128, 64, 64 )
@@ -245,7 +246,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 5/shapes = [  ]
 5/z_index = 0
 6/name = "image1.png 6"
-6/texture = ExtResource( 4 )
+6/texture = ExtResource( 5 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 128, 64, 64 )
@@ -255,7 +256,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 6/shapes = [  ]
 6/z_index = 0
 7/name = "image1.png 7"
-7/texture = ExtResource( 4 )
+7/texture = ExtResource( 5 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 64, 192, 64, 64 )
@@ -265,7 +266,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 7/shapes = [  ]
 7/z_index = 0
 8/name = "image1.png 8"
-8/texture = ExtResource( 4 )
+8/texture = ExtResource( 5 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 192, 64, 64 )
@@ -277,7 +278,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [sub_resource type="DynamicFont" id=18]
 size = 64
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=19]
 resource_name = "game_over"
@@ -302,6 +303,14 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 327694, 1, 196608, 327695, 1, 196610, 393217, 1, 196608, 393218, 1, 196609, 393219, 1, 196609, 393220, 1, 196609, 393221, 1, 196610, 393240, 1, 196608, 393241, 1, 196609, 393242, 1, 196609, 393243, 1, 196609, 393244, 1, 196610, 589833, 1, 196608, 589834, 1, 196610, 589843, 1, 196608, 589844, 1, 196610, 655361, 1, 196608, 655362, 1, 196609, 655363, 1, 196610, 655386, 1, 196608, 655387, 1, 196609, 655388, 1, 196610, 720924, 0, 0, 786438, 1, 196608, 786439, 1, 196610, 786454, 1, 196608, 786455, 1, 196610, 786459, 1, 0, 786460, 1, 2, 851969, 1, 0, 851970, 1, 1, 851971, 1, 2, 851995, 1, 65536, 851996, 1, 65538, 917505, 1, 65536, 917506, 1, 65537, 917507, 1, 65538, 917515, 1, 0, 917516, 1, 1, 917517, 1, 1, 917518, 1, 1, 917519, 1, 1, 917520, 1, 1, 917521, 1, 1, 917522, 1, 2, 917531, 1, 65536, 917532, 1, 65538, 983041, 1, 131072, 983042, 1, 131073, 983043, 1, 131074, 983051, 1, 65536, 983052, 1, 65537, 983053, 1, 65537, 983054, 1, 65537, 983055, 1, 65537, 983056, 1, 65537, 983057, 1, 65537, 983058, 1, 65538, 983067, 1, 131072, 983068, 1, 131074, 1048587, 1, 131072, 1048588, 1, 131073, 1048589, 1, 131073, 1048590, 1, 131073, 1048591, 1, 131073, 1048592, 1, 131073, 1048593, 1, 131073, 1048594, 1, 131074 )
 
+[node name="TextureRect" type="TextureRect" parent="solids"]
+show_behind_parent = true
+margin_left = -25.0527
+margin_top = 58.4564
+margin_right = 1894.95
+margin_bottom = 1138.46
+texture = ExtResource( 4 )
+
 [node name="AlterDimension" type="TileMap" parent="."]
 modulate = Color( 1, 1, 1, 0.317647 )
 tile_set = SubResource( 17 )
@@ -311,11 +320,11 @@ format = 1
 tile_data = PoolIntArray( 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 327685, 4, 0, 327686, 0, 196608, 327687, 0, 196609, 327688, 0, 196609, 327689, 0, 196609, 327690, 0, 196610, 327699, 0, 196608, 327700, 0, 196609, 327701, 0, 196609, 327702, 0, 196609, 327703, 0, 196610, 327704, 2, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393235, 3, 0, 393236, 3, 0, 393237, 3, 0, 393238, 3, 0, 393239, 3, 0, 393242, 1, 0, 393243, 1, 0, 393244, 1, 0, 458753, 1, 0, 458754, 1, 0, 458777, 4, 0, 458778, 0, 0, 458779, 0, 1, 458780, 0, 2, 524289, 0, 196608, 524290, 0, 196610, 524291, 2, 0, 524302, 1, 0, 524303, 1, 0, 524313, 4, 0, 524314, 0, 65536, 524315, 0, 65537, 524316, 0, 65538, 589825, 3, 0, 589826, 3, 0, 589838, 0, 196608, 589839, 0, 196610, 589849, 4, 0, 589850, 0, 131072, 589851, 0, 131073, 589852, 0, 131074, 655374, 3, 0, 655375, 3, 0, 655386, 3, 0, 655387, 3, 0, 655388, 3, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720920, 1, 0, 720921, 1, 0, 786434, 4, 0, 786435, 0, 196608, 786436, 0, 196609, 786437, 0, 196610, 786455, 4, 0, 786456, 0, 196608, 786457, 0, 196610, 786458, 2, 0, 851971, 3, 0, 851972, 3, 0, 851973, 3, 0, 851992, 3, 0, 851993, 3, 0 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 autoplay = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
 editor/display_folded = true
@@ -382,9 +391,9 @@ one_shot = true
 [node name="anim_UI" type="AnimationPlayer" parent="UI"]
 anims/game_over = SubResource( 19 )
 
-[node name="GameOver" parent="UI" instance=ExtResource( 8 )]
+[node name="GameOver" parent="UI" instance=ExtResource( 9 )]
 
-[node name="player" parent="." instance=ExtResource( 9 )]
+[node name="player" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 960, 800 )
 
@@ -399,147 +408,180 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="screen_shake" parent="player/camera" instance=ExtResource( 10 )]
+[node name="screen_shake" parent="player/camera" instance=ExtResource( 11 )]
 
-[node name="Walker" parent="." instance=ExtResource( 11 )]
+[node name="Walker" parent="." instance=ExtResource( 12 )]
 position = Vector2( 961.445, 279.823 )
 
-[node name="Jumper" parent="." instance=ExtResource( 12 )]
+[node name="Jumper" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1523.07, 967.959 )
 
-[node name="Thrower" parent="." instance=ExtResource( 13 )]
+[node name="Thrower" parent="." instance=ExtResource( 14 )]
 position = Vector2( 96, 608 )
 
-[node name="Points" parent="." instance=ExtResource( 14 )]
+[node name="Points" parent="." instance=ExtResource( 15 )]
 position = Vector2( 832, 544 )
 
-[node name="Points3" parent="." instance=ExtResource( 14 )]
+[node name="Points3" parent="." instance=ExtResource( 15 )]
 position = Vector2( 352, 192 )
 
-[node name="Points4" parent="." instance=ExtResource( 14 )]
+[node name="Points4" parent="." instance=ExtResource( 15 )]
 position = Vector2( 96, 480 )
 
-[node name="Points5" parent="." instance=ExtResource( 14 )]
+[node name="Points5" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1523.07, 896 )
 
-[node name="Points6" parent="." instance=ExtResource( 14 )]
+[node name="Points6" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1792, 247.823 )
 
-[node name="Points2" parent="." instance=ExtResource( 14 )]
+[node name="Points2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1760, 544 )
 
-[node name="Spawner" parent="." instance=ExtResource( 15 )]
-position = Vector2( 781.768, 254.919 )
+[node name="Spawner" parent="." instance=ExtResource( 16 )]
+position = Vector2( 957.854, 174.374 )
+minWaitTime = 15.0
+maxWaitTime = 30.0
 
-[node name="DesertLayer" type="CanvasLayer" parent="."]
+[node name="Spawner2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1740.58, 150.404 )
+spawnScene = ExtResource( 17 )
+minWaitTime = 15.0
+maxWaitTime = 30.0
+
+[node name="Spawner3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1650.34, 967.702 )
+spawnScene = ExtResource( 13 )
+minWaitTime = 15.0
+maxWaitTime = 30.0
+
+[node name="Spawner4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 334.17, 950.174 )
+spawnScene = ExtResource( 13 )
+minWaitTime = 15.0
+maxWaitTime = 30.0
+
+[node name="DesertLayer" type="ParallaxBackground" parent="."]
 editor/display_folded = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="DesertLayer"]
+[node name="PL01 " type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 16 )
-
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="DesertLayer"]
-
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground2"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 17 )
-
-[node name="ParallaxBackground3" type="ParallaxBackground" parent="DesertLayer"]
-
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground3"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL01 "]
+margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 18 )
 
-[node name="ParallaxBackground4" type="ParallaxBackground" parent="DesertLayer"]
+[node name="PL02" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground4"]
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL02"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 19 )
 
-[node name="ParallaxBackground5" type="ParallaxBackground" parent="DesertLayer"]
+[node name="PL03" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground5"]
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL03"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 20 )
 
-[node name="ParallaxBackground6" type="ParallaxBackground" parent="DesertLayer"]
+[node name="PL04" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground6"]
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL04"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 21 )
 
-[node name="ParallaxBackground7" type="ParallaxBackground" parent="DesertLayer"]
+[node name="PL05" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/ParallaxBackground7"]
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL05"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 22 )
 
-[node name="CrystalLayer" type="CanvasLayer" parent="."]
-
-[node name="PB01" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PL06" type="ParallaxLayer" parent="DesertLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB01"]
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL06"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 23 )
 
-[node name="PB02" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PL07" type="ParallaxLayer" parent="DesertLayer"]
+
+[node name="CrystalLayer" type="ParallaxBackground" parent="."]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB02"]
+[node name="PB01" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
+
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB01"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 24 )
 
-[node name="PB03" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PB02" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB03"]
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB02"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 25 )
 
-[node name="PB04" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PB03" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB04"]
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB03"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 26 )
 
-[node name="PB05" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PB04" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB05"]
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB04"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 27 )
 
-[node name="PB06" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PB05" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB06"]
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB05"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 28 )
 
-[node name="PB07" type="ParallaxBackground" parent="CrystalLayer"]
+[node name="PB06" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
 
-[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB07"]
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB06"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 29 )
+
+[node name="PB07" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
+
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB07"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 30 )
 
 [connection signal="can_punch_again" from="UI" to="player" method="_on_UI_can_punch_again"]
 [connection signal="value_changed" from="UI/StaminaBar" to="player" method="_on_StaminaBar_value_changed"]
