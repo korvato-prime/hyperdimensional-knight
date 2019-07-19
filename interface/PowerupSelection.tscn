@@ -40,7 +40,6 @@ text = "This is the name of the powerup."
 align = 1
 
 [node name="PowerupContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -501.419
@@ -56,10 +55,10 @@ icon = ExtResource( 3 )
 
 [node name="1" type="Label" parent="PowerupContainer/Powerup01Button"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 11.4655
-margin_top = -15.1765
-margin_right = 67.4655
-margin_bottom = 69.8235
+margin_left = 11.0
+margin_top = -15.0
+margin_right = 74.0
+margin_bottom = 70.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1"
@@ -73,10 +72,10 @@ icon = ExtResource( 3 )
 
 [node name="2" type="Label" parent="PowerupContainer/Powerup02Button"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 13.8874
-margin_top = -15.4905
-margin_right = 69.8874
-margin_bottom = 69.5095
+margin_left = 11.0
+margin_top = -15.0
+margin_right = 74.0
+margin_bottom = 70.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "2"
@@ -90,10 +89,10 @@ icon = ExtResource( 3 )
 
 [node name="3" type="Label" parent="PowerupContainer/Powerup03Button"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 14.6031
-margin_top = -16.4314
-margin_right = 70.6031
-margin_bottom = 68.5686
+margin_left = 11.0
+margin_top = -15.0
+margin_right = 74.0
+margin_bottom = 70.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "3"
@@ -114,7 +113,6 @@ margin_bottom = 74.1494
 rect_scale = Vector2( 4, 4 )
 text = "Current selected powerup does this.
 "
-
 [connection signal="focus_entered" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_focus_entered"]
 [connection signal="pressed" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_pressed"]
 [connection signal="focus_entered" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_focus_entered"]

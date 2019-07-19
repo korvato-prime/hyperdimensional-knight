@@ -59,7 +59,6 @@ func _get_input():
 func _state_logic(delta):
 	if states.dead == state:
 		return
-	
 	if not get_tree().paused:
 		_get_input()
 		parent._every_step()
@@ -75,7 +74,7 @@ func _get_transition(delta):
 					return states.jump
 				else:
 					return states.fall
-			elif parent.velocity.x != 0:
+			elif abs(parent.velocity.x) > 1:
 				return states.run
 		states.run:
 			if ! parent._check_is_grounded():
@@ -83,11 +82,11 @@ func _get_transition(delta):
 					return states.jump
 				else:
 					return states.fall
-			elif parent.velocity.x == 0:
+			elif abs(parent.velocity.x) < 1:
 				return states.idle
 		states.jump:
 			if parent._check_is_grounded():
-				if parent.velocity.x != 0:
+				if abs(parent.velocity.x) > 1:
 					return states.run
 				else:
 					return states.idle
@@ -95,7 +94,7 @@ func _get_transition(delta):
 				return states.fall
 		states.fall:
 			if parent._check_is_grounded():
-				if parent.velocity.x != 0:
+				if abs(parent.velocity.x) > 1:
 					return states.run
 				else:
 					return states.idle
@@ -103,7 +102,7 @@ func _get_transition(delta):
 				return states.jump
 		states.hitted:
 			if parent._check_is_grounded():
-				if parent.velocity.x != 0:
+				if abs(parent.velocity.x) > 1:
 					return states.run
 				else:
 					return states.idle
@@ -116,7 +115,7 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.get_node("anim_player").play("idle")
 		states.run:
-			parent.get_node("anim_player").play("run2")
+			parent.get_node("anim_player").play("run")
 		states.jump:
 			parent.get_node("anim_player").play("jump")
 		states.fall:

@@ -120,6 +120,7 @@ func shooting():
 		
 		move_and_slide_with_snap(-400 * player_direction, UP)
 		# evitate punch collider error
+		get_node("visuals/fist_temporal").visible = false
 		get_node("visuals/punch_hitbox/collision").disabled = true
 
 

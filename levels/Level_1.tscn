@@ -1,33 +1,34 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://levels/tiles/permanent_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://levels/tiles/Level_1_1.tres" type="TileSet" id=3]
 [ext_resource path="res://textures/IMG_8124.PNG" type="Texture" id=4]
 [ext_resource path="res://levels/tiles/image1.png" type="Texture" id=5]
-[ext_resource path="res://textures/FC201D00-9824-4B1A-8D7E-F963B641897F.png" type="Texture" id=6]
-[ext_resource path="res://music/Shenanijam_sketch_1_.wav" type="AudioStream" id=7]
-[ext_resource path="res://levels/upgrade_area.tscn" type="PackedScene" id=8]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://multiuse_resources/ScreenShake.tscn" type="PackedScene" id=10]
-[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://enemies/flyerwalker/Flyerwalker.tscn" type="PackedScene" id=12]
-[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=13]
-[ext_resource path="res://objects/HealthPickup.tscn" type="PackedScene" id=14]
-[ext_resource path="res://objects/BulletPickup.tscn" type="PackedScene" id=15]
-[ext_resource path="res://textures/IMG_8118.PNG" type="Texture" id=16]
+[ext_resource path="res://music/Shenanijam_sketch_1_.wav" type="AudioStream" id=6]
+[ext_resource path="res://levels/upgrade_area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://multiuse_resources/ScreenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://enemies/flyerwalker/Flyerwalker.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/jumper/Jumper.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/HealthPickup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/BulletPickup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://textures/IMG_8118.PNG" type="Texture" id=15]
+[ext_resource path="res://textures/IMG_8119.PNG" type="Texture" id=16]
 [ext_resource path="res://textures/IMG_8120.PNG" type="Texture" id=17]
-[ext_resource path="res://textures/IMG_8119.PNG" type="Texture" id=18]
-[ext_resource path="res://textures/IMG_8121.PNG" type="Texture" id=19]
-[ext_resource path="res://textures/IMG_8122.PNG" type="Texture" id=20]
-[ext_resource path="res://textures/IMG_8123.PNG" type="Texture" id=21]
-[ext_resource path="res://textures/7CE80AAD-8337-46A8-A0F2-F56F06F128F8.png" type="Texture" id=22]
-[ext_resource path="res://textures/02438A0C-89BB-4BB0-958C-730109014D5A.png" type="Texture" id=23]
-[ext_resource path="res://textures/D967872A-59F4-4A33-A877-A3E3B0E9CE55.png" type="Texture" id=24]
-[ext_resource path="res://textures/08DD75C8-2CA5-48DC-8D07-0E62845EE8DA.png" type="Texture" id=25]
-[ext_resource path="res://textures/D5C6DC7F-BDD7-4817-830E-2BE1026CC7B2.png" type="Texture" id=26]
-[ext_resource path="res://objects/Points.tscn" type="PackedScene" id=27]
-[ext_resource path="res://levels/UI.tscn" type="PackedScene" id=28]
+[ext_resource path="res://textures/IMG_8121.PNG" type="Texture" id=18]
+[ext_resource path="res://textures/IMG_8122.PNG" type="Texture" id=19]
+[ext_resource path="res://textures/IMG_8123.PNG" type="Texture" id=20]
+[ext_resource path="res://textures/7CE80AAD-8337-46A8-A0F2-F56F06F128F8.png" type="Texture" id=21]
+[ext_resource path="res://textures/02438A0C-89BB-4BB0-958C-730109014D5A.png" type="Texture" id=22]
+[ext_resource path="res://textures/08DD75C8-2CA5-48DC-8D07-0E62845EE8DA.png" type="Texture" id=23]
+[ext_resource path="res://textures/618B67C8-1EDD-452E-B352-23FD88D49082.png" type="Texture" id=24]
+[ext_resource path="res://textures/D5C6DC7F-BDD7-4817-830E-2BE1026CC7B2.png" type="Texture" id=25]
+[ext_resource path="res://textures/D967872A-59F4-4A33-A877-A3E3B0E9CE55.png" type="Texture" id=26]
+[ext_resource path="res://textures/FC201D00-9824-4B1A-8D7E-F963B641897F.png" type="Texture" id=27]
+[ext_resource path="res://objects/Points.tscn" type="PackedScene" id=28]
+[ext_resource path="res://levels/UI.tscn" type="PackedScene" id=29]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -286,14 +287,12 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1, 14, 0, -65536, 14, 0, -65535, 14, 0, -65534, 14, 0, -65533, 14, 0, -65532, 14, 0, -65531, 14, 0, -65530, 14, 0, -65529, 14, 0, -65528, 14, 0, -65527, 14, 0, -65526, 14, 0, -65525, 14, 0, -65524, 14, 0, -65523, 14, 0, -65522, 14, 0, -65521, 14, 0, -65520, 14, 0, -65519, 14, 0, -65518, 14, 0, -65517, 14, 0, -65516, 14, 0, -65515, 14, 0, -65514, 14, 0, -65513, 14, 0, -65512, 14, 0, -65511, 14, 0, -65510, 14, 0, -65509, 14, 0, -65508, 14, 0, -65507, 14, 0, -65506, 14, 0, -65505, 25, 0, 65535, 14, 0, 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 15, 0, 4, 15, 0, 5, 15, 0, 6, 15, 0, 7, 15, 0, 8, 15, 0, 9, 15, 0, 10, 15, 0, 11, 15, 0, 12, 15, 0, 13, 15, 0, 14, 15, 0, 15, 15, 0, 16, 15, 0, 17, 15, 0, 18, 15, 0, 19, 15, 0, 20, 15, 0, 21, 15, 0, 22, 15, 0, 23, 15, 0, 24, 15, 0, 25, 15, 0, 26, 15, 0, 27, 14, 0, 28, 14, 0, 29, 14, 0, 30, 14, 0, 131071, 14, 0, 65536, 14, 0, 65537, 15, 0, 65538, 11, 0, 65539, 19, 0, 65540, 19, 0, 65541, 19, 0, 65542, 19, 0, 65543, 19, 0, 65544, 19, 0, 65545, 19, 0, 65546, 19, 0, 65547, 19, 0, 65548, 19, 0, 65549, 19, 0, 65550, 19, 0, 65551, 19, 0, 65552, 19, 0, 65553, 19, 0, 65554, 19, 0, 65555, 19, 0, 65556, 19, 0, 65557, 19, 0, 65558, 19, 0, 65559, 19, 0, 65560, 19, 0, 65561, 19, 0, 65562, 19, 0, 65563, 17, 0, 65564, 15, 0, 65565, 14, 0, 65566, 14, 0, 196607, 14, 0, 131072, 10, 0, 131073, 19, 0, 131074, 19, 0, 131099, 19, 0, 131100, 19, 0, 131101, 16, 0, 131102, 14, 0, 262143, 14, 0, 196608, 10, 0, 196609, 2, 0, 196636, 20, 0, 196637, 16, 0, 196638, 14, 0, 196639, 25, 0, 327679, 14, 0, 262144, 10, 0, 262145, 2, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262172, 20, 0, 262173, 16, 0, 262174, 14, 0, 393215, 14, 0, 327680, 10, 0, 327681, 2, 0, 327691, 18, 0, 327692, 13, 0, 327693, 12, 0, 327694, 2, 0, 327695, 20, 0, 327696, 18, 0, 327697, 13, 0, 327698, 12, 0, 327708, 20, 0, 327709, 16, 0, 327710, 14, 0, 458751, 14, 0, 393216, 10, 0, 393217, 2, 0, 393227, 19, 0, 393228, 19, 0, 393229, 19, 0, 393232, 19, 0, 393233, 19, 0, 393234, 19, 0, 393244, 20, 0, 393245, 16, 0, 393246, 14, 0, 524287, 14, 0, 458752, 10, 0, 458753, 2, 0, 458781, 16, 0, 458782, 14, 0, 458783, 25, 0, 589823, 14, 0, 524288, 10, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524317, 16, 0, 524318, 14, 0, 655359, 14, 0, 589824, 10, 0, 589825, 2, 0, 589834, 20, 0, 589835, 18, 0, 589836, 13, 0, 589837, 12, 0, 589840, 18, 0, 589841, 13, 0, 589842, 12, 0, 589843, 2, 0, 589853, 16, 0, 589854, 14, 0, 720895, 14, 0, 655360, 10, 0, 655361, 2, 0, 655371, 19, 0, 655372, 19, 0, 655373, 19, 0, 655376, 19, 0, 655377, 19, 0, 655378, 19, 0, 655388, 20, 0, 655389, 16, 0, 655390, 14, 0, 786431, 14, 0, 720896, 10, 0, 720897, 2, 0, 720924, 20, 0, 720925, 16, 0, 720926, 14, 0, 720927, 25, 0, 851967, 14, 0, 786432, 10, 0, 786433, 2, 0, 786446, 1, 0, 786447, 1, 0, 786460, 20, 0, 786461, 16, 0, 786462, 14, 0, 917503, 14, 0, 851968, 10, 0, 851982, 18, 0, 851983, 12, 0, 851984, 2, 0, 851996, 20, 0, 851997, 16, 0, 851998, 14, 0, 983039, 14, 0, 917504, 10, 0, 917518, 19, 0, 917519, 19, 0, 917532, 20, 0, 917533, 16, 0, 917534, 14, 0, 1048575, 14, 0, 983040, 10, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 1, 0, 983064, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 983068, 1, 0, 983069, 16, 0, 983070, 14, 0, 983071, 25, 0, 1114111, 14, 0, 1048576, 14, 0, 1048577, 4, 0, 1048578, 4, 0, 1048579, 4, 0, 1048580, 4, 0, 1048581, 4, 0, 1048582, 4, 0, 1048583, 4, 0, 1048584, 4, 0, 1048585, 4, 0, 1048586, 5, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 3, 0, 1048596, 4, 0, 1048597, 4, 0, 1048598, 4, 0, 1048599, 4, 0, 1048600, 4, 0, 1048601, 4, 0, 1048602, 4, 0, 1048603, 4, 0, 1048604, 4, 0, 1048605, 14, 0, 1048606, 14, 0, 1179647, 14, 0, 1114112, 14, 0, 1114113, 14, 0, 1114114, 14, 0, 1114115, 14, 0, 1114116, 14, 0, 1114117, 14, 0, 1114118, 14, 0, 1114119, 14, 0, 1114120, 14, 0, 1114121, 14, 0, 1114122, 14, 0, 1114123, 4, 0, 1114124, 4, 0, 1114125, 4, 0, 1114126, 4, 0, 1114127, 4, 0, 1114128, 4, 0, 1114129, 4, 0, 1114130, 4, 0, 1114131, 14, 0, 1114132, 14, 0, 1114133, 14, 0, 1114134, 14, 0, 1114135, 14, 0, 1114136, 14, 0, 1114137, 14, 0, 1114138, 14, 0, 1114139, 14, 0, 1114140, 14, 0, 1114141, 14, 0, 1114142, 14, 0, 1245183, 33, 0, 1179648, 33, 0, 1179649, 33, 0, 1179650, 33, 0, 1179651, 33, 0, 1179652, 33, 0, 1179653, 33, 0, 1179654, 33, 0, 1179655, 33, 0, 1179656, 33, 0, 1179657, 33, 0, 1179658, 33, 0, 1179659, 33, 0, 1179660, 33, 0, 1179661, 33, 0, 1179662, 33, 0, 1179663, 33, 0, 1179664, 33, 0, 1179665, 33, 0, 1179666, 33, 0, 1179667, 33, 0, 1179668, 33, 0, 1179669, 33, 0, 1179670, 33, 0, 1179671, 33, 0, 1179672, 33, 0, 1179673, 33, 0, 1179674, 33, 0, 1179675, 33, 0, 1179676, 33, 0, 1179677, 33, 0, 1179678, 33, 0, 1310719, 33, 0, 1245184, 33, 0, 1245185, 36, 0, 1245186, 36, 0, 1245187, 36, 0, 1245188, 36, 0, 1245189, 36, 0, 1245190, 36, 0, 1245191, 36, 0, 1245192, 36, 0, 1245193, 36, 0, 1245194, 36, 0, 1245195, 36, 0, 1245196, 36, 0, 1245197, 36, 0, 1245198, 36, 0, 1245199, 36, 0, 1245200, 36, 0, 1245201, 36, 0, 1245202, 36, 0, 1245203, 36, 0, 1245204, 36, 0, 1245205, 36, 0, 1245206, 36, 0, 1245207, 36, 0, 1245208, 36, 0, 1245209, 36, 0, 1245210, 36, 0, 1245211, 36, 0, 1245212, 36, 0, 1245213, 33, 0, 1245214, 33, 0, 1376255, 33, 0, 1310720, 35, 0, 1310749, 34, 0, 1310750, 33, 0, 1441791, 33, 0, 1376256, 35, 0, 1376257, 27, 0, 1376285, 34, 0, 1376286, 33, 0, 1507327, 33, 0, 1441792, 35, 0, 1441793, 27, 0, 1441820, 44, 0, 1441821, 34, 0, 1441822, 33, 0, 1572863, 33, 0, 1507328, 35, 0, 1507329, 27, 0, 1507339, 26, 0, 1507340, 26, 0, 1507341, 26, 0, 1507344, 26, 0, 1507345, 26, 0, 1507346, 26, 0, 1507356, 44, 0, 1507357, 34, 0, 1507358, 33, 0, 1638399, 33, 0, 1572864, 35, 0, 1572865, 27, 0, 1572875, 37, 0, 1572876, 38, 0, 1572877, 39, 0, 1572880, 37, 0, 1572881, 38, 0, 1572882, 39, 0, 1572892, 44, 0, 1572893, 34, 0, 1572894, 33, 0, 1703935, 33, 0, 1638400, 35, 0, 1638401, 27, 0, 1638428, 44, 0, 1638429, 34, 0, 1638430, 33, 0, 1769471, 33, 0, 1703936, 35, 0, 1703937, 27, 0, 1703964, 44, 0, 1703965, 34, 0, 1703966, 33, 0, 1835007, 33, 0, 1769472, 35, 0, 1769473, 27, 0, 1769483, 26, 0, 1769484, 26, 0, 1769485, 26, 0, 1769488, 26, 0, 1769489, 26, 0, 1769490, 26, 0, 1769500, 44, 0, 1769501, 34, 0, 1769502, 33, 0, 1900543, 33, 0, 1835008, 35, 0, 1835009, 27, 0, 1835019, 37, 0, 1835020, 38, 0, 1835021, 39, 0, 1835024, 37, 0, 1835025, 38, 0, 1835026, 39, 0, 1835036, 44, 0, 1835037, 34, 0, 1835038, 33, 0, 1966079, 33, 0, 1900544, 35, 0, 1900545, 27, 0, 1900572, 44, 0, 1900573, 34, 0, 1900574, 33, 0, 2031615, 33, 0, 1966080, 35, 0, 1966081, 27, 0, 1966108, 44, 0, 1966109, 34, 0, 1966110, 33, 0, 2097151, 33, 0, 2031616, 35, 0, 2031617, 27, 0, 2031630, 26, 0, 2031631, 26, 0, 2031644, 44, 0, 2031645, 34, 0, 2031646, 33, 0, 2162687, 33, 0, 2097152, 35, 0, 2097153, 27, 0, 2097166, 37, 0, 2097167, 39, 0, 2097180, 44, 0, 2097181, 34, 0, 2097182, 33, 0, 2228223, 33, 0, 2162688, 35, 0, 2162689, 27, 0, 2162716, 44, 0, 2162717, 34, 0, 2162718, 33, 0, 2293759, 33, 0, 2228224, 35, 0, 2228225, 26, 0, 2228226, 26, 0, 2228227, 26, 0, 2228228, 26, 0, 2228229, 26, 0, 2228230, 26, 0, 2228231, 26, 0, 2228232, 26, 0, 2228233, 26, 0, 2228234, 26, 0, 2228243, 26, 0, 2228244, 26, 0, 2228245, 26, 0, 2228246, 26, 0, 2228247, 26, 0, 2228248, 26, 0, 2228249, 26, 0, 2228250, 26, 0, 2228251, 26, 0, 2228252, 26, 0, 2228253, 34, 0, 2228254, 33, 0, 2359295, 33, 0, 2293760, 33, 0, 2293761, 29, 0, 2293762, 29, 0, 2293763, 29, 0, 2293764, 29, 0, 2293765, 29, 0, 2293766, 29, 0, 2293767, 29, 0, 2293768, 29, 0, 2293769, 29, 0, 2293770, 30, 0, 2293771, 26, 0, 2293772, 26, 0, 2293773, 26, 0, 2293774, 26, 0, 2293775, 26, 0, 2293776, 26, 0, 2293777, 26, 0, 2293778, 26, 0, 2293779, 28, 0, 2293780, 29, 0, 2293781, 29, 0, 2293782, 29, 0, 2293783, 29, 0, 2293784, 29, 0, 2293785, 29, 0, 2293786, 29, 0, 2293787, 29, 0, 2293788, 29, 0, 2293789, 33, 0, 2293790, 33, 0, 2424831, 33, 0, 2359296, 33, 0, 2359297, 33, 0, 2359298, 33, 0, 2359299, 33, 0, 2359300, 33, 0, 2359301, 33, 0, 2359302, 33, 0, 2359303, 33, 0, 2359304, 33, 0, 2359305, 33, 0, 2359306, 33, 0, 2359307, 29, 0, 2359308, 29, 0, 2359309, 29, 0, 2359310, 29, 0, 2359311, 29, 0, 2359312, 29, 0, 2359313, 29, 0, 2359314, 29, 0, 2359315, 33, 0, 2359316, 33, 0, 2359317, 33, 0, 2359318, 33, 0, 2359319, 33, 0, 2359320, 33, 0, 2359321, 33, 0, 2359322, 33, 0, 2359323, 33, 0, 2359324, 33, 0, 2359325, 33, 0, 2359326, 33, 0 )
 
-[node name="solids" type="TileMap" parent="." groups=[
-"Tiles",
-]]
+[node name="solids" type="TileMap" parent="."]
 editor/display_folded = true
 modulate = Color( 1, 1, 1, 0.403922 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 327694, 1, 196608, 327695, 1, 196610, 393217, 1, 196608, 393218, 1, 196609, 393219, 1, 196609, 393220, 1, 196609, 393221, 1, 196610, 393240, 1, 196608, 393241, 1, 196609, 393242, 1, 196609, 393243, 1, 196609, 393244, 1, 196610, 589833, 1, 196608, 589834, 1, 196610, 589843, 1, 196608, 589844, 1, 196610, 655361, 1, 196608, 655362, 1, 196609, 655363, 1, 196610, 655386, 1, 196608, 655387, 1, 196609, 655388, 1, 196610, 720924, 0, 0, 786438, 1, 196608, 786439, 1, 196610, 786454, 1, 196608, 786455, 1, 196610, 786459, 1, 0, 786460, 1, 2, 851969, 1, 0, 851970, 1, 1, 851971, 1, 2, 851995, 1, 65536, 851996, 1, 65538, 917505, 1, 65536, 917506, 1, 65537, 917507, 1, 65538, 917515, 1, 0, 917516, 1, 1, 917517, 1, 1, 917518, 1, 1, 917519, 1, 1, 917520, 1, 1, 917521, 1, 1, 917522, 1, 2, 917531, 1, 65536, 917532, 1, 65538, 983041, 1, 131072, 983042, 1, 131073, 983043, 1, 131074, 983051, 1, 65536, 983052, 1, 65537, 983053, 1, 65537, 983054, 1, 65537, 983055, 1, 65537, 983056, 1, 65537, 983057, 1, 65537, 983058, 1, 65538, 983067, 1, 131072, 983068, 1, 131074, 1048587, 1, 131072, 1048588, 1, 131073, 1048589, 1, 131073, 1048590, 1, 131073, 1048591, 1, 131073, 1048592, 1, 131073, 1048593, 1, 131073, 1048594, 1, 131074 )
 
@@ -305,30 +304,22 @@ margin_right = 1894.95
 margin_bottom = 1138.46
 texture = ExtResource( 4 )
 
-[node name="AlterDimension" type="TileMap" parent="." groups=[
-"Tiles",
-]]
-editor/display_folded = true
+[node name="AlterDimension" type="TileMap" parent="."]
 modulate = Color( 1, 1, 1, 0.317647 )
 tile_set = SubResource( 17 )
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 262166, 1, 0, 262167, 1, 0, 327685, 4, 0, 327686, 0, 196608, 327687, 0, 196609, 327688, 0, 196609, 327689, 0, 196609, 327690, 0, 196610, 327699, 0, 196608, 327700, 0, 196609, 327701, 0, 196609, 327702, 0, 196609, 327703, 0, 196610, 327704, 2, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393235, 3, 0, 393236, 3, 0, 393237, 3, 0, 393238, 3, 0, 393239, 3, 0, 393242, 1, 0, 393243, 1, 0, 393244, 1, 0, 458753, 1, 0, 458754, 1, 0, 458777, 4, 0, 458778, 0, 0, 458779, 0, 1, 458780, 0, 2, 524289, 0, 196608, 524290, 0, 196610, 524291, 2, 0, 524302, 1, 0, 524303, 1, 0, 524313, 4, 0, 524314, 0, 65536, 524315, 0, 65537, 524316, 0, 65538, 589825, 3, 0, 589826, 3, 0, 589838, 0, 196608, 589839, 0, 196610, 589849, 4, 0, 589850, 0, 131072, 589851, 0, 131073, 589852, 0, 131074, 655374, 3, 0, 655375, 3, 0, 655386, 3, 0, 655387, 3, 0, 655388, 3, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720920, 1, 0, 720921, 1, 0, 786434, 4, 0, 786435, 0, 196608, 786436, 0, 196609, 786437, 0, 196610, 786455, 4, 0, 786456, 0, 196608, 786457, 0, 196610, 786458, 2, 0, 851971, 3, 0, 851972, 3, 0, 851973, 3, 0, 851992, 3, 0, 851993, 3, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="AlterDimension"]
-visible = false
-show_behind_parent = true
-margin_right = 1920.0
-margin_bottom = 1080.0
-texture = ExtResource( 6 )
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )
+autoplay = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+[node name="upgrade_area" parent="." instance=ExtResource( 7 )]
 
-[node name="upgrade_area" parent="." instance=ExtResource( 8 )]
-
-[node name="player" parent="." instance=ExtResource( 9 )]
+[node name="player" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 960, 748.544 )
 
@@ -343,60 +334,74 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="screen_shake" parent="player/camera" instance=ExtResource( 10 )]
+[node name="screen_shake" parent="player/camera" instance=ExtResource( 9 )]
 
-[node name="Spawner" parent="." instance=ExtResource( 11 )]
+[node name="Spawner" parent="." instance=ExtResource( 10 )]
 position = Vector2( 957.854, 174.374 )
 minWaitTime = 15.0
 maxWaitTime = 30.0
 
-[node name="Spawner2" parent="." instance=ExtResource( 11 )]
+[node name="Spawner2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1740.58, 150.404 )
+spawnScene = ExtResource( 11 )
+minWaitTime = 15.0
+maxWaitTime = 30.0
+
+[node name="Spawner3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1650.34, 967.702 )
 spawnScene = ExtResource( 12 )
 minWaitTime = 15.0
 maxWaitTime = 30.0
 
-[node name="Spawner3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1650.34, 967.702 )
-spawnScene = ExtResource( 13 )
-minWaitTime = 15.0
-maxWaitTime = 30.0
-
-[node name="Spawner4" parent="." instance=ExtResource( 11 )]
+[node name="Spawner4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 334.17, 950.174 )
-spawnScene = ExtResource( 13 )
+spawnScene = ExtResource( 12 )
 minWaitTime = 15.0
 maxWaitTime = 30.0
 
-[node name="Spawner5" parent="." instance=ExtResource( 11 )]
+[node name="Spawner5" parent="." instance=ExtResource( 10 )]
 position = Vector2( 960.342, 469.168 )
+spawnScene = ExtResource( 13 )
+minWaitTime = 30.0
+maxWaitTime = 30.0
+
+[node name="Spawner6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 969.595, 226.738 )
 spawnScene = ExtResource( 14 )
 minWaitTime = 30.0
 maxWaitTime = 30.0
 
-[node name="Spawner6" parent="." instance=ExtResource( 11 )]
-position = Vector2( 969.595, 226.738 )
-spawnScene = ExtResource( 15 )
-minWaitTime = 30.0
-maxWaitTime = 30.0
-
 [node name="DesertLayer" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
-[node name="PL07" type="ParallaxLayer" parent="DesertLayer"]
+[node name="PL01 " type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL07"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 16 )
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL01 "]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 15 )
+
+[node name="PL02" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
+[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL02"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 16 )
+
 [node name="PL03" type="ParallaxLayer" parent="DesertLayer"]
+editor/display_folded = true
 motion_scale = Vector2( 0.7, 0.7 )
 motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
@@ -409,19 +414,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 17 )
 
-[node name="PL02" type="ParallaxLayer" parent="DesertLayer"]
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 1, 1 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="TextureRect" type="TextureRect" parent="DesertLayer/PL02"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 18 )
-
 [node name="PL04" type="ParallaxLayer" parent="DesertLayer"]
 editor/display_folded = true
 __meta__ = {
@@ -432,7 +424,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="DesertLayer/PL04"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 19 )
+texture = ExtResource( 18 )
 
 [node name="PL05" type="ParallaxLayer" parent="DesertLayer"]
 editor/display_folded = true
@@ -444,7 +436,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="DesertLayer/PL05"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 20 )
+texture = ExtResource( 19 )
 
 [node name="PL06" type="ParallaxLayer" parent="DesertLayer"]
 editor/display_folded = true
@@ -456,8 +448,14 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="DesertLayer/PL06"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 21 )
+texture = ExtResource( 20 )
 __meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PL07" type="ParallaxLayer" parent="DesertLayer"]
+__meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -466,105 +464,124 @@ editor/display_folded = true
 
 [node name="PB01" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
-visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB01"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 22 )
+texture = ExtResource( 21 )
 
 [node name="PB02" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
-visible = false
-motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB02"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 23 )
+texture = ExtResource( 22 )
 
 [node name="PB03" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
-visible = false
-motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB03"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 24 )
+texture = ExtResource( 23 )
 
 [node name="PB04" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
-visible = false
-motion_scale = Vector2( 0.9, 0.9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB04"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 25 )
+texture = ExtResource( 24 )
 
 [node name="PB05" type="ParallaxLayer" parent="CrystalLayer"]
 editor/display_folded = true
-visible = false
-motion_scale = Vector2( 0.95, 0.95 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB05"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 25 )
+
+[node name="PB06" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB06"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 26 )
 
-[node name="Points" parent="." instance=ExtResource( 27 )]
+[node name="PB07" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="CrystalLayer/PB07"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 27 )
+
+[node name="Points" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1283.27, 874.722 )
 
-[node name="Points4" parent="." instance=ExtResource( 27 )]
+[node name="Points4" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1282.89, 962.174 )
 
-[node name="Points5" parent="." instance=ExtResource( 27 )]
+[node name="Points5" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1515.32, 875.322 )
 
-[node name="Points12" parent="." instance=ExtResource( 27 )]
+[node name="Points12" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1449.41, 889.538 )
 
-[node name="Points13" parent="." instance=ExtResource( 27 )]
+[node name="Points13" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1371.86, 967.079 )
 
-[node name="Points14" parent="." instance=ExtResource( 27 )]
+[node name="Points14" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1373.16, 884.369 )
 
-[node name="Points7" parent="." instance=ExtResource( 27 )]
+[node name="Points7" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1588.98, 884.369 )
 
-[node name="Points10" parent="." instance=ExtResource( 27 )]
+[node name="Points10" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1591.56, 961.91 )
 
-[node name="Points11" parent="." instance=ExtResource( 27 )]
+[node name="Points11" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1442.94, 970.956 )
 
-[node name="Points2" parent="." instance=ExtResource( 27 )]
+[node name="Points2" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1523.2, 958.611 )
 
-[node name="UI" parent="." instance=ExtResource( 28 )]
-
+[node name="UI" parent="." instance=ExtResource( 29 )]
 [connection signal="body_entered" from="upgrade_area" to="UI" method="_on_upgrade_area_body_entered"]

@@ -3,6 +3,9 @@ extends Area2D
 var damage = 1
 var velocity
 
+func _ready():
+	$anim.play("anim")
+
 func _process(delta):
 	position += velocity * delta
 	pass

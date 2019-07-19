@@ -4,7 +4,7 @@ var player
 var options = [0,0,0]
 
 func _ready():
-	$PowerupContainer/Powerup01Button.grab_focus()
+	$PowerupContainer/Powerup02Button.grab_focus()
 	while options[0] == options[1] or options[1] == options[2] or options[0] == options[2]:
 		options = [randi() % 10,randi() % 10, randi() % 10]
 	
@@ -85,6 +85,7 @@ func power_up(number):
 		8:
 			#move faster
 			player.move_speed *= 1.2
+			player.get_node("anim_player").playback_speed *= 1.2
 		9:
 			player.second_jump += 1
 
