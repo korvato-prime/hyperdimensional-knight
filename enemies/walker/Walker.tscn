@@ -74,4 +74,28 @@ scale = Vector2( 1.1, 1.2 )
 
 [node name="health_system" parent="." instance=ExtResource( 5 )]
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -10 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -10, 0 )
+collision_mask = 2
+collide_with_areas = true
+
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

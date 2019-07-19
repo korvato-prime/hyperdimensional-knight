@@ -54,6 +54,42 @@ func _apply_gravity(delta):
 		velocity.y = velocity_fall_max
 	
 	velocity.y += gravity * delta
+	
+	if $RayCast2D.is_colliding():
+		var col = $RayCast2D.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+		
+	if $RayCast2D2.is_colliding():
+		var col = $RayCast2D2.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+		
+	if $RayCast2D3.is_colliding():
+		var col = $RayCast2D3.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+	
+	if $RayCast2D4.is_colliding():
+		var col = $RayCast2D4.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
 
 func _every_step():
 	if action_coldown_timer > 0:
@@ -69,6 +105,7 @@ func _every_step():
 	is_grounded = _check_is_grounded()
 	
 	velocity = move_and_slide_with_snap(velocity, UP)
+		
 
 func attacking():
 	

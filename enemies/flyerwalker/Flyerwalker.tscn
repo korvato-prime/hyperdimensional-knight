@@ -9,8 +9,8 @@
 extents = Vector2( 32, 32 )
 
 [node name="Flyerwalker" type="KinematicBody2D" groups=[
-"flyer",
 "enemy",
+"flyer",
 ]]
 collision_mask = 3
 script = ExtResource( 1 )

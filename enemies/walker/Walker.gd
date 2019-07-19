@@ -28,6 +28,43 @@ onready var health_system = $health_system
 
 var is_grounded
 
+func _process(delta):
+	if $RayCast2D.is_colliding():
+		var col = $RayCast2D.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+		
+	if $RayCast2D2.is_colliding():
+		var col = $RayCast2D2.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+		
+	if $RayCast2D3.is_colliding():
+		var col = $RayCast2D3.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+	
+	if $RayCast2D4.is_colliding():
+		var col = $RayCast2D4.get_collider()
+		print(col)
+		# var n = F_LEG.get_collider()
+		if col.is_in_group("Tiles"):
+    		print("it's in the group!")
+
+		self.queue_free()
+
 func _ready():
 	direction = get_random_direction()
 	enable_raycast(direction)
@@ -53,6 +90,7 @@ func _apply_gravity(delta):
 		velocity.y = velocity_fall_max
 	
 	velocity.y += gravity * delta
+	
 
 func _every_step():
 	is_grounded = _check_is_grounded()

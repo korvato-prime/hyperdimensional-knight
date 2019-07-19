@@ -41,17 +41,22 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.prefly:
-			parent.get_node("anim_enemy").play("prefly")
+			#parent.get_node("anim_enemy").play("prefly")
+			pass
 		states.fly:
-			parent.get_node("anim_enemy").play("fly")
+			#parent.get_node("anim_enemy").play("fly")
+			pass
 		states.walk:
-			parent.get_node("anim_enemy").play("walk")
+			#parent.get_node("anim_enemy").play("walk")
+			pass
 		states.attack:
-			parent.get_node("anim_enemy").play("attack")
+			#parent.get_node("anim_enemy").play("attack")
+			pass
 		states.hitted:
-			parent.get_node("anim_enemy").play("hitted")
+			#parent.get_node("anim_enemy").play("hitted")
+			pass
 		states.dead:
-			parent.get_node("anim_enemy").play("dead")
+			pass
 
 func _exit_state(old_state, new_state):
 	pass

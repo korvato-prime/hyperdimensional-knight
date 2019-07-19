@@ -82,7 +82,7 @@ func _enter_state(new_state, old_state):
 			#parent.get_node("anim_enemy").play("run")
 			pass
 		states.jump:
-			parent.get_node("anim_enemy").play("jump")
+			#parent.get_node("anim_enemy").play("jump")
 			pass
 		states.fall:
 			#parent.get_node("anim_enemy").play("fall")
