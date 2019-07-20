@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://enemies/walker/Walker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/icon2.png" type="Texture" id=3]
+[ext_resource path="res://textures/circle.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Moving"
@@ -20,8 +22,35 @@ tracks/0/keys = {
 "values": [ Vector2( 140.404, 114.675 ), Vector2( 119.748, 116.264 ), Vector2( 119.748, 94.8143 ), Vector2( 132.856, 96.0059 ), Vector2( 124.912, 100.375 ) ]
 }
 
-[node name="Spawner" type="Position2D"]
-position = Vector2( 124.912, 100.375 )
+[sub_resource type="Animation" id=2]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("effect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("effect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Spawner" type="Node2D"]
 script = ExtResource( 1 )
 spawnScene = ExtResource( 2 )
 minWaitTime = 5.0
@@ -29,8 +58,18 @@ maxWaitTime = 8.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="."]
 anims/Moving = SubResource( 1 )
+anims/spawn = SubResource( 2 )
+
+[node name="reference" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
+texture = ExtResource( 3 )
+
+[node name="effect" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="anim" to="." method="_on_AnimationPlayer_animation_finished"]
