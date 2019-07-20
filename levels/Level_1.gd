@@ -4,6 +4,7 @@ var score = 0
 var highscore = Globals.highscore
 var can_upgrade = 0
 var enemy_health_multiplier = 1
+var points_multiplier = 1
 
 func _ready():
 	randomize()
@@ -68,6 +69,7 @@ func actualize_score(points):
 		if i == score:
 			can_upgrade += 1
 			enemy_health_multiplier = enemy_health_multiplier + 1
+			points_multiplier = points_multiplier + 1
 	
 	if can_upgrade > 0:
 		$upgrade_area.visible = true

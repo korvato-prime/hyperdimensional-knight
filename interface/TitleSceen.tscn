@@ -105,6 +105,7 @@ custom_colors/font_color = Color( 0.819608, 0.729412, 0.14902, 1 )
 text = "knight"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 161.605
 margin_top = 601.814
 margin_right = 974.605

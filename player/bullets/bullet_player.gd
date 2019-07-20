@@ -21,8 +21,10 @@ func _on_bullet_player_body_entered(body):
 			Globals.screen_shake(0.2, 15, 8 * damage, 1)
 			
 			if !health_system.get_is_alive():
+				var level = get_parent()
 				var points = load("res://objects/Points.tscn").instance()
+				points.multiplier = level.points_multiplier
 				points.position = body.position
-				get_parent().add_child(points)
+				level.add_child(points)
 			
 			call_deferred("free")
