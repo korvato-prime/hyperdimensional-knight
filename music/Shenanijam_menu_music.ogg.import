@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Shenanijam_menu_music.ogg-60d8e6f8c2ab012a7b8cd253849d71d8.oggstr"
+
+[deps]
+
+source_file="res://music/Shenanijam_menu_music.ogg"
+dest_files=[ "res://.import/Shenanijam_menu_music.ogg-60d8e6f8c2ab012a7b8cd253849d71d8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

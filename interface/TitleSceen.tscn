@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://themes/Retro.tres" type="Theme" id=1]
 [ext_resource path="res://interface/TitleSceen.gd" type="Script" id=2]
 [ext_resource path="res://textures/title.jpg" type="Texture" id=3]
 [ext_resource path="res://fonts/Notable-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://interface/VolumeSlider.gd" type="Script" id=5]
+[ext_resource path="res://music/Shenanijam_menu_music.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -196,6 +197,8 @@ margin_bottom = 141.0
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 
 [node name="CreditsText" type="RichTextLabel" parent="."]
 editor/display_folded = true
