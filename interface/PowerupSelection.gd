@@ -7,19 +7,20 @@ func _ready():
 	$PowerupContainer/Powerup02Button.grab_focus()
 	while options[0] == options[1] or options[1] == options[2] or options[0] == options[2]:
 		options = [randi() % 10,randi() % 10, randi() % 10]
-	
-func _on_Powerup01Button_focus_entered():
+
+func _on_Powerup01Button_mouse_entered():
 	#Change name label
 	#Change description
 	text_to_show(options[0])
 	pass # Replace with function body.
 
-func _on_Powerup02Button_focus_entered():
+func _on_Powerup02Button_mouse_entered():
 	text_to_show(options[1])
 	pass # Replace with function body.
 
-func _on_Powerup03Button_focus_entered():
+func _on_Powerup03Button_mouse_entered():
 	text_to_show(options[2])
+	pass # Replace with function body.
 
 func _on_Powerup01Button_pressed():
 	power_up(options[0])

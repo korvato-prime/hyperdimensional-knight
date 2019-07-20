@@ -7,6 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+use_filter = true
 font_data = ExtResource( 4 )
 
 [node name="PowerupSelection" type="Control"]
@@ -21,10 +22,15 @@ script = ExtResource( 2 )
 modulate = Color( 0, 0, 0, 0.392157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 9.44592
+margin_top = -12.8706
+margin_right = 9.44592
+margin_bottom = -12.8706
 color = Color( 0.458824, 0.0941176, 0.160784, 1 )
 
 [node name="NamePanel" type="Panel" parent="."]
 pause_mode = 2
+editor/display_folded = true
 margin_left = 521.0
 margin_top = 76.0
 margin_right = 1397.0
@@ -55,10 +61,10 @@ icon = ExtResource( 3 )
 
 [node name="1" type="Label" parent="PowerupContainer/Powerup01Button"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 11.0
-margin_top = -15.0
-margin_right = 74.0
-margin_bottom = 70.0
+margin_left = 8.0
+margin_top = -14.0
+margin_right = 79.0
+margin_bottom = 71.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1"
@@ -113,9 +119,9 @@ margin_bottom = 74.1494
 rect_scale = Vector2( 4, 4 )
 text = "Current selected powerup does this.
 "
-[connection signal="focus_entered" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_focus_entered"]
+[connection signal="mouse_entered" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_mouse_entered"]
 [connection signal="pressed" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_pressed"]
-[connection signal="focus_entered" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_focus_entered"]
+[connection signal="mouse_entered" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_mouse_entered"]
 [connection signal="pressed" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_pressed"]
-[connection signal="focus_entered" from="PowerupContainer/Powerup03Button" to="." method="_on_Powerup03Button_focus_entered"]
+[connection signal="mouse_entered" from="PowerupContainer/Powerup03Button" to="." method="_on_Powerup03Button_mouse_entered"]
 [connection signal="pressed" from="PowerupContainer/Powerup03Button" to="." method="_on_Powerup03Button_pressed"]

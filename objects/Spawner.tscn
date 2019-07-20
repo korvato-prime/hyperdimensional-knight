@@ -33,5 +33,4 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Moving = SubResource( 1 )
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

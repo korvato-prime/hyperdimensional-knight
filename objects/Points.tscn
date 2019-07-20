@@ -22,5 +22,4 @@ shape = SubResource( 1 )
 modulate = Color( 0.980392, 1, 0, 1 )
 scale = Vector2( 0.5, 0.7 )
 texture = ExtResource( 2 )
-
 [connection signal="body_entered" from="." to="." method="_on_Points_body_entered"]

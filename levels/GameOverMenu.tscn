@@ -132,6 +132,5 @@ text = "menu"
 
 [node name="AnimGameOver" type="AnimationPlayer" parent="."]
 anims/game_over = SubResource( 4 )
-
 [connection signal="pressed" from="menu/options/Retry" to="." method="_on_Retry_pressed"]
 [connection signal="pressed" from="menu/options/Menu" to="." method="_on_Menu_pressed"]
