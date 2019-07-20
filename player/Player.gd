@@ -41,7 +41,7 @@ var gun_coldown_timer = 0
 var gun_damage = 1					##############
 var bullet_speed = 850				##############
 var bullet_trajectory_randomness = 0.02 # percent
-var ammo = 5
+var ammo = 10
 var ammo_max = 10
 
 onready var raycasts_down = $raycasts_down
@@ -86,7 +86,9 @@ func _every_step():
 
 func punching():
 	if punch_coldown_timer == 0:
-		stamina -= 30
+		stamina -= 20
+		if stamina < 0:
+			stamina = 0
 		get_node("anim_attack").play("punch")
 		punch_coldown_time = punch_coldown_timer
 		emit_signal("stamina_reduce")
