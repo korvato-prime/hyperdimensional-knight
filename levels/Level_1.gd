@@ -3,6 +3,7 @@ extends Node2D
 var score = 0
 var highscore = Globals.highscore
 var can_upgrade = 0
+var enemy_health_multiplier = 1
 
 func _ready():
 	randomize()
@@ -13,7 +14,7 @@ func _ready():
 	$player.connect("dimension_swap", self, "_on_dimension_swap")
 
 func _process(delta):
-	if $EnemyContainer.get_child_count() < 2:
+	if $EnemyContainer.get_child_count() < 3:
 		randomize()
 		var to_generate = (randi() % 100) > 80
 		if to_generate:
@@ -66,6 +67,7 @@ func actualize_score(points):
 	for i in [10, 25, 50, 100, 200, 400, 600, 800, 1000]:
 		if i == score:
 			can_upgrade += 1
+			enemy_health_multiplier = enemy_health_multiplier + 1
 	
 	if can_upgrade > 0:
 		$upgrade_area.visible = true

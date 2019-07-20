@@ -24,6 +24,8 @@ func _on_Timer_timeout():
 func spawn():
 	var spawnInstance = spawnScene.instance()
 	if spawnInstance.name != "HealthPickup"  && spawnInstance.name != "BulletPickup":
+		var enemy_health_multiplier = get_parent().enemy_health_multiplier
+		spawnInstance.health_multiplier = enemy_health_multiplier 
 		get_parent().get_node("EnemyContainer").add_child(spawnInstance)
 	else:
 		get_parent().add_child(spawnInstance)

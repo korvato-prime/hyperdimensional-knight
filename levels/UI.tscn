@@ -140,6 +140,7 @@ text = "0"
 align = 1
 
 [node name="HP" type="Control" parent="."]
+editor/display_folded = true
 margin_left = 728.0
 margin_top = 24.636
 margin_right = 768.0

@@ -17,9 +17,12 @@ export var current_bullet = bullet_type.TRIPLE
 onready var health_system = $health_system
 
 var is_grounded
+var health_multiplier
 
 func _ready():
-	health_system._set_health_variables(2,20)
+	# enemy health
+	var health = 2 * health_multiplier
+	health_system._set_health_variables(health,20)
 
 func _every_step():
 	if action_coldown_timer < 0 && player_object != null:

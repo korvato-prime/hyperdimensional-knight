@@ -27,6 +27,23 @@ onready var raycasts_down = $raycasts_down
 onready var health_system = $health_system
 
 var is_grounded
+var health_multiplier
+func _ready():
+	direction = get_random_direction()
+	enable_raycast(direction)
+	
+	for raycast in raycasts_down.get_children():
+		raycast.add_exception(self)
+	
+	if rand_range(0,1) > 0.6:
+		can_fall = true
+		get_node("visuals").modulate = Color(0,255,0)
+	else:
+		get_node("visuals").modulate = Color(255,0,0)
+	
+	# enemy health
+	var health = 1 * health_multiplier
+	health_system._set_health_variables(health, 0)
 
 func _process(delta):
 	if $RayCast2D.is_colliding():
@@ -64,22 +81,6 @@ func _process(delta):
     		print("it's in the group!")
 
 		self.queue_free()
-
-func _ready():
-	direction = get_random_direction()
-	enable_raycast(direction)
-	
-	for raycast in raycasts_down.get_children():
-		raycast.add_exception(self)
-	
-	if rand_range(0,1) > 0.6:
-		can_fall = true
-		get_node("visuals").modulate = Color(0,255,0)
-	else:
-		get_node("visuals").modulate = Color(255,0,0)
-	
-	# enemy health
-	health_system._set_health_variables(1, 0)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:

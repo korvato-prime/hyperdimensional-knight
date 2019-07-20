@@ -28,6 +28,8 @@ signal hit
 onready var raycasts_down = $raycasts_down
 onready var health_system = $health_system
 
+var health_multiplier
+
 func _ready():
 	
 	if (is_facing_right):
@@ -41,7 +43,9 @@ func _ready():
 	for raycast in raycasts_down.get_children():
 		raycast.add_exception(self)
 	
-	health_system._set_health_variables(3, 0)
+	# enemy health
+	var health = 2 * health_multiplier
+	health_system._set_health_variables(health, 0)
 
 func _every_step(delta):
 	if position.x < -10 || position.x > 1930 || position.y < -10 || position.y > 1090:

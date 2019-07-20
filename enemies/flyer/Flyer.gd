@@ -9,9 +9,12 @@ var is_facing_right = false
 var fly_speed = 5
 var amplitude = 10
 var theta = 0
+var health_multiplier
 
 func _ready():
-	health_system._set_health_variables(3, 0)
+	# enemy health
+	var health = 2 * health_multiplier
+	health_system._set_health_variables(health, 0)
 
 func _every_step():
 	if position.x < -10 || position.x > 1930 || position.y < -10 || position.y > 1090:

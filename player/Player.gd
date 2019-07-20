@@ -34,6 +34,7 @@ var punch_coldown_timer = 0
 var punch_damage = 2				##############
 var can_punch = true
 
+var points_obj = load("res://objects/Points.tscn")
 var bullet_obj = load("res://player/bullets/bullet_player.tscn")
 var bullets_per_shoot = 1			##############
 var gun_coldown_time = 10			##############
@@ -171,6 +172,6 @@ func apply_punch_damage(enemy):
 		Globals.screen_shake(0.2, 15, 16 * punch_damage, 1)
 		
 		if !health_system.get_is_alive():
-			var points = load("res://objects/Points.tscn").instance()
+			var points = points_obj.instance()
 			points.position = enemy.position
 			get_parent().add_child(points)

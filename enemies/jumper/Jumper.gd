@@ -31,6 +31,7 @@ onready var raycasts_down = $raycasts_down
 onready var health_system = $health_system
 
 var is_grounded
+var health_multiplier
 
 func _ready():
 	
@@ -43,7 +44,8 @@ func _ready():
 		raycast.add_exception(self)
 	
 	# enemy health
-	health_system._set_health_variables(1)
+	var health = 1 * health_multiplier
+	health_system._set_health_variables(health, 0)
 
 func _apply_gravity(delta):
 	if velocity.y >= 0:
