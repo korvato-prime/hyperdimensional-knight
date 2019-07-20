@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enemies/flyer/Flyer.gd" type="Script" id=1]
 [ext_resource path="res://enemies/flyer/Flyer_SM.gd" type="Script" id=2]
-[ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
+[ext_resource path="res://enemies/flyer/icon.png" type="Texture" id=3]
 [ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -33,4 +33,5 @@ shape = SubResource( 1 )
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 
 [node name="health_system" parent="." instance=ExtResource( 4 )]
+
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

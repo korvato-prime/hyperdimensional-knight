@@ -40,6 +40,21 @@ func _on_dimension_swap():
 			get_node("upgrade_area/Collision").position.y = 92
 		for item in get_tree().get_nodes_in_group("items"):
 			item.set_modulate(Color(0.1,0.1,0.1))
+
+		$AlterDimension/TextureRect.visible = true
+		$solids/TextureRect.visible = false
+		$CrystalLayer/PB01.visible = true
+		$CrystalLayer/PB02.visible = true
+		$CrystalLayer/PB03.visible = true
+		$CrystalLayer/PB04.visible = true
+		$CrystalLayer/PB05.visible = true
+		$DesertLayer/PL07.visible = false
+		$DesertLayer/PL02.visible = false
+		$DesertLayer/PL03.visible = false
+		$DesertLayer/PL04.visible = false
+		$DesertLayer/PL05.visible = false
+		$DesertLayer/PL06.visible = false
+
 	else:
 		$solids.modulate.a = 0.8
 		$AlterDimension.modulate.a = 0.25
@@ -59,6 +74,20 @@ func _on_dimension_swap():
 				item.touched()
 				
 			item.set_modulate(Color(1,1,1))
+		
+		$AlterDimension/TextureRect.visible = false
+		$solids/TextureRect.visible = true
+		$CrystalLayer/PB01.visible = false
+		$CrystalLayer/PB02.visible = false
+		$CrystalLayer/PB03.visible = false
+		$CrystalLayer/PB04.visible = false
+		$CrystalLayer/PB05.visible = false
+		$DesertLayer/PL07.visible = true
+		$DesertLayer/PL02.visible = true
+		$DesertLayer/PL03.visible = true
+		$DesertLayer/PL04.visible = true
+		$DesertLayer/PL05.visible = true
+		$DesertLayer/PL06.visible = true
 	
 	
 func actualize_score(points):

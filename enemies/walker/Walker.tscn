@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enemies/walker/Walker.gd" type="Script" id=1]
 [ext_resource path="res://enemies/walker/Walker_SM.gd" type="Script" id=2]
-[ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
+[ext_resource path="res://textures/walker/47887C03-A77F-4DC4-8B38-E5857621A97E.png" type="Texture" id=3]
 [ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
 

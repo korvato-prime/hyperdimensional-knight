@@ -2,11 +2,12 @@
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Player_SM.gd" type="Script" id=2]
-[ext_resource path="res://textures/player_melee.png" type="Texture" id=3]
-[ext_resource path="res://textures/player_spike2.png" type="Texture" id=4]
-[ext_resource path="res://textures/player_body.png" type="Texture" id=5]
-[ext_resource path="res://textures/player_head.png" type="Texture" id=6]
+[ext_resource path="res://textures/player1/player_melee.png" type="Texture" id=3]
+[ext_resource path="res://textures/player1/player_spike2.png" type="Texture" id=4]
+[ext_resource path="res://textures/player1/player_body.png" type="Texture" id=5]
+[ext_resource path="res://textures/player1/player_head.png" type="Texture" id=6]
 [ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 32.0

@@ -3,11 +3,12 @@
 [ext_resource path="res://levels/UI.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Notable-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://interface/GameOverMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://textures/bar_back.png" type="Texture" id=4]
-[ext_resource path="res://textures/bar_green.png" type="Texture" id=5]
-[ext_resource path="res://textures/bar_outline.png" type="Texture" id=6]
-[ext_resource path="res://textures/bar_red.png" type="Texture" id=7]
-[ext_resource path="res://textures/bar_cian.png" type="Texture" id=8]
+[ext_resource path="res://textures/ui/bar_back.png" type="Texture" id=4]
+[ext_resource path="res://textures/ui/bar_green.png" type="Texture" id=5]
+[ext_resource path="res://textures/ui/bar_outline.png" type="Texture" id=6]
+[ext_resource path="res://textures/ui/bar_red.png" type="Texture" id=7]
+[ext_resource path="res://textures/ui/bar_cian.png" type="Texture" id=8]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 132

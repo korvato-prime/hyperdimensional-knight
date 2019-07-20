@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/87B1B981-2AF2-4461-A7F1-2B6B8DC99538.png-6b932214ade1a095b8ba5d05c72b7371.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/flyer/87B1B981-2AF2-4461-A7F1-2B6B8DC99538.png"
+dest_files=[ "res://.import/87B1B981-2AF2-4461-A7F1-2B6B8DC99538.png-6b932214ade1a095b8ba5d05c72b7371.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

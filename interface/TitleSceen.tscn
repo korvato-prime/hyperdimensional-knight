@@ -220,6 +220,7 @@ anims/start = SubResource( 2 )
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+
 [connection signal="toggled" from="OptionsContainer/HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="OptionsContainer/HBoxContainer2/OptionsBack" to="." method="_on_OptionsBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]

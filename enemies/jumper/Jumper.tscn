@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enemies/jumper/Jumper.gd" type="Script" id=1]
 [ext_resource path="res://enemies/jumper/Jumper_SM.gd" type="Script" id=2]
-[ext_resource path="res://enemies/blueprint/icon.png" type="Texture" id=3]
+[ext_resource path="res://textures/jumper/CA586692-0CB7-4EE8-95E2-68CD1A8CC92E.png" type="Texture" id=3]
 [ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
 
