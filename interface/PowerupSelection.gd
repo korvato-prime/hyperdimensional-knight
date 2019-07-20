@@ -8,19 +8,14 @@ func _ready():
 	while options[0] == options[1] or options[1] == options[2] or options[0] == options[2]:
 		options = [randi() % 10,randi() % 10, randi() % 10]
 
-func _on_Powerup01Button_mouse_entered():
-	#Change name label
-	#Change description
+func _on_Powerup01Button_focus_entered():
 	text_to_show(options[0])
-	pass # Replace with function body.
 
-func _on_Powerup02Button_mouse_entered():
+func _on_Powerup02Button_focus_entered():
 	text_to_show(options[1])
-	pass # Replace with function body.
 
-func _on_Powerup03Button_mouse_entered():
+func _on_Powerup03Button_focus_entered():
 	text_to_show(options[2])
-	pass # Replace with function body.
 
 func _on_Powerup01Button_pressed():
 	power_up(options[0])
@@ -46,15 +41,15 @@ func text_to_show(number):
 		3:
 			text = ["Full Ammo", "Get ready to shoot!"]
 		4:
-			text = ["+ Ammo Capacity", ""]
+			text = ["+ Ammo Capacity", "Increase the ammo you can carry"]
 		5:
-			text = ["+ Max HP", ""]
+			text = ["+ Max HP", "You resist more damage."]
 		6:
-			text = ["+2 HP", ""]
+			text = ["+2 HP", "Heal some damage."]
 		7:
-			text = ["+ Jump Height", ""]
+			text = ["+ Jump Height", "Jump higher than before."]
 		8:
-			text = ["+ Speed", ""]
+			text = ["+ Speed", "Let the adrenaline flow."]
 		9:
 			text = ["+ Jumps", "gain an extra jump to use midair"]
 	
