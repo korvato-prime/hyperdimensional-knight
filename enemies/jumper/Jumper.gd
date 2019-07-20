@@ -10,11 +10,11 @@ signal dimension_swap
 signal hit
 
 #saltos
-var gravity_fall = 6200
-var gravity_jump = 4800
+var gravity_fall = 4200
+var gravity_jump = 3000
 var gravity = gravity_fall
-var jump_velocity = -1625
-var velocity_fall_max = 2000
+var jump_velocity = -1200
+var velocity_fall_max = 1500
 const COYOTE_TIME = 4
 const PRE_JUMP_PRESSED = 4
 var coyote_time_timer = 0

@@ -1,13 +1,210 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://enemies/jumper/Jumper.gd" type="Script" id=1]
 [ext_resource path="res://enemies/jumper/Jumper_SM.gd" type="Script" id=2]
 [ext_resource path="res://textures/jumper/CA586692-0CB7-4EE8-95E2-68CD1A8CC92E.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
-[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/jumper/6F60EC58-E8AE-418F-A876-53DAE6C5E04C.png" type="Texture" id=4]
+[ext_resource path="res://textures/jumper/5BE820AE-3CCC-4716-9CDB-62CFFF72EC92.png" type="Texture" id=5]
+[ext_resource path="res://textures/jumper/09272C78-EA44-4988-BD24-3A9B9CAE2622.png" type="Texture" id=6]
+[ext_resource path="res://textures/jumper/4D5E98BE-DBFE-49A3-9BF6-A57237EB5B63.png" type="Texture" id=7]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 25 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/body:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/body/leg1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -22.5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/body/leg1/foot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 70.9322 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/body/leg2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 34.6233 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/body/leg2/foot:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -66.2968 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/body/leg2/foot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.3688 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/body/leg2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.51258 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/body/leg1/foot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.06588 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/body/leg1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.55604 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/body:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 0.8 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/body/leg2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 99.1, 127.177 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/body/leg2/foot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -79.5002, -51.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/body/leg1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -106.7, -78.6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/body/leg1/foot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 56.9, 84.9644 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/body:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
 
 [node name="Jumper" type="KinematicBody2D" groups=[
 "enemy",
@@ -15,26 +212,49 @@ extents = Vector2( 20, 25 )
 ]]
 collision_mask = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="state_machine"]
-bus = "sfx"
-
 [node name="visuals" type="Node2D" parent="."]
 
-[node name="enemy_sprite" type="Sprite" parent="visuals"]
+[node name="body" type="Sprite" parent="visuals"]
 texture = ExtResource( 3 )
 
+[node name="leg1" type="Sprite" parent="visuals/body"]
+show_behind_parent = true
+position = Vector2( 9.95344, 15.4927 )
+rotation = 0.0969713
+texture = ExtResource( 4 )
+offset = Vector2( 10, 20 )
+
+[node name="foot" type="Sprite" parent="visuals/body/leg1"]
+position = Vector2( 17.9185, 36.8739 )
+rotation = 0.0360564
+texture = ExtResource( 5 )
+offset = Vector2( -7, 18 )
+
+[node name="leg2" type="Sprite" parent="visuals/body"]
+show_behind_parent = true
+position = Vector2( -15.6348, 15.0866 )
+rotation = 0.061306
+texture = ExtResource( 6 )
+offset = Vector2( -7, 20 )
+
+[node name="foot" type="Sprite" parent="visuals/body/leg2"]
+position = Vector2( -8.6635, 35.9385 )
+rotation = 0.0937033
+texture = ExtResource( 7 )
+offset = Vector2( 11, 18 )
+
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
 
 [node name="raycast_left" type="RayCast2D" parent="raycasts_down"]
 position = Vector2( -20, 32 )
@@ -49,12 +269,16 @@ cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
+anims/fall = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 2 )
 
-[node name="Hazard" parent="." instance=ExtResource( 4 )]
+[node name="Hazard" parent="." instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 5 )
 scale = Vector2( 1.1, 1.2 )
 
-[node name="health_system" parent="." instance=ExtResource( 5 )]
+[node name="health_system" parent="." instance=ExtResource( 9 )]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
@@ -79,5 +303,4 @@ enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 2
 collide_with_areas = true
-
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]
