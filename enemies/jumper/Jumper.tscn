@@ -22,6 +22,9 @@ __meta__ = {
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="state_machine"]
+bus = "sfx"
+
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="enemy_sprite" type="Sprite" parent="visuals"]

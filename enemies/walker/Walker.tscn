@@ -22,14 +22,16 @@ resource_name = "idle"
 resource_name = "walk"
 
 [node name="Walker" type="KinematicBody2D" groups=[
-"enemy",
 "walker",
+"enemy",
 ]]
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="state_machine"]
 
 [node name="visuals" type="Node2D" parent="."]
 

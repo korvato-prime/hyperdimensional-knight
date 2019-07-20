@@ -2,6 +2,9 @@ extends "res://multiuse_resources/StateMachine.gd"
 
 var reverted = false
 
+var hit = load("res://sounds/Enemy/Enemy hit.wav")
+var death = load("res://sounds/Enemy/enemy death.wav")
+
 func _ready():
 	add_state("idle")
 	add_state("run")
@@ -98,3 +101,5 @@ func _exit_state(old_state, new_state):
 
 func _on_health_system_health_changed():
 	set_state(states.hitted)
+	$AudioStreamPlayer.stream = hit
+	$AudioStreamPlayer.play()
