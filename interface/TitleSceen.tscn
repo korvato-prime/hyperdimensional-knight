@@ -126,6 +126,7 @@ text = "Master"
 margin_top = 18.0
 margin_right = 813.0
 margin_bottom = 34.0
+ticks_on_borders = true
 script = ExtResource( 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsContainer"]

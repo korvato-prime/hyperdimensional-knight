@@ -6,7 +6,7 @@
 [ext_resource path="res://textures/backgrounds/IMG_8124.PNG" type="Texture" id=4]
 [ext_resource path="res://levels/tiles/image1.png" type="Texture" id=5]
 [ext_resource path="res://textures/backgrounds/B087A648-7066-49CC-AA86-11F4883DACB0.png" type="Texture" id=6]
-[ext_resource path="res://music/Shenanijam_sketch_1_.wav" type="AudioStream" id=7]
+[ext_resource path="res://music/Shenanijam_wowie_1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://levels/upgrade_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://multiuse_resources/ScreenShake.tscn" type="PackedScene" id=10]
@@ -536,4 +536,5 @@ texture = ExtResource( 27 )
 [node name="UI" parent="." instance=ExtResource( 28 )]
 
 [node name="EnemyContainer" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="upgrade_area" to="UI" method="_on_upgrade_area_body_entered"]
