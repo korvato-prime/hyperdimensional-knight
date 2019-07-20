@@ -13,7 +13,7 @@ radius = 32.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30, 31 )
+extents = Vector2( 24, 31 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "fall"
@@ -496,7 +496,6 @@ position = Vector2( 0, -39.5505 )
 texture = ExtResource( 6 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 
@@ -537,7 +536,6 @@ visible = false
 rect = Rect2( -50, -50, 100, 100 )
 
 [node name="health_system" parent="." instance=ExtResource( 7 )]
-
 [connection signal="area_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_area_entered"]
 [connection signal="body_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_body_entered"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="state_machine" method="_on_VisibilityNotifier2D_viewport_exited"]
