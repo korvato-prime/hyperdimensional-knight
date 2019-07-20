@@ -5,7 +5,9 @@ onready var player = get_parent().get_node("player")
 onready var HP_bar = get_node("HP/HP_bar")
 onready var HP_text = get_node("HP/HP_text")
 onready var Sta_bar = get_node("Stamina/Sta_bar")
+onready var Sta_text = get_node("Stamina/Sta_text")
 onready var Ammo_bar = get_node("Ammo/Ammo_bar")
+onready var Ammo_text = get_node("Ammo/Ammo_text")
 onready var bg_music = get_parent().get_node("bg_music")
 var volume = 0
 
@@ -17,12 +19,14 @@ func _process(delta):
 	elif HP < HP_bar.margin_right:
 		HP_bar.margin_right -= (HP_bar.margin_right - HP)/5
 	
+	Sta_text.text = "%s / %s" % [floor(player.stamina/30), floor(player.stamina_max/30)]
 	var Sta = 307 * player.stamina / player.stamina_max
 	if Sta > Sta_bar.margin_right:
 		Sta_bar.margin_right = (Sta + Sta_bar.margin_right)/2
 	elif Sta < Sta_bar.margin_right:
 		Sta_bar.margin_right -= (Sta_bar.margin_right - Sta)/5
 	
+	Ammo_text.text = "%s / %s" % [player.ammo, player.ammo_max]
 	var Ammo = 307 * player.ammo / player.ammo_max
 	if Ammo > Ammo_bar.margin_right:
 		Ammo_bar.margin_right = (Ammo + Ammo_bar.margin_right)/2

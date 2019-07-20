@@ -9,9 +9,8 @@
 [ext_resource path="res://textures/ui/bar_red.png" type="Texture" id=7]
 [ext_resource path="res://textures/ui/bar_cian.png" type="Texture" id=8]
 
-
 [sub_resource type="DynamicFont" id=1]
-size = 132
+size = 100
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -99,7 +98,7 @@ tracks/5/keys = {
 [sub_resource type="DynamicFont" id=4]
 size = 55
 outline_size = 1
-outline_color = Color( 0.0352941, 0.313726, 0.0313726, 1 )
+outline_color = Color( 0.0352941, 0.0352941, 0.0313726, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -108,16 +107,18 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="ProgressBar2" type="ProgressBar" parent="."]
+visible = false
 margin_left = 809.0
 margin_top = 96.1361
 margin_right = 1108.0
 margin_bottom = 110.136
 
 [node name="Score" type="Label" parent="."]
-margin_left = 460.0
-margin_top = 80.0
-margin_right = 1460.0
-margin_bottom = 252.0
+modulate = Color( 1, 1, 1, 0.862745 )
+margin_left = 507.0
+margin_top = 58.0
+margin_right = 1410.0
+margin_bottom = 189.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
@@ -127,6 +128,10 @@ anims/game_over = SubResource( 2 )
 anims/post_upgrade = SubResource( 3 )
 
 [node name="GameOver" parent="." instance=ExtResource( 3 )]
+margin_left = -3.70117
+margin_top = -953.149
+margin_right = 1916.3
+margin_bottom = -913.149
 
 [node name="post_upgrade" type="Label" parent="."]
 visible = false
@@ -142,11 +147,10 @@ align = 1
 
 [node name="HP" type="Control" parent="."]
 editor/display_folded = true
-margin_left = 728.0
-margin_top = 24.636
-margin_right = 768.0
-margin_bottom = 64.636
-rect_scale = Vector2( 1.5, 1.2 )
+margin_left = 805.327
+margin_top = 21.772
+margin_right = 845.327
+margin_bottom = 61.772
 __meta__ = {
 "_edit_group_": true
 }
@@ -180,10 +184,12 @@ text = "4"
 align = 1
 
 [node name="Stamina" type="Control" parent="."]
-margin_left = 368.0
-margin_top = 17.436
-margin_right = 408.0
-margin_bottom = 57.436
+editor/display_folded = true
+margin_left = 520.0
+margin_top = 10.0
+margin_right = 560.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.8, 0.8 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -208,11 +214,21 @@ margin_bottom = 80.8639
 texture = ExtResource( 6 )
 expand = true
 
+[node name="Sta_text" type="Label" parent="Stamina"]
+margin_top = -10.0
+margin_right = 307.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 4 )
+text = "4"
+align = 1
+
 [node name="Ammo" type="Control" parent="."]
-margin_left = 1248.0
-margin_top = 16.0
-margin_right = 1288.0
-margin_bottom = 56.0
+editor/display_folded = true
+margin_left = 1150.63
+margin_top = 10.0
+margin_right = 1190.63
+margin_bottom = 50.0
+rect_scale = Vector2( 0.8, 0.8 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -236,3 +252,11 @@ margin_right = 319.0
 margin_bottom = 80.8639
 texture = ExtResource( 6 )
 expand = true
+
+[node name="Ammo_text" type="Label" parent="Ammo"]
+margin_top = -10.0
+margin_right = 307.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 4 )
+text = "4"
+align = 1
