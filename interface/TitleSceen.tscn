@@ -20,7 +20,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1.1, 1.4, 1.5 ),
+"times": PoolRealArray( 1, 1.4, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 420, -200 ), Vector2( 420, 260 ), Vector2( 420, 210 ) ]
@@ -105,82 +105,125 @@ custom_colors/font_color = Color( 0.819608, 0.729412, 0.14902, 1 )
 text = "knight"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 597.792
-margin_top = 711.255
-margin_right = 681.792
-margin_bottom = 809.255
+margin_left = 161.605
+margin_top = 601.814
+margin_right = 974.605
+margin_bottom = 712.814
 rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="MasterLabel" type="Label" parent="OptionsContainer"]
-margin_right = 84.0
+margin_right = 813.0
 margin_bottom = 14.0
 text = "Master"
 
 [node name="HSlider" type="HSlider" parent="OptionsContainer"]
 margin_top = 18.0
-margin_right = 84.0
+margin_right = 813.0
 margin_bottom = 34.0
 script = ExtResource( 4 )
 
-[node name="FullscreenLabel" type="Label" parent="OptionsContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsContainer"]
+editor/display_folded = true
 margin_top = 38.0
-margin_right = 84.0
-margin_bottom = 52.0
+margin_right = 813.0
+margin_bottom = 80.0
+
+[node name="FullscreenLabel" type="Label" parent="OptionsContainer/HBoxContainer"]
+margin_top = 14.0
+margin_right = 70.0
+margin_bottom = 28.0
 text = "Fullscreen:"
 
-[node name="CheckBox" type="CheckButton" parent="OptionsContainer"]
-margin_top = 56.0
-margin_right = 84.0
-margin_bottom = 98.0
+[node name="CheckBox" type="CheckButton" parent="OptionsContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 158.0
+margin_bottom = 42.0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsContainer"]
+margin_top = 84.0
+margin_right = 813.0
+margin_bottom = 108.0
+
+[node name="OptionsBack" type="Button" parent="OptionsContainer/HBoxContainer2"]
+margin_right = 813.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 editor/display_folded = true
-margin_left = 532.092
-margin_top = 576.425
-margin_right = 813.092
-margin_bottom = 600.425
+margin_left = 1279.06
+margin_top = 540.088
+margin_right = 1442.06
+margin_bottom = 696.088
 rect_scale = Vector2( 3, 3 )
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 10
 alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
-margin_right = 90.0
-margin_bottom = 24.0
+margin_top = 15.0
+margin_right = 163.0
+margin_bottom = 39.0
 text = "New Game"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
-margin_left = 94.0
-margin_right = 165.0
-margin_bottom = 24.0
+margin_top = 49.0
+margin_right = 163.0
+margin_bottom = 73.0
 text = "Options"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
-margin_left = 169.0
-margin_right = 234.0
-margin_bottom = 24.0
+margin_top = 83.0
+margin_right = 163.0
+margin_bottom = 107.0
 text = "Credits"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
-margin_left = 238.0
-margin_right = 281.0
-margin_bottom = 24.0
+margin_top = 117.0
+margin_right = 163.0
+margin_bottom = 141.0
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CreditsText" type="RichTextLabel" parent="."]
-margin_left = 962.569
-margin_top = 687.197
-margin_right = 1083.57
-margin_bottom = 781.197
+margin_left = 68.0
+margin_top = 492.0
+margin_right = 513.0
+margin_bottom = 631.0
 rect_scale = Vector2( 4, 4 )
-text = "This game was made by a lot of cool guys and some excellent tools."
+text = "This game was made by a lot of cool guys and some excellent tools.
+
+Developers:					Artists:						Composer:
+	- Corvato						- jeiser						- jmm
+	- Manpacman				- clark.gaston
+	- Panch"
+
+[node name="Back" type="Button" parent="CreditsText"]
+margin_left = 303.0
+margin_top = 100.719
+margin_right = 426.0
+margin_bottom = 124.719
+text = "Back"
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/start = SubResource( 2 )
-[connection signal="toggled" from="OptionsContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+[connection signal="toggled" from="OptionsContainer/HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="OptionsContainer/HBoxContainer2/OptionsBack" to="." method="_on_OptionsBack_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="CreditsText/Back" to="." method="_on_Back_pressed"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

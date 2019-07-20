@@ -1,9 +1,7 @@
 extends Control
 
 func _ready():
-	$OptionsContainer.hide()
-	$CreditsText.hide()
-	get_node("anim").play("start")
+	show_title_screen()
 
 func _on_NewGameButton_pressed():
 	Transition.fade_out("res://levels/Level_1.tscn")
@@ -35,3 +33,17 @@ func _on_ExitButton_pressed():
 
 func _on_anim_animation_finished(anim_name):
 	$VBoxContainer/NewGameButton.grab_focus()
+
+func _on_OptionsBack_pressed():
+	show_title_screen()
+	pass # Replace with function body.
+
+func _on_Back_pressed():
+	show_title_screen()
+	pass # Replace with function body.
+
+func show_title_screen():
+	$TitleLabel2.rect_position = Vector2(420, -200)
+	$OptionsContainer.hide()
+	$CreditsText.hide()
+	get_node("anim").play("start")
