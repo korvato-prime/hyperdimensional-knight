@@ -37,9 +37,9 @@ func _ready():
 	
 	if rand_range(0,1) > 0.6:
 		can_fall = true
-		get_node("visuals").modulate = Color(0,255,0)
+		get_node("visuals").modulate = Color(0.5,1,0.5)
 	else:
-		get_node("visuals").modulate = Color(255,0,0)
+		get_node("visuals").set_modulate(Color(1,0.5,0.5))
 	
 	# enemy health
 	var health = 1 * health_multiplier
