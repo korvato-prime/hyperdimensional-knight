@@ -170,7 +170,7 @@ func apply_punch_damage(enemy):
 		health_system.take_damage(punch_damage)
 		Globals.screen_shake(0.2, 15, 16 * punch_damage, 1)
 		
-		if !health_system.is_alive:
+		if !health_system.get_is_alive():
 			var points = load("res://objects/Points.tscn").instance()
 			points.position = enemy.position
 			get_parent().add_child(points)
