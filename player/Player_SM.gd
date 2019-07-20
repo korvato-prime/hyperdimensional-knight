@@ -4,6 +4,12 @@ onready var h_s = get_parent().get_node("health_system")
 
 var reverted = false
 
+var punch_sound = load("res://sounds/Player/Player punch.wav")
+var shoot_sound = load("res://sounds/Player/Player shoot 1.wav")
+var jump_sound = load("res://sounds/Player/Jump 2.wav")
+var death_sound = load("res://sounds/Player/Death.wav")
+var swap = load("res://sounds/Environment/Switch Dimension.wav")
+
 func _ready():
 	add_state("idle")
 	add_state("run")
@@ -19,15 +25,22 @@ func _get_input():
 	
 	if Input.is_action_just_pressed("punch") and parent.stamina >= 16:
 			parent.punching()
-	
+			$AudioStreamPlayer.stream = punch_sound
+			$AudioStreamPlayer.play()
+
 	if Input.is_action_pressed("shoot") and parent.ammo > 0:
 		parent.shooting()
+		$AudioStreamPlayer.stream = shoot_sound
+		$AudioStreamPlayer.play()
 	
 	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("down"):
 			parent.set_collision_mask_bit(parent.DROP_THRU_BIT, false)
 		else:
 			parent.pre_jump_timer = parent.PRE_JUMP_PRESSED
+
+		$AudioStreamPlayer.stream = jump_sound
+		$AudioStreamPlayer.play()
 	
 	if states.jump == state:
 		#frenar el salto si suelto jump_button
@@ -37,6 +50,8 @@ func _get_input():
 		
 	if Input.is_action_just_pressed("swap"):
 		parent.emit_signal("dimension_swap")
+		$AudioStreamPlayer.stream = swap
+		$AudioStreamPlayer.play()
 		
 	if Input.is_action_just_pressed("head"):
 		if !reverted:
@@ -134,6 +149,8 @@ func _exit_state(old_state, new_state):
 func _on_health_system_died():
 	set_state(states.dead)
 	parent.get_parent().game_over()
+	$AudioStreamPlayer.stream = death_sound
+	$AudioStreamPlayer.play()
 
 # What to do if the player recieved no mortal damage
 func _on_health_system_health_changed():

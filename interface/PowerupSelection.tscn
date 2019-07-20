@@ -119,6 +119,7 @@ margin_bottom = 74.1494
 rect_scale = Vector2( 4, 4 )
 text = "Current selected powerup does this.
 "
+
 [connection signal="focus_entered" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_focus_entered"]
 [connection signal="pressed" from="PowerupContainer/Powerup01Button" to="." method="_on_Powerup01Button_pressed"]
 [connection signal="focus_entered" from="PowerupContainer/Powerup02Button" to="." method="_on_Powerup02Button_focus_entered"]

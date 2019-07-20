@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Player_SM.gd" type="Script" id=2]
-[ext_resource path="res://textures/player1/player_melee.png" type="Texture" id=3]
-[ext_resource path="res://textures/player1/player_spike2.png" type="Texture" id=4]
-[ext_resource path="res://textures/player1/player_body.png" type="Texture" id=5]
-[ext_resource path="res://textures/player1/player_head.png" type="Texture" id=6]
-[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/Player/Player punch.wav" type="AudioStream" id=3]
+[ext_resource path="res://textures/player1/player_melee.png" type="Texture" id=4]
+[ext_resource path="res://textures/player1/player_spike2.png" type="Texture" id=5]
+[ext_resource path="res://textures/player1/player_body.png" type="Texture" id=6]
+[ext_resource path="res://textures/player1/player_head.png" type="Texture" id=7]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 32.0
@@ -464,12 +465,16 @@ script = ExtResource( 1 )
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource( 2 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="state_machine"]
+stream = ExtResource( 3 )
+bus = "sfx"
+
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="fist_temporal" type="Sprite" parent="visuals"]
 visible = false
 modulate = Color( 0.921569, 0.807843, 0.192157, 1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="punch_hitbox" type="Area2D" parent="visuals"]
 position = Vector2( 0, -8 )
@@ -481,19 +486,19 @@ disabled = true
 
 [node name="leg2" type="Sprite" parent="visuals"]
 position = Vector2( -10.2169, 22.8176 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="leg1" type="Sprite" parent="visuals"]
 position = Vector2( 8.13368, 22.3676 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="body" type="Sprite" parent="visuals"]
 position = Vector2( 0.194, -5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="head" type="Sprite" parent="visuals"]
 position = Vector2( 0, -39.5505 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -535,7 +540,8 @@ anims/shoot = SubResource( 8 )
 visible = false
 rect = Rect2( -50, -50, 100, 100 )
 
-[node name="health_system" parent="." instance=ExtResource( 7 )]
+[node name="health_system" parent="." instance=ExtResource( 8 )]
+
 [connection signal="area_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_area_entered"]
 [connection signal="body_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_body_entered"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="state_machine" method="_on_VisibilityNotifier2D_viewport_exited"]
