@@ -554,16 +554,16 @@ margin_bottom = 40.0
 texture = ExtResource( 27 )
 
 [node name="Points" parent="." instance=ExtResource( 28 )]
-position = Vector2( 1283.27, 874.722 )
+position = Vector2( 1287.25, 884.01 )
 
 [node name="Points4" parent="." instance=ExtResource( 28 )]
-position = Vector2( 1282.89, 962.174 )
+position = Vector2( 1288.2, 964.164 )
 
 [node name="Points5" parent="." instance=ExtResource( 28 )]
-position = Vector2( 1515.32, 875.322 )
+position = Vector2( 1522.69, 884.796 )
 
 [node name="Points12" parent="." instance=ExtResource( 28 )]
-position = Vector2( 1449.41, 889.538 )
+position = Vector2( 1447.42, 884.894 )
 
 [node name="Points13" parent="." instance=ExtResource( 28 )]
 position = Vector2( 1371.86, 967.079 )
@@ -581,7 +581,9 @@ position = Vector2( 1591.56, 961.91 )
 position = Vector2( 1442.94, 970.956 )
 
 [node name="Points2" parent="." instance=ExtResource( 28 )]
-position = Vector2( 1523.2, 958.611 )
+position = Vector2( 1524.43, 962.294 )
 
 [node name="UI" parent="." instance=ExtResource( 29 )]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
 [connection signal="body_entered" from="upgrade_area" to="UI" method="_on_upgrade_area_body_entered"]

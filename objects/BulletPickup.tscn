@@ -64,5 +64,4 @@ texture = ExtResource( 2 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/anim = SubResource( 2 )
-
 [connection signal="body_entered" from="." to="." method="_on_BulletPickup_body_entered"]

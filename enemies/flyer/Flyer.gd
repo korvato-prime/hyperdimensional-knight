@@ -14,7 +14,10 @@ func _ready():
 	health_system._set_health_variables(3, 0)
 
 func _every_step():
-	fly()
+	if position.x < -10 || position.x > 1930 || position.y < -10 || position.y > 1090:
+		queue_free()
+	else:
+		fly()
 	pass
 
 func fly():

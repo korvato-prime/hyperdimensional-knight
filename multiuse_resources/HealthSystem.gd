@@ -7,6 +7,7 @@ var health_max = 1
 var health = health_max
 var after_hit_invulner_time = 0
 var after_hit_invulner_timer = 0
+var is_alive = true setget ,get_is_alive
 
 func _set_health_variables(h_m = 1, a_h_i = 0):
 	health_max = h_m
@@ -37,6 +38,7 @@ func take_damage(damage):
 		if get_parent().is_in_group("enemy"):
 			##########################
 			#dead enemt animation here
+			is_alive = false
 			get_parent().queue_free()
 			return
 		else:
@@ -59,3 +61,7 @@ func _on_anim_damage_animation_finished(anim_name):
 		set_state(states.vulnerable)
 	else:
 		get_node("anim_damage").play("invulnerable")
+
+# setget
+func get_is_alive():
+	return is_alive

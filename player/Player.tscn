@@ -8,14 +8,14 @@
 [ext_resource path="res://textures/player_head.png" type="Texture" id=6]
 [ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=7]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 32.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 31 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "fall"
 length = 0.1
 tracks/0/type = "value"
@@ -115,7 +115,7 @@ tracks/7/keys = {
 "values": [ -27.3311 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("visuals/head:position")
@@ -214,7 +214,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("visuals/body:scale")
@@ -313,7 +313,7 @@ tracks/7/keys = {
 "values": [ 0.0, -27.3311 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -389,8 +389,7 @@ tracks/5/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "punch"
+[sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -454,8 +453,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 48, -8 ), Vector2( 48, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "shoot"
+[sub_resource type="Animation" id=8]
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -478,7 +476,7 @@ position = Vector2( 0, -8 )
 
 [node name="collision" type="CollisionShape2D" parent="visuals/punch_hitbox"]
 rotation = 1.5708
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="leg2" type="Sprite" parent="visuals"]
@@ -525,14 +523,14 @@ cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 8 )
-anims/idle = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 5 )
+anims/fall = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run = SubResource( 6 )
 
 [node name="anim_attack" type="AnimationPlayer" parent="."]
-anims/punch = SubResource( 6 )
-anims/shoot = SubResource( 7 )
+anims/punch = SubResource( 7 )
+anims/shoot = SubResource( 8 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false

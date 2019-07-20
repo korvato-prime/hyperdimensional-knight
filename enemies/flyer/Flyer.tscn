@@ -33,5 +33,4 @@ shape = SubResource( 1 )
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 
 [node name="health_system" parent="." instance=ExtResource( 4 )]
-
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

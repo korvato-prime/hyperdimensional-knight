@@ -11,6 +11,7 @@ extents = Vector2( 30, 35 )
 "items",
 ]]
 z_index = 50
+collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

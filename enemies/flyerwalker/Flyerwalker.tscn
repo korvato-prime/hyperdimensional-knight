@@ -22,6 +22,7 @@ __meta__ = {
 script = ExtResource( 2 )
 
 [node name="visuals" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="main_sprite" type="Sprite" parent="visuals"]
 texture = ExtResource( 3 )
@@ -30,6 +31,7 @@ texture = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="raycast_left" type="RayCast2D" parent="raycasts_down"]
 position = Vector2( -30, 32 )
@@ -46,5 +48,4 @@ collision_mask = 3
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 
 [node name="health_system" parent="." instance=ExtResource( 4 )]
-
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

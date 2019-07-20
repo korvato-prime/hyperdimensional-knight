@@ -16,10 +16,15 @@ func start():
 	timerNode.start()
 
 func _on_Timer_timeout():
-	var spawnInstance = spawnScene.instance()
-
-	get_parent().add_child(spawnInstance)
-	spawnInstance.global_position = global_position + Vector2(randi() % 40, randi() % 40)
+	spawn()
 	
 	timerNode.wait_time = rand_range(minWaitTime, maxWaitTime)
 	timerNode.start()
+
+func spawn():
+	var spawnInstance = spawnScene.instance()
+	if spawnInstance.name != "HealthPickup"  && spawnInstance.name != "BulletPickup":
+		get_parent().get_node("EnemyContainer").add_child(spawnInstance)
+	else:
+		get_parent().add_child(spawnInstance)
+	spawnInstance.global_position = global_position + Vector2(randi() % 40, randi() % 40)

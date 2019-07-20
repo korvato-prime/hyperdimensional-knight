@@ -12,6 +12,15 @@ func _ready():
 	$AlterDimension.set_collision_layer_bit(1,0)
 	$player.connect("dimension_swap", self, "_on_dimension_swap")
 
+func _process(delta):
+	if $EnemyContainer.get_child_count() < 2:
+		randomize()
+		var to_generate = (randi() % 100) > 80
+		if to_generate:
+			var spawners = [$Spawner, $Spawner2, $Spawner3, $Spawner4]
+			var spawner = spawners[randi() % spawners.size()]
+			spawner.spawn()
+
 func _on_dimension_swap():
 	#if $solids.visible:
 	if Globals.in_alter_dimension == true:

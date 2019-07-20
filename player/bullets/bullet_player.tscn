@@ -3,7 +3,6 @@
 [ext_resource path="res://player/bullets/bullet_player.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_shoot.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
 
@@ -33,7 +32,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.174828, 0 )

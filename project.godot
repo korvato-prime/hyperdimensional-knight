@@ -121,7 +121,3 @@ skill={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
-
-[rendering]
-
-environment/default_environment="res://resources/default_env.tres"

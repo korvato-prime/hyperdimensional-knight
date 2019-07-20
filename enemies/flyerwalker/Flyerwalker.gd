@@ -44,13 +44,14 @@ func _ready():
 	health_system._set_health_variables(3, 0)
 
 func _every_step(delta):
-	if (is_flying):
+	if position.x < -10 || position.x > 1930 || position.y < -10 || position.y > 1090:
+		queue_free()
+	elif (is_flying):
 		fly()
 	else:
 		_horizontal_move()
 		is_grounded = _check_is_grounded()
 		velocity = move_and_slide_with_snap(velocity, UP)
-		prints(velocity, is_grounded, direction)
 		_apply_gravity(delta)
 	pass
 

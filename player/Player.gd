@@ -164,5 +164,13 @@ func _on_punch_hitbox_area_entered(area):
 	apply_punch_damage(area)
 func apply_punch_damage(enemy):
 	if enemy.is_in_group("enemy"):
-		enemy.get_node("health_system").take_damage(punch_damage)
+		
+		var health_system = enemy.get_node("health_system")
+		
+		health_system.take_damage(punch_damage)
 		Globals.screen_shake(0.2, 15, 16 * punch_damage, 1)
+		
+		if !health_system.is_alive:
+			var points = load("res://objects/Points.tscn").instance()
+			points.position = enemy.position
+			get_parent().add_child(points)
