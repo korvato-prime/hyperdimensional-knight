@@ -372,8 +372,8 @@ maxWaitTime = 60.0
 position = Vector2( 1824, 224 )
 scale = Vector2( 1, 5 )
 spawnScene = ExtResource( 14 )
-minWaitTime = 60.0
-maxWaitTime = 90.0
+minWaitTime = 30.0
+maxWaitTime = 60.0
 
 [node name="Spawner_ammo" parent="." instance=ExtResource( 11 )]
 position = Vector2( 962.634, 174.374 )
