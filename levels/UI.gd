@@ -19,7 +19,7 @@ func _process(delta):
 	elif HP < HP_bar.margin_right:
 		HP_bar.margin_right -= (HP_bar.margin_right - HP)/5
 	
-	Sta_text.text = "%s / %s" % [floor(player.stamina/30), floor(player.stamina_max/30)]
+	Sta_text.text = "%s / %s" % [floor(player.stamina/20), floor(player.stamina_max/20)]
 	var Sta = 307 * player.stamina / player.stamina_max
 	if Sta > Sta_bar.margin_right:
 		Sta_bar.margin_right = (Sta + Sta_bar.margin_right)/2
