@@ -313,8 +313,9 @@ tile_data = PoolIntArray( 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0
 
 [node name="TextureRect" type="TextureRect" parent="AlterDimension"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = -1.85059
+margin_right = 1920.0
+margin_bottom = 1078.15
 texture = ExtResource( 6 )
 
 [node name="bg_music" type="AudioStreamPlayer" parent="."]
@@ -552,4 +553,5 @@ position = Vector2( 1524.43, 962.294 )
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
+[connection signal="change_form" from="." to="player" method="_on_Level_1_change_form"]
 [connection signal="body_entered" from="upgrade_area" to="UI" method="_on_upgrade_area_body_entered"]

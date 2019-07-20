@@ -1,5 +1,7 @@
 extends Node
 
+var form = "Furry"
+
 # SPAWN ITEM LAYER
 var in_alter_dimension
 

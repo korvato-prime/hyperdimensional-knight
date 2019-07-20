@@ -6,6 +6,8 @@ var can_upgrade = 0
 var enemy_health_multiplier = 1
 var points_multiplier = 1
 
+signal change_form
+
 func _ready():
 	randomize()
 	Globals.in_alter_dimension = false
@@ -54,6 +56,7 @@ func _on_dimension_swap():
 		$DesertLayer/PL04.visible = false
 		$DesertLayer/PL05.visible = false
 		$DesertLayer/PL06.visible = false
+		emit_signal("change_form")
 
 	else:
 		$solids.modulate.a = 0.8

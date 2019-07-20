@@ -11,6 +11,15 @@ signal hit
 signal stamina_reduce
 signal bullet_reduce
 
+var fhead = load("res://textures/player1/player_head.png")
+var fbody = load("res://textures/player1/player_body.png")
+var fleg1 = load("res://textures/player1/player_spike.png")
+var fleg2 = load("res://textures/player1/player_spike2.png")
+var head2 = load("res://textures/player2/C82AFC63-99F5-4E1D-8EEF-7675B7DE908B.png")
+var body2 = load("res://textures/player2/A1757B0B-EF8C-49F9-B0FB-3FA4013E9A2E.png")
+var leg1 = load("res://textures/player2/DC29A7ED-8D11-43F7-9A37-62A281D10797.png")
+var leg2 = load("res://textures/player2/E931D8FE-1446-47F7-B622-7D7B03BE4B4A.png")
+
 #saltos
 var gravity_fall = 6200				##############
 var gravity_jump = 4800				##############
@@ -177,3 +186,19 @@ func apply_punch_damage(enemy):
 			points.multiplier = level.points_multiplier
 			points.position = enemy.position
 			level.add_child(points)
+
+
+func _on_Level_1_change_form():
+	if Globals.form == "Furry":
+		$visuals/head.texture = head2
+		$visuals/body.texture = body2
+		$visuals/leg1.texture = leg1
+		$visuals/leg2.texture = leg2
+		Globals.form = "Crystal"
+	if Globals.form == "Crystal":
+		$visuals/head.texture = fhead
+		$visuals/body.texture = fbody
+		$visuals/leg1.texture = fleg1
+		$visuals/leg2.texture = fleg2
+		Globals.form = "Furry"
+	pass # Replace with function body.
