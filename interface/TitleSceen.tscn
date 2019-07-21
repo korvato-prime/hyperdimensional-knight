@@ -108,6 +108,7 @@ custom_colors/font_color = Color( 0.819608, 0.729412, 0.14902, 1 )
 text = "knight"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 161.605
 margin_top = 601.814
 margin_right = 974.605
@@ -147,6 +148,7 @@ margin_right = 158.0
 margin_bottom = 42.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="OptionsContainer"]
+editor/display_folded = true
 margin_top = 84.0
 margin_right = 813.0
 margin_bottom = 108.0
@@ -199,13 +201,19 @@ text = "Exit"
 stream = ExtResource( 6 )
 autoplay = true
 
-[node name="CreditsText" type="RichTextLabel" parent="."]
-editor/display_folded = true
+[node name="Credits" type="ColorRect" parent="."]
+margin_left = 56.0
+margin_top = 493.0
+margin_right = 1826.0
+margin_bottom = 1018.0
+color = Color( 0.0784314, 0.0156863, 0.0156863, 0.839216 )
+
+[node name="CreditsText" type="RichTextLabel" parent="Credits"]
 modulate = Color( 0.0352941, 0.854902, 0.180392, 1 )
-margin_left = 68.0
-margin_top = 492.0
-margin_right = 513.0
-margin_bottom = 631.0
+margin_left = 12.3496
+margin_top = 9.69647
+margin_right = 457.35
+margin_bottom = 148.696
 rect_scale = Vector2( 4, 4 )
 text = "This game was made by a lot of cool guys and some excellent tools.
 
@@ -214,7 +222,7 @@ Developers:					Artists:						Composer:
 	- Manpacman				- clark.gaston
 	- Panch"
 
-[node name="Back" type="Button" parent="CreditsText"]
+[node name="Back" type="Button" parent="Credits/CreditsText"]
 margin_left = 303.0
 margin_top = 100.719
 margin_right = 426.0
@@ -234,5 +242,5 @@ margin_bottom = 40.0
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
-[connection signal="pressed" from="CreditsText/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Credits/CreditsText/Back" to="." method="_on_Back_pressed"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

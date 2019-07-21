@@ -16,7 +16,7 @@ func _input(event):
 		$VBoxContainer.show()
 		$VBoxContainer/NewGameButton.grab_focus()
 		$OptionsContainer.hide()
-		$CreditsText.hide()
+		$Credits.hide()
 
 func _on_CheckBox_toggled(button_pressed):
 	if OS.window_fullscreen == false:
@@ -25,7 +25,7 @@ func _on_CheckBox_toggled(button_pressed):
 		OS.window_fullscreen = false
 
 func _on_CreditsButton_pressed():
-	$CreditsText.show()
+	$Credits.show()
 	$VBoxContainer.hide()
 
 func _on_ExitButton_pressed():
@@ -45,5 +45,5 @@ func _on_Back_pressed():
 func show_title_screen():
 	$TitleLabel2.rect_position = Vector2(420, -200)
 	$OptionsContainer.hide()
-	$CreditsText.hide()
+	$Credits.hide()
 	get_node("anim").play("start")
