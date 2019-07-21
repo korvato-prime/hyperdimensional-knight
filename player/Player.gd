@@ -47,6 +47,7 @@ var ammo_max = 10
 onready var raycasts_down = $raycasts_down
 
 var is_grounded
+var current_animation_tag = ""
 
 func _ready():
 	for raycast in raycasts_down.get_children():
@@ -89,7 +90,7 @@ func punching():
 		stamina -= 20
 		if stamina < 0:
 			stamina = 0
-		get_node("anim_attack").play("punch")
+		get_node("anim_attack").play(current_animation_tag + "punch")
 		punch_coldown_time = punch_coldown_timer
 		emit_signal("stamina_reduce")
 		move_and_slide_with_snap(Vector2(500 * get_node("visuals").scale.x, 0), UP)
@@ -177,3 +178,33 @@ func apply_punch_damage(enemy):
 			points.multiplier = level.points_multiplier
 			points.position = enemy.position
 			level.add_child(points)
+
+func change_form(current_form):
+	if current_form == Globals.FORMS.Furry:
+		Globals.form = Globals.FORMS.Crystal
+		current_animation_tag = "crystal_"
+		
+		$visuals/crystal_head.visible = true
+		$visuals/crystal_body.visible = true
+		$visuals/crystal_leg1.visible = true
+		$visuals/crystal_leg2.visible = true
+		
+		$visuals/head.visible = false
+		$visuals/body.visible = false
+		$visuals/leg1.visible = false
+		$visuals/leg2.visible = false
+		
+	else:
+		Globals.form = Globals.FORMS.Furry
+		current_animation_tag = ""
+		
+		$visuals/crystal_head.visible = false
+		$visuals/crystal_body.visible = false
+		$visuals/crystal_leg1.visible = false
+		$visuals/crystal_leg2.visible = false
+		
+		$visuals/head.visible = true
+		$visuals/body.visible = true
+		$visuals/leg1.visible = true
+		$visuals/leg2.visible = true
+	

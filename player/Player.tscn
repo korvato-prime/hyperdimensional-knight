@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/Player_SM.gd" type="Script" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://textures/player1/player_spike2.png" type="Texture" id=5]
 [ext_resource path="res://textures/player1/player_body.png" type="Texture" id=6]
 [ext_resource path="res://textures/player1/player_head.png" type="Texture" id=7]
-[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=8]
+[ext_resource path="res://textures/player2/E931D8FE-1446-47F7-B622-7D7B03BE4B4A.png" type="Texture" id=8]
+[ext_resource path="res://textures/player2/DC29A7ED-8D11-43F7-9A37-62A281D10797.png" type="Texture" id=9]
+[ext_resource path="res://textures/player2/A1757B0B-EF8C-49F9-B0FB-3FA4013E9A2E.png" type="Texture" id=10]
+[ext_resource path="res://textures/player2/C82AFC63-99F5-4E1D-8EEF-7675B7DE908B.png" type="Texture" id=11]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 32.0
@@ -15,6 +19,335 @@ height = 32.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 31 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "crystal_fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/crystal_body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/crystal_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.194, -2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/crystal_head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -40.734 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/crystal_leg2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -17.9294, 19.6399 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/crystal_leg2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 23.694 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visuals/crystal_leg1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 14.8863, 20.7787 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visuals/crystal_leg1:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -27.3311 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "crystal_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/crystal_head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -40.734 ), Vector2( 0, -36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/crystal_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194, -4 ), Vector2( 0.194, 0 ), Vector2( 0.194, -6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/crystal_leg1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8.13368, 22.3676 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/crystal_leg2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -10.2169, 22.8176 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/crystal_body:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visuals/crystal_leg1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visuals/crystal_leg2:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "crystal_jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/crystal_body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/crystal_body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.194, -4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/crystal_head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -36 ), Vector2( 0, -42 ), Vector2( 0, -40.734 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/crystal_leg2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.2169, 22.8176 ), Vector2( -17.9294, 19.6399 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/crystal_leg2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 23.694 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visuals/crystal_leg1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.13368, 22.3676 ), Vector2( 14.8863, 20.7787 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visuals/crystal_leg1:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -27.3311 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "crystal_run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/crystal_leg1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5.36746, 21.7529 ), Vector2( 3.21597, 26.978 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/crystal_leg2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12.9831, 26.8133 ), Vector2( -10.5242, 18.822 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/crystal_head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.29864, -32.2712 ), Vector2( 8.299, -30 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.194, 2 ), Vector2( 0.194, 0.211961 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/body:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "fall"
@@ -390,6 +723,71 @@ tracks/5/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "crystal_punch"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/punch_hitbox/collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/punch_hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ), Vector2( 60, -8 ), Vector2( 0, -8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/crystal_fist_temporal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 1.5 ), Vector2( 3, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/crystal_fist_temporal:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/crystal_fist_temporal:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 48, -8 ), Vector2( 48, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.05
@@ -477,6 +875,7 @@ modulate = Color( 0.921569, 0.807843, 0.192157, 1 )
 texture = ExtResource( 4 )
 
 [node name="punch_hitbox" type="Area2D" parent="visuals"]
+editor/display_folded = true
 position = Vector2( 0, -8 )
 
 [node name="collision" type="CollisionShape2D" parent="visuals/punch_hitbox"]
@@ -493,12 +892,39 @@ position = Vector2( 8.13368, 22.3676 )
 texture = ExtResource( 5 )
 
 [node name="body" type="Sprite" parent="visuals"]
-position = Vector2( 0.194, -5 )
+position = Vector2( 0.194, -0.308525 )
 texture = ExtResource( 6 )
 
 [node name="head" type="Sprite" parent="visuals"]
-position = Vector2( 0, -39.5505 )
+position = Vector2( 0, -38.5496 )
 texture = ExtResource( 7 )
+
+[node name="crystal_fist_temporal" type="Sprite" parent="visuals"]
+visible = false
+modulate = Color( 0, 0.670588, 1, 1 )
+texture = ExtResource( 4 )
+
+[node name="crystal_leg2" type="Sprite" parent="visuals"]
+visible = false
+position = Vector2( -10.2169, 22.8176 )
+texture = ExtResource( 8 )
+
+[node name="crystal_leg1" type="Sprite" parent="visuals"]
+visible = false
+position = Vector2( 8.13368, 22.3676 )
+texture = ExtResource( 9 )
+
+[node name="crystal_body" type="Sprite" parent="visuals"]
+visible = false
+position = Vector2( 0.194, -0.768807 )
+scale = Vector2( 0.855, 0.75 )
+texture = ExtResource( 10 )
+
+[node name="crystal_head" type="Sprite" parent="visuals"]
+visible = false
+position = Vector2( 0, -37.8615 )
+scale = Vector2( -0.868703, 0.874725 )
+texture = ExtResource( 11 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -527,12 +953,17 @@ cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
+anims/crystal_fall = SubResource( 9 )
+anims/crystal_idle = SubResource( 10 )
+anims/crystal_jump = SubResource( 11 )
+anims/crystal_run = SubResource( 12 )
 anims/fall = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/jump = SubResource( 5 )
 anims/run = SubResource( 6 )
 
 [node name="anim_attack" type="AnimationPlayer" parent="."]
+anims/crystal_punch = SubResource( 13 )
 anims/punch = SubResource( 7 )
 anims/shoot = SubResource( 8 )
 
@@ -540,8 +971,7 @@ anims/shoot = SubResource( 8 )
 visible = false
 rect = Rect2( -50, -50, 100, 100 )
 
-[node name="health_system" parent="." instance=ExtResource( 8 )]
-
+[node name="health_system" parent="." instance=ExtResource( 12 )]
 [connection signal="area_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_area_entered"]
 [connection signal="body_entered" from="visuals/punch_hitbox" to="." method="_on_punch_hitbox_body_entered"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="state_machine" method="_on_VisibilityNotifier2D_viewport_exited"]

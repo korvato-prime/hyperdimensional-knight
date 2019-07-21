@@ -1,6 +1,7 @@
 extends Node
 
-var form = "Furry"
+enum FORMS { Furry, Crystal }
+var form = FORMS.Furry
 
 # SPAWN ITEM LAYER
 var in_alter_dimension

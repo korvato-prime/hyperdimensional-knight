@@ -52,6 +52,8 @@ func _get_input():
 		parent.emit_signal("dimension_swap")
 		$AudioStreamPlayer.stream = swap
 		$AudioStreamPlayer.play()
+
+		parent.change_form(Globals.form)
 		
 	if Input.is_action_just_pressed("head"):
 		if !reverted:
@@ -128,15 +130,15 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			parent.get_node("anim_player").play("idle")
+			parent.get_node("anim_player").play(parent.current_animation_tag + "idle")
 		states.run:
-			parent.get_node("anim_player").play("run")
+			parent.get_node("anim_player").play(parent.current_animation_tag + "run")
 		states.jump:
-			parent.get_node("anim_player").play("jump")
+			parent.get_node("anim_player").play(parent.current_animation_tag + "jump")
 		states.fall:
-			parent.get_node("anim_player").play("fall")
+			parent.get_node("anim_player").play(parent.current_animation_tag + "fall")
 		states.hitted:
-			parent.get_node("anim_player").play("jump")
+			parent.get_node("anim_player").play(parent.current_animation_tag + "jump")
 			parent.jump()
 			parent.velocity.y /= 2
 			parent.emit_signal("hit")
