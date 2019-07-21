@@ -32,6 +32,7 @@ func _process(delta):
 func _on_dimension_swap():
 	#if $solids.visible:
 	if Globals.in_alter_dimension == true:
+		$anim_swap_dimension.play("crystal_swap")
 		$solids.modulate.a = 0.25
 		$AlterDimension.modulate.a = 0.8
 		$solids.z_index = 100
@@ -62,6 +63,7 @@ func _on_dimension_swap():
 		$DesertLayer/PL06.visible = false
 
 	else:
+		$anim_swap_dimension.play("furry_swap")
 		$solids.modulate.a = 0.8
 		$AlterDimension.modulate.a = 0.25
 		$solids.z_index = -100

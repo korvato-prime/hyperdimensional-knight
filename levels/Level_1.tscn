@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://levels/tiles/permanent_tiles.tres" type="TileSet" id=2]
@@ -274,6 +274,38 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 8/shapes = [  ]
 8/z_index = 0
 
+[sub_resource type="Animation" id=18]
+resource_name = "crystal_swap"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorSwap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0.219608, 0.0980392, 0.219608, 0.984314 ), Color( 0.470588, 0.105882, 0.470588, 0.87451 ), Color( 0.603922, 0.0588235, 0.603922, 0.796078 ), Color( 0.768627, 0.211765, 0.768627, 0.682353 ), Color( 0.835294, 0.392157, 0.835294, 0.568627 ), Color( 0.619608, 0.403922, 0.619608, 0.454902 ), Color( 0.392157, 0.32549, 0.392157, 0.341176 ), Color( 0.152941, 0.0745098, 0.152941, 0.313726 ), Color( 0, 0.0666667, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "furry_swap"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorSwap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0.219608, 0.219608, 0.0980392, 0.984314 ), Color( 0.470588, 0.466667, 0.105882, 0.87451 ), Color( 0.54902, 0.603922, 0.0588235, 0.796078 ), Color( 0.752941, 0.768627, 0.211765, 0.682353 ), Color( 0.835294, 0.827451, 0.392157, 0.568627 ), Color( 0.619608, 0.619608, 0.403922, 0.454902 ), Color( 0.392157, 0.392157, 0.32549, 0.341176 ), Color( 0.14902, 0.152941, 0.0745098, 0.313726 ), Color( 0.0627451, 0.0666667, 0, 0 ) ]
+}
+
 [node name="Level 1" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -304,6 +336,7 @@ margin_bottom = 1138.46
 texture = ExtResource( 4 )
 
 [node name="AlterDimension" type="TileMap" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0.317647 )
 tile_set = SubResource( 17 )
 collision_layer = 2
@@ -475,6 +508,7 @@ __meta__ = {
 editor/display_folded = true
 
 [node name="PB01" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -486,6 +520,7 @@ margin_bottom = 40.0
 texture = ExtResource( 23 )
 
 [node name="PB02" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
 motion_scale = Vector2( 0.8, 0.8 )
 motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
@@ -499,6 +534,7 @@ margin_bottom = 40.0
 texture = ExtResource( 24 )
 
 [node name="PB03" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -510,6 +546,7 @@ margin_bottom = 40.0
 texture = ExtResource( 25 )
 
 [node name="PB04" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -521,6 +558,7 @@ margin_bottom = 40.0
 texture = ExtResource( 26 )
 
 [node name="PB05" type="ParallaxLayer" parent="CrystalLayer"]
+editor/display_folded = true
 motion_scale = Vector2( 0.8, 0.8 )
 motion_mirroring = Vector2( 1, 1 )
 __meta__ = {
@@ -537,4 +575,18 @@ texture = ExtResource( 27 )
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
+[node name="ColorSwap" type="ColorRect" parent="."]
+modulate = Color( 0.0500441, 0.0531718, 0, 0 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 1982.0
+margin_bottom = 1150.0
+grow_horizontal = 2
+
+[node name="anim_swap_dimension" type="AnimationPlayer" parent="."]
+anims/crystal_swap = SubResource( 18 )
+anims/furry_swap = SubResource( 19 )
 [connection signal="body_entered" from="upgrade_area" to="UI" method="_on_upgrade_area_body_entered"]
