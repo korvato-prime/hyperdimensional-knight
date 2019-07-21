@@ -9,7 +9,7 @@ func _on_NewGameButton_pressed():
 func _on_OptionsButton_pressed():
 	$VBoxContainer.hide()
 	$OptionsContainer.show()
-	$OptionsContainer/HSlider.grab_focus()
+	$OptionsContainer/VolumeSlider.grab_focus()
 	
 func _input(event):
 	if Input.is_action_just_pressed("cancel"):
