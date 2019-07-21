@@ -27,7 +27,8 @@ onready var raycasts_down = $raycasts_down
 onready var health_system = $health_system
 
 var is_grounded
-var health_multiplier
+var health_multiplier = 1
+
 func _ready():
 	direction = get_random_direction()
 	enable_raycast(direction)

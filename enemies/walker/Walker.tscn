@@ -1,16 +1,85 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://enemies/walker/Walker.gd" type="Script" id=1]
 [ext_resource path="res://enemies/walker/Walker_SM.gd" type="Script" id=2]
-[ext_resource path="res://textures/walker/47887C03-A77F-4DC4-8B38-E5857621A97E.png" type="Texture" id=3]
-[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=4]
-[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/walker/BE7AE8D8-52AA-46DF-8B53-A0DAF6664633.png" type="Texture" id=3]
+[ext_resource path="res://textures/walker/47887C03-A77F-4DC4-8B38-E5857621A97E.png" type="Texture" id=4]
+[ext_resource path="res://textures/walker/CD3DB657-817E-4B7C-8F84-C80F6E578C5D.png" type="Texture" id=5]
+[ext_resource path="res://textures/walker/0D8A8420-6C38-4B86-A3B7-FA096B278289.png" type="Texture" id=6]
+[ext_resource path="res://textures/walker/21927735-B46D-4B20-95C1-718B6B644DB7.png" type="Texture" id=7]
+[ext_resource path="res://multiuse_resources/Hazard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://multiuse_resources/HealthSystem.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 25 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "dead"
+loop = true
+
+[sub_resource type="Animation" id=6]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 26.5763, 20.3614 ), Vector2( 26.8398, 15.3545 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/leg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -24.7278, 22.8205 ), Vector2( -24.4642, 17.8136 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/leg2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7.28415, 28.7821 ), Vector2( -8.16012, 22.3583 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/leg3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.10752, 29.5305 ), Vector2( 7.52354, 22.8148 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/leg4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20.6414, 24.858 ), Vector2( 20.9334, 22.5221 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "hitted"
@@ -19,11 +88,109 @@ resource_name = "hitted"
 resource_name = "idle"
 
 [sub_resource type="Animation" id=5]
-resource_name = "walk"
+resource_name = "run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visuals/leg4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, -218.874 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visuals/leg3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.3529 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visuals/leg:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visuals/leg2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visuals/leg4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20.0574, 28.0699 ), Vector2( 23.3687, 27.3827 ), Vector2( 28.4283, 29.1431 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visuals/leg3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.10752, 29.5305 ), Vector2( 5.14737, 27.3452 ), Vector2( 3.23617, 28.6564 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visuals/leg2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7.28415, 28.7821 ), Vector2( -8.50793, 27.0338 ), Vector2( -5.92926, 29.2192 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visuals/leg:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -24.7278, 22.8205 ), Vector2( -24.2033, 21.2471 ), Vector2( -24.9026, 24.3939 ) ]
+}
 
 [node name="Walker" type="KinematicBody2D" groups=[
-"walker",
 "enemy",
+"walker",
 ]]
 collision_mask = 3
 script = ExtResource( 1 )
@@ -35,14 +202,44 @@ script = ExtResource( 2 )
 
 [node name="visuals" type="Node2D" parent="."]
 
+[node name="leg4" type="Sprite" parent="visuals"]
+position = Vector2( 20.9334, 22.5221 )
+rotation = -3.68599
+scale = Vector2( 0.659, -0.712 )
+texture = ExtResource( 3 )
+
 [node name="main_sprite" type="Sprite" parent="visuals"]
+texture = ExtResource( 4 )
+
+[node name="head" type="Sprite" parent="visuals"]
+position = Vector2( 26.8398, 15.3545 )
+texture = ExtResource( 5 )
+
+[node name="leg" type="Sprite" parent="visuals"]
+position = Vector2( -24.4642, 17.8136 )
+rotation = 0.285683
+scale = Vector2( 0.969039, 0.92905 )
+texture = ExtResource( 6 )
+
+[node name="leg2" type="Sprite" parent="visuals"]
+position = Vector2( -8.16012, 22.3583 )
+rotation = -0.210061
+scale = Vector2( 0.978476, 0.846054 )
+texture = ExtResource( 7 )
+
+[node name="leg3" type="Sprite" parent="visuals"]
+position = Vector2( 7.52354, 22.8148 )
+rotation = 0.285023
+scale = Vector2( 0.659439, 0.711833 )
 texture = ExtResource( 3 )
 
 [node name="collition" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
 [node name="raycasts_down" type="Node2D" parent="."]
+visible = false
 
 [node name="raycast_left" type="RayCast2D" parent="raycasts_down"]
 position = Vector2( -20, 32 )
@@ -64,17 +261,19 @@ collision_mask = 3
 
 [node name="anim_enemy" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 2 )
+anims/fall = SubResource( 6 )
 anims/hitted = SubResource( 3 )
 anims/idle = SubResource( 4 )
-anims/walk = SubResource( 5 )
+anims/run = SubResource( 5 )
 
 [node name="Hazard" parent="." groups=[
 "hurtbox",
-] instance=ExtResource( 4 )]
+] instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 5 )
 scale = Vector2( 1.1, 1.2 )
 
-[node name="health_system" parent="." instance=ExtResource( 5 )]
+[node name="health_system" parent="." instance=ExtResource( 9 )]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
@@ -99,5 +298,4 @@ enabled = true
 cast_to = Vector2( -10, 0 )
 collision_mask = 2
 collide_with_areas = true
-
 [connection signal="health_changed" from="health_system" to="state_machine" method="_on_health_system_health_changed"]

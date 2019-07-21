@@ -12,7 +12,7 @@ func _ready():
 	add_state("fall")
 	add_state("hitted")
 	add_state("dead")
-	call_deferred("set_state", states.idle)
+	call_deferred("set_state", states.run)
 
 func _get_input():
 	parent._horizontal_move()
@@ -46,10 +46,8 @@ func _get_transition(delta):
 			if ! parent._check_is_grounded():
 				if parent.velocity.y < 0:
 					return states.jump
-				else:
+				elif parent.velocity.y > 5:
 					return states.fall
-			elif parent.velocity.x == 0:
-				return states.idle
 		states.jump:
 			if parent._check_is_grounded():
 				if parent.velocity.x != 0:
@@ -82,13 +80,13 @@ func _enter_state(new_state, old_state):
 			#parent.get_node("anim_enemy").play("idle")
 			pass
 		states.run:
-			#parent.get_node("anim_enemy").play("run")
+			parent.get_node("anim_enemy").play("run")
 			pass
 		states.jump:
 			#parent.get_node("anim_enemy").play("jump")
 			pass
 		states.fall:
-			#parent.get_node("anim_enemy").play("fall")
+			parent.get_node("anim_enemy").play("fall")
 			pass
 		states.hitted:
 			#parent.get_node("anim_enemy").play("jump")
